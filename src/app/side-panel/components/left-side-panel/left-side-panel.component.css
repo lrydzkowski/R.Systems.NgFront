@@ -1,0 +1,13 @@
+.left-side-panel {
+  height: 100%;
+  width: 40rem;
+}
+.content-wrapper {
+  background-color: #fff;
+  border-top: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+  height: 100%;
+}
+.content {
+  flex-grow: 1;
+}
