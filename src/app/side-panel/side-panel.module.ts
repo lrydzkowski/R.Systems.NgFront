@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { ButtonModule } from 'primeng/button';
+
 import { LeftSidePanelComponent } from './components/left-side-panel/left-side-panel.component';
 import { LeftSidePanelButtonComponent } from './components/left-side-panel-button/left-side-panel-button.component';
-
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { LeftSidePanelButtonComponent } from './components/left-side-panel-butto
   ],
   imports: [
     CommonModule,
+
     ButtonModule
   ],
   exports: [

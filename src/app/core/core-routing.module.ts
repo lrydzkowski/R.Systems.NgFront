@@ -5,13 +5,13 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 
 
 const routes: Routes = [
-  { 
-    path: 'administration', 
-    loadChildren: () => import('../user-administration/user-administration.module').then(m => m.UserAdministrationModule) 
+  {
+    path: 'administration',
+    loadChildren: () => import('../modules/user-administration/user-administration.module').then(m => m.UserAdministrationModule)
   },
-  { 
-    path: 'lexica', 
-    loadChildren: () => import('../lexica/lexica.module').then(m => m.LexicaModule) 
+  {
+    path: 'lexica',
+    loadChildren: () => import('../modules/lexica/lexica.module').then(m => m.LexicaModule)
   },
   { path: '**', component: PageNotFoundComponent }
 ];
