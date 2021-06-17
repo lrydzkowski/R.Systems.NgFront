@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
 import { SlideMenuModule } from 'primeng/slidemenu';
 import { RippleModule } from 'primeng/ripple';
+import { DialogModule } from 'primeng/dialog';
 
 import { HeaderComponent } from './components/header/header.component';
 import { CoreRoutingModule } from './core-routing.module';
@@ -17,6 +18,7 @@ import { UserAuthModule } from '../modules/user-auth/user-auth.module';
 import { SidePanelModule } from '../side-panel/side-panel.module';
 import { TimezoneOffsetInterceptor } from './interceptors/timezone-offset.interceptor';
 import { FakeBackendInterceptor } from '../modules/api-mock/interceptors/fake-backend.interceptor';
+import { InfoButtonComponent } from './components/info-button/info-button.component';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { FakeBackendInterceptor } from '../modules/api-mock/interceptors/fake-ba
     PageNotFoundComponent,
     MainTemplateComponent,
     PageNotFoundComponent,
-    MainTemplateComponent
+    MainTemplateComponent,
+    InfoButtonComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +39,7 @@ import { FakeBackendInterceptor } from '../modules/api-mock/interceptors/fake-ba
     SidebarModule,
     SlideMenuModule,
     RippleModule,
+    DialogModule,
 
     SidePanelModule,
     UserAuthModule,

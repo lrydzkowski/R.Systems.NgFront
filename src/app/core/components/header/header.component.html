@@ -3,7 +3,7 @@
   <nav>
     <p-menubar [model]="menuItems" styleClass="header-menubar">
       <button *ngIf="userIsLogged" pButton type="button" class="p-button-outlined p-ml-2" icon="pi pi-user"></button>
-      <button pButton type="button" class="p-button-outlined p-ml-2" icon="pi pi-info"></button>
+      <core-info-button></core-info-button>
       <button *ngIf="userIsLogged"
               pButton
               type="button"
