@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { AutofocusDirective } from './directives/autofocus.directive';
 
 
 @NgModule({
   declarations: [
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    AutofocusDirective
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
     BreadcrumbModule
   ],
   exports: [
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    AutofocusDirective
   ]
 })
 export class SharedModule { }

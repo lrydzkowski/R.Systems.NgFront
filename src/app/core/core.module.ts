@@ -16,6 +16,7 @@ import { MainTemplateComponent } from './templates/main-template/main-template.c
 import { UserAuthModule } from '../modules/user-auth/user-auth.module';
 import { SidePanelModule } from '../side-panel/side-panel.module';
 import { TimezoneOffsetInterceptor } from './interceptors/timezone-offset.interceptor';
+import { FakeBackendInterceptor } from '../modules/api-mock/interceptors/fake-backend.interceptor';
 
 
 @NgModule({
@@ -45,8 +46,12 @@ import { TimezoneOffsetInterceptor } from './interceptors/timezone-offset.interc
       provide: HTTP_INTERCEPTORS,
       useClass: TimezoneOffsetInterceptor,
       multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: FakeBackendInterceptor,
+      multi: true
     }
-
   ],
   exports: [
     MainTemplateComponent

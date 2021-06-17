@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 
 
 const routes: Routes = [
-  { path: $localize`login`, component: LoginComponent },
+  { path: $localize`login`, component: LoginPageComponent },
   { path: '', redirectTo: $localize`/login`, pathMatch: 'full' }
 ];
 

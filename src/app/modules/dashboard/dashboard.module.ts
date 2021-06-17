@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LexicaRoutingModule } from './lexica-routing.module';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 
 
@@ -11,7 +11,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
   ],
   imports: [
     CommonModule,
-    LexicaRoutingModule
+    DashboardRoutingModule
   ]
 })
-export class LexicaModule { }
+export class DashboardModule { }

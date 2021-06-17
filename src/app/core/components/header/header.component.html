@@ -2,19 +2,23 @@
   <h1 class="p-ml-3 p-mr-3">R.Systems</h1>
   <nav>
     <p-menubar [model]="menuItems" styleClass="header-menubar">
-      <button pButton type="button" class="p-button-outlined p-ml-2" icon="pi pi-user"></button>
+      <button *ngIf="userIsLogged" pButton type="button" class="p-button-outlined p-ml-2" icon="pi pi-user"></button>
       <button pButton type="button" class="p-button-outlined p-ml-2" icon="pi pi-info"></button>
-      <button pButton 
-              type="button" 
-              label="Logout" 
-              class="p-button-outlined p-button-danger p-ml-2 big" 
-              icon="pi pi-sign-out" 
-              i18n-label></button>
-      <button pButton 
-              type="button" 
-              class="p-button-outlined p-button-danger p-ml-2 small" 
-              icon="pi pi-sign-out" 
-              i18n-label></button>
+      <button *ngIf="userIsLogged"
+              pButton
+              type="button"
+              label="Logout"
+              class="p-button-outlined p-button-danger p-ml-2 big"
+              icon="pi pi-sign-out"
+              i18n-label
+              (click)="logout()"></button>
+      <button *ngIf="userIsLogged"
+              pButton
+              type="button"
+              class="p-button-outlined p-button-danger p-ml-2 small"
+              icon="pi pi-sign-out"
+              i18n-label
+              (click)="logout()"></button>
     </p-menubar>
   </nav>
 </header>

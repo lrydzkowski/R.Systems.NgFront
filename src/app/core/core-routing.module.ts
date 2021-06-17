@@ -6,7 +6,11 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 
 const routes: Routes = [
   {
-    path: 'administration',
+    path: $localize`dashboard`,
+    loadChildren: () => import('../modules/dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
+    path: $localize`administration`,
     loadChildren: () => import('../modules/user-administration/user-administration.module').then(m => m.UserAdministrationModule)
   },
   {

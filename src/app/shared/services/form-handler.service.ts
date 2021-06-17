@@ -44,4 +44,25 @@ export class FormHandlerService {
       }
     });
   }
+
+  getFieldValues(data: { [key: string]: any } = {}, formGroup: FormGroup | null = null): { [key: string]: any } {
+    if (formGroup === null) {
+      formGroup = this.formGroup;
+    }
+    Object.keys(this.formGroup.controls).forEach(field => {
+      const control = this.formGroup.get(field);
+      if (control instanceof FormGroup) {
+        data = this.getFieldValues(data, control);
+        return;
+      }
+      if (control instanceof FormControl) {
+        let val = control.value;
+        if (typeof val === 'string') {
+          val = val.trim();
+        }
+        data[field] = val;
+      }
+    });
+    return data;
+  }
 }
