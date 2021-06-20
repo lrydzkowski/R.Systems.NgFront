@@ -1,5 +1,5 @@
 <button pButton type="button" class="p-button-outlined p-ml-2" icon="pi pi-info" (click)="showDialog()"></button>
-<p-dialog header="R.Systems" i18n-header [modal]="true" [(visible)]="dialogIsShowed">
+<p-dialog header="R.Systems" i18n-header [modal]="true" [draggable]="false" [(visible)]="dialogIsShowed">
   <div class="content">
     <p>Copyright © {{getYearsRange()}} Łukasz Rydzkowski</p>
     <p><a href="http://lukaszrydzkowski.pl" target="_blank">http://lukaszrydzkowski.pl</a></p>
