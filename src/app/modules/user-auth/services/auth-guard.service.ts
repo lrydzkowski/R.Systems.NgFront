@@ -23,7 +23,6 @@ export class AuthGuardService implements CanActivate {
             this.user.logout();
             return false;
           }
-          this.user.redirectAfterLogin();
           return true;
         }
       ));
