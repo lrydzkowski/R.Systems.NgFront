@@ -1,0 +1,12 @@
+* {
+  text-decoration: none;
+}
+a {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+.tile {
+  height: 100%;
+  width: 310px;
+}

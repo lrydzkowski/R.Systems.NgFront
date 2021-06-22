@@ -37,6 +37,12 @@ small {
   box-shadow: none;
   border: 1px solid #dee2e6;
 }
+.p-card.full-height-card {
+  height: 100%;
+}
+.p-card.card-with-hover:hover {
+  background-color: #F5FBFF;
+}
 .p-progress-spinner.form-loading-animation {
   height: 60px;
   position: absolute;
