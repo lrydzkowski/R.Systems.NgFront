@@ -14,11 +14,6 @@ export class MenuService {
   getMenu(authenticated: boolean): MenuItem[] {
     return [
       {
-        label: $localize`Login`,
-        routerLink: [$localize`/login`],
-        visible: !authenticated
-      },
-      {
         label: $localize`Dashboard`,
         routerLink: [$localize`/dashboard`],
         visible: authenticated
