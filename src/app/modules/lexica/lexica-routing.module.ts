@@ -7,7 +7,10 @@ const routes: Routes = [
   {
     path: $localize`main`,
     component: MainPageComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {
+      breadcrumb: 'Lexica'
+    }
   },
   {
     path: '',

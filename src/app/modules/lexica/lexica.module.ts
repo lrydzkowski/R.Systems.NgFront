@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LexicaRoutingModule } from './lexica-routing.module';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,6 +12,8 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
   ],
   imports: [
     CommonModule,
+
+    SharedModule,
     LexicaRoutingModule
   ]
 })

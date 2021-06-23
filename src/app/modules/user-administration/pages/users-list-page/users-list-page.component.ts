@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersListPageComponent implements OnInit {
 
+  newUserFormLink: string = $localize`/administration/users/new`;
+
   constructor() { }
 
   ngOnInit(): void {

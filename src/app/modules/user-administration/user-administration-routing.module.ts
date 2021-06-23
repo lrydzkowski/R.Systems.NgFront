@@ -8,21 +8,33 @@ const routes: Routes = [
   {
     path: $localize`users`,
     canActivate: [AuthGuardService],
+    data: {
+      breadcrumb: $localize`Users`
+    },
     children: [
       {
         path: '',
         component: UsersListPageComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+          breadcrumb: null
+        }
       },
       {
         path: $localize`new`,
         component: UserFormPageComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+          breadcrumb: $localize`New user`
+        }
       },
       {
         path: ':id',
         component: UserFormPageComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+          breadcrumb: $localize`Existing user`
+        }
       }
     ]
   },
