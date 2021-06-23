@@ -43,6 +43,13 @@ small {
 .p-card.card-with-hover:hover {
   background-color: #F5FBFF;
 }
+.p-tabview .p-tabview-nav {
+  border-width: 0 0 1px 0;
+}
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  border-width: 0 0 1px 0;
+  margin: 0 0 -1px 0;
+}
 .p-progress-spinner.form-loading-animation {
   height: 60px;
   position: absolute;

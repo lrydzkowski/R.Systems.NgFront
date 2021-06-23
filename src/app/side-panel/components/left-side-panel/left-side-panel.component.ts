@@ -1,4 +1,4 @@
-import { transition, trigger, useAnimation } from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SubscriptionHandlerService } from 'src/app/shared/services/subscription-handler.service';
 import { LeftSidePanelService } from '../../service/left-side-panel.service';
@@ -6,42 +6,25 @@ import { LeftSidePanelService } from '../../service/left-side-panel.service';
 @Component({
   selector: 'left-side-panel',
   templateUrl: './left-side-panel.component.html',
-  // animations: [
-  //   trigger('panelState', [
-  //     transition('void => visible', [
-  //         useAnimation(showAnimation)
-  //     ]),
-  //     transition('visible => void', [
-  //         useAnimation(hideAnimation)
-  //     ])
-  //   ])
-  // ],
+  animations: [
+    trigger('slideRightLeft', [
+      transition(':enter', [style({ width: 0 }), animate(200)]),
+      transition(':leave', [animate(200, style({ width: 0 }))])
+    ])
+  ],
   styleUrls: ['./left-side-panel.component.css'],
   providers: [SubscriptionHandlerService]
 })
 export class LeftSidePanelComponent implements OnInit, OnDestroy {
 
-  isOpened: boolean = false;
-
   constructor(
-    private leftSidePanelService: LeftSidePanelService,
+    public leftSidePanelService: LeftSidePanelService,
     private subscriptionHandlerService: SubscriptionHandlerService) { }
 
-  ngOnInit(): void {
-    this.handleEvents();
-  }
+  ngOnInit(): void { }
 
   ngOnDestroy(): void {
     this.subscriptionHandlerService.unsubscribeAll();
-  }
-
-  handleEvents(): void {
-    this.subscriptionHandlerService.data.panelOpening = this.leftSidePanelService.open.subscribe(() => {
-      this.isOpened = true;
-    });
-    this.subscriptionHandlerService.data.panelClosing = this.leftSidePanelService.close.subscribe(() => {
-      this.isOpened = false;
-    });
   }
 
   closePanel(): void {

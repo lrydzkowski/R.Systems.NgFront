@@ -6,9 +6,18 @@ import { Subject } from 'rxjs';
 })
 export class LeftSidePanelService {
 
+  isOpen: boolean = false;
+
   open: Subject<any> = new Subject();
 
   close: Subject<any> = new Subject();
 
-  constructor() { }
+  constructor() {
+    this.open.subscribe(() => {
+      this.isOpen = true;
+    });
+    this.close.subscribe(() => {
+      this.isOpen = false;
+    });
+  }
 }

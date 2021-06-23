@@ -1,12 +1,19 @@
 .left-side-panel {
   height: 100%;
   width: 40rem;
+  transition: transform .3s;
 }
 .content-wrapper {
   background-color: #fff;
   border-top: 1px solid #dee2e6;
   border-right: 1px solid #dee2e6;
   height: 100%;
+  position: relative;
+}
+.buttons-container {
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
 .content {
   flex-grow: 1;
