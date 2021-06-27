@@ -1,4 +1,6 @@
-<div @slideRightLeft *ngIf="leftSidePanelService.isOpen" class="left-side-panel p-pt-1 p-pt-sm-3">
+<div  *ngIf="leftSidePanelService.isOpen"
+      [@panelState]="{value: 'visible', params: {transform: transformOptions, transition: transitionOptions}}"
+      class="left-side-panel p-pt-1 p-pt-sm-3">
   <div class="content-wrapper p-d-flex p-flex-column">
     <div class="buttons-container p-p-3">
       <button pButton

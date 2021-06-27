@@ -1,21 +1,38 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, animation, style, transition, trigger, useAnimation } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SubscriptionHandlerService } from 'src/app/shared/services/subscription-handler.service';
 import { LeftSidePanelService } from '../../service/left-side-panel.service';
 
+const showAnimation = animation([
+  style({ transform: '{{transform}}', opacity: 0 }),
+  animate('{{transition}}')
+]);
+
+const hideAnimation = animation([
+  animate('{{transition}}', style({ transform: '{{transform}}', opacity: 0 }))
+]);
+
 @Component({
   selector: 'left-side-panel',
   templateUrl: './left-side-panel.component.html',
+  styleUrls: ['./left-side-panel.component.css'],
   animations: [
-    trigger('slideRightLeft', [
-      transition(':enter', [style({ width: 0 }), animate(200)]),
-      transition(':leave', [animate(200, style({ width: 0 }))])
+    trigger('panelState', [
+      transition('void => visible', [
+        useAnimation(showAnimation)
+      ]),
+      transition('visible => void', [
+        useAnimation(hideAnimation)
+      ])
     ])
   ],
-  styleUrls: ['./left-side-panel.component.css'],
   providers: [SubscriptionHandlerService]
 })
 export class LeftSidePanelComponent implements OnInit, OnDestroy {
+
+  transitionOptions: string = '150ms cubic-bezier(0, 0, 0.2, 1)';
+
+  transformOptions: any = "translate3d(-100%, 0px, 0px)";
 
   constructor(
     public leftSidePanelService: LeftSidePanelService,
