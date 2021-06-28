@@ -31,7 +31,9 @@
           "error",
           {
             "type": "element",
-            "prefix": ["app", "core", "user-auth", "user-administration", "shared", "lexica", "left-side-panel", "dashboard"],
+            "prefix": [
+              "app", "core", "user-auth", "user-administration", "shared", "lexica", "left-side-panel", "dashboard", "test"
+            ],
             "style": "kebab-case"
           }
         ],
