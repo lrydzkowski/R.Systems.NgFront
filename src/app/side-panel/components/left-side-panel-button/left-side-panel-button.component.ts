@@ -20,6 +20,10 @@ export class LeftSidePanelButtonComponent implements OnInit, OnDestroy {
     this.subscriptionHandlerService.unsubscribeAll();
   }
 
+  isShowed(): boolean {
+    return this.leftSidePanelService.isHandled && !this.leftSidePanelService.isOpen;
+  }
+
   openLeftSidePanel(): void {
     this.leftSidePanelService.open.next();
   }

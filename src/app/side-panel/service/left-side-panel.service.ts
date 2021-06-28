@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, ActivationEnd, Data, NavigationEnd, Router } from '@angular/router';
-import { EMPTY, Subject } from 'rxjs';
-import { filter, first, map, switchMap } from 'rxjs/operators';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,8 @@ import { filter, first, map, switchMap } from 'rxjs/operators';
 export class LeftSidePanelService {
 
   isOpen: boolean = false;
+
+  isHandled: boolean = false;
 
   open: Subject<any> = new Subject();
 
@@ -36,7 +38,9 @@ export class LeftSidePanelService {
   }
 
   private checkLeftSidePanelState(): void {
-    if (this.isOpen && !this.getLeftSidePanelInfo(this.activatedRoute.root)) {
+    const hasLeftSidePanel: boolean = this.getLeftSidePanelInfo(this.activatedRoute.root);
+    this.isHandled = hasLeftSidePanel;
+    if (this.isOpen && !hasLeftSidePanel) {
       this.close.next();
     }
   }
