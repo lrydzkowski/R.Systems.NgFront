@@ -20,10 +20,10 @@ const hideAnimation = animation([
     trigger('panelState', [
       transition('void => visible', [
         useAnimation(showAnimation)
-      ]),
+      ])/*,
       transition('visible => void', [
         useAnimation(hideAnimation)
-      ])
+      ])*/
     ])
   ],
   providers: [SubscriptionHandlerService]

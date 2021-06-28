@@ -17,7 +17,8 @@ const routes: Routes = [
         component: UsersListPageComponent,
         canActivate: [AuthGuardService],
         data: {
-          breadcrumb: null
+          breadcrumb: null,
+          hasLeftSidePanel: true
         }
       },
       {
