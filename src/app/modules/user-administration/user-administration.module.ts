@@ -11,13 +11,15 @@ import { SharedModule } from '../../shared/shared.module';
 import { UserFormPageComponent } from './pages/user-form-page/user-form-page.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { SidePanelModule } from '../../side-panel/side-panel.module';
+import { UsersListComponent } from './components/users-list/users-list.component';
 
 
 @NgModule({
   declarations: [
     UsersListPageComponent,
     UserFormPageComponent,
-    UserFormComponent
+    UserFormComponent,
+    UsersListComponent
   ],
   imports: [
     CommonModule,
