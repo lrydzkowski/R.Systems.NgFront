@@ -2,9 +2,11 @@
   <core-header></core-header>
   <main class="p-d-flex">
     <left-side-panel class="p-pt-1 p-pt-sm-3"></left-side-panel>
-    <left-side-panel-button></left-side-panel-button>
     <div id="content" class="p-p-1 p-p-sm-3">
-      <shared-breadcrumb></shared-breadcrumb>
+      <div class="p-d-flex p-ai-center p-mb-1 p-mb-sm-3">
+        <left-side-panel-button></left-side-panel-button>
+        <shared-breadcrumb></shared-breadcrumb>
+      </div>
       <router-outlet></router-outlet>
     </div>
   </main>

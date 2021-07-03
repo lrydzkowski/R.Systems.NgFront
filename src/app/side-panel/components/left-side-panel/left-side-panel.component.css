@@ -38,7 +38,7 @@
 
   .left-side-panel {
     box-shadow: none;
-    position: relative;
+    position: static;
     z-index: 1;
   }
   .content-wrapper {
