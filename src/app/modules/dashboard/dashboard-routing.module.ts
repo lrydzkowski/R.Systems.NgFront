@@ -7,7 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: MainPageComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {
+      hasBreadcrumb: false
+    }
   }
 ];
 

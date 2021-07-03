@@ -19,6 +19,7 @@ import { SidePanelModule } from '../side-panel/side-panel.module';
 import { TimezoneOffsetInterceptor } from './interceptors/timezone-offset.interceptor';
 import { FakeBackendInterceptor } from '../modules/api-mock/interceptors/fake-backend.interceptor';
 import { InfoButtonComponent } from './components/info-button/info-button.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { InfoButtonComponent } from './components/info-button/info-button.compon
     RippleModule,
     DialogModule,
 
+    SharedModule,
     SidePanelModule,
     UserAuthModule,
     CoreRoutingModule

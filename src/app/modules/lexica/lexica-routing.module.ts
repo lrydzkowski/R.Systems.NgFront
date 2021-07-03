@@ -9,7 +9,8 @@ const routes: Routes = [
     component: MainPageComponent,
     canActivate: [AuthGuardService],
     data: {
-      breadcrumb: 'Lexica'
+      breadcrumb: 'Lexica',
+      hasBreadcrumb: true
     }
   },
   {

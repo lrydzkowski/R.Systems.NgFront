@@ -18,7 +18,8 @@ const routes: Routes = [
         canActivate: [AuthGuardService],
         data: {
           breadcrumb: null,
-          hasLeftSidePanel: true
+          hasLeftSidePanel: true,
+          hasBreadcrumb: true
         }
       },
       {
@@ -26,7 +27,8 @@ const routes: Routes = [
         component: UserFormPageComponent,
         canActivate: [AuthGuardService],
         data: {
-          breadcrumb: $localize`New user`
+          breadcrumb: $localize`New user`,
+          hasBreadcrumb: true
         }
       },
       {
@@ -34,7 +36,8 @@ const routes: Routes = [
         component: UserFormPageComponent,
         canActivate: [AuthGuardService],
         data: {
-          breadcrumb: $localize`Existing user`
+          breadcrumb: $localize`Existing user`,
+          hasBreadcrumb: true
         }
       }
     ]
