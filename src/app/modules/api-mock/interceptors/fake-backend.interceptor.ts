@@ -13,7 +13,7 @@ import users from '../data/users.json';
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
 
-  private users: any = users;
+  private users: any = users.list;
 
   constructor() {}
 

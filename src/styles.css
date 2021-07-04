@@ -57,3 +57,7 @@ small {
   left: calc(50% - 30px);
   width: 60px;
 }
+.p-datatable .custom-table .p-sortable-column .p-sortable-column-icon {
+  line-height: 2rem;
+  vertical-align: top;
+}

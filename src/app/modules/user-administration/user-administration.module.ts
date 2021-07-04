@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
 
 import { UserAdministrationRoutingModule } from './user-administration-routing.module';
 import { UsersListPageComponent } from './pages/users-list-page/users-list-page.component';
@@ -27,6 +28,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
     CardModule,
     ButtonModule,
     InputTextModule,
+    TableModule,
 
     SharedModule,
     SidePanelModule,

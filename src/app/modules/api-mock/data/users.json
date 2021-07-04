@@ -1,5 +1,5 @@
 {
-  "users": [
+  "list": [
     {
       "login": "lrydzkowski",
       "email": "lukasz.rydzkowski@gmail.com",
@@ -8,87 +8,87 @@
     },
     {
       "login": "lrydzkowski2",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski2@gmail.com",
+      "firstName": "Łukasz2",
+      "lastName": "Rydzkowski2"
     },
     {
       "login": "lrydzkowski3",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski3@gmail.com",
+      "firstName": "Łukasz3",
+      "lastName": "Rydzkowski3"
     },
     {
       "login": "lrydzkowski4",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski4@gmail.com",
+      "firstName": "Łukasz4",
+      "lastName": "Rydzkowski4"
     },
     {
       "login": "lrydzkowski5",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski5@gmail.com",
+      "firstName": "Łukasz5",
+      "lastName": "Rydzkowski5"
     },
     {
       "login": "lrydzkowski6",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski6@gmail.com",
+      "firstName": "Łukasz6",
+      "lastName": "Rydzkowski6"
     },
     {
       "login": "lrydzkowski7",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski7@gmail.com",
+      "firstName": "Łukasz7",
+      "lastName": "Rydzkowski7"
     },
     {
       "login": "lrydzkowski8",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski8@gmail.com",
+      "firstName": "Łukasz8",
+      "lastName": "Rydzkowski8"
     },
     {
       "login": "lrydzkowski9",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski9@gmail.com",
+      "firstName": "Łukasz9",
+      "lastName": "Rydzkowski9"
     },
     {
       "login": "lrydzkowski10",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski10@gmail.com",
+      "firstName": "Łukasz10",
+      "lastName": "Rydzkowski10"
     },
     {
       "login": "lrydzkowski11",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski11@gmail.com",
+      "firstName": "Łukasz11",
+      "lastName": "Rydzkowski11"
     },
     {
       "login": "lrydzkowski12",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski12@gmail.com",
+      "firstName": "Łukasz12",
+      "lastName": "Rydzkowski12"
     },
     {
       "login": "lrydzkowski13",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski13@gmail.com",
+      "firstName": "Łukasz13",
+      "lastName": "Rydzkowski13"
     },
     {
       "login": "lrydzkowski14",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski14@gmail.com",
+      "firstName": "Łukasz14",
+      "lastName": "Rydzkowski14"
     },
     {
       "login": "lrydzkowski15",
-      "email": "lukasz.rydzkowski@gmail.com",
-      "firstName": "Łukasz",
-      "lastName": "Rydzkowski"
+      "email": "lukasz.rydzkowski15@gmail.com",
+      "firstName": "Łukasz15",
+      "lastName": "Rydzkowski15"
     }
   ]
 }
