@@ -13,10 +13,10 @@ export class UsersListComponent implements OnInit {
   users: User[] = [];
 
   cols = [
-    { field: 'login', header: 'Login', className: 'login-col' },
-    { field: 'email', header: 'Adres email', className: 'email-col' },
-    { field: 'firstName', header: 'Imię', className: 'firstName-col' },
-    { field: 'lastName', header: 'Nazwisko', className: 'lastName-col' }
+    { field: 'login', header: $localize`Login`, className: 'login-col', type: 'text' },
+    { field: 'email', header: $localize`Email`, className: 'email-col', type: 'text' },
+    { field: 'firstName', header: $localize`First name`, className: 'firstName-col', type: 'text' },
+    { field: 'lastName', header: $localize`Last name`, className: 'lastName-col', type: 'text' }
   ];
 
   constructor(private userApi: UserApiService) { }

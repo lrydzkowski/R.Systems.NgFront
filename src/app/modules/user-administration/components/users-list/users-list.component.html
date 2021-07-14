@@ -29,10 +29,13 @@
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-car let-columns="columns">
+    <ng-template pTemplate="body" let-row let-columns="columns">
       <tr>
         <td *ngFor="let col of columns">
-          {{car[col.field]}}
+          <ng-container [ngSwitch]="col.type">
+            <span *ngSwitchCase="'text'">{{row[col.field]}}</span>
+            <span *ngSwitchCase="'object'"></span>
+          </ng-container>
         </td>
       </tr>
     </ng-template>
