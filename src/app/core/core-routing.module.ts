@@ -22,6 +22,13 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
+    path: $localize`api-mock`,
+    loadChildren: () => import('../modules/api-mock/api-mock.module').then(m => m.ApiMockModule),
+    data: {
+      breadcrumb: $localize`API Mock`
+    }
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }

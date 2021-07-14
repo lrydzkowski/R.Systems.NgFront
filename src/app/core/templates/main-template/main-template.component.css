@@ -13,3 +13,6 @@ main {
 shared-breadcrumb {
   flex-grow: 1;
 }
+.router-outlet-container {
+  flex-grow: 1;
+}

@@ -2,12 +2,14 @@
   <core-header></core-header>
   <main class="p-d-flex">
     <left-side-panel class="p-pt-1 p-pt-sm-3"></left-side-panel>
-    <div id="content" class="p-p-1 p-p-sm-3">
+    <div id="content" class="p-d-flex p-flex-column p-p-1 p-p-sm-3">
       <div class="p-d-flex p-ai-center p-mb-1 p-mb-sm-3">
         <left-side-panel-button></left-side-panel-button>
         <shared-breadcrumb></shared-breadcrumb>
       </div>
-      <router-outlet></router-outlet>
+      <div class="router-outlet-container">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </main>
 </div>
