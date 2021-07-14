@@ -8,3 +8,14 @@ The whole system is called R.Systems and according to my current plans the first
 learning new vocabulary.
 
 **Project is under construction!**
+
+## Sample screenshots
+
+![login](/doc/screenshots/login.png)
+![login-form-validation-errors](/doc/screenshots/login-form-validation-errors.png)
+![dashboard](/doc/screenshots/dashboard.png)
+![users-list](/doc/screenshots/users-list.png)
+![users-list-with-left-panel](/doc/screenshots/users-list-with-left-panel.png)
+![new-user-form](/doc/screenshots/new-user-form.png)
+![random-data-generator](/doc/screenshots/random-data-generator.png)
+![info](/doc/screenshots/info.png)
