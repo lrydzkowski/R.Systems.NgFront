@@ -10,31 +10,22 @@ import { LeftSidePanelService } from '../../service/left-side-panel.service';
 })
 export class LeftSidePanelButtonComponent implements OnInit, OnDestroy {
 
-  isVisible: boolean = true;
-
   constructor(
-    private leftSidePanelService: LeftSidePanelService,
+    public leftSidePanelService: LeftSidePanelService,
     private subscriptionHandlerService: SubscriptionHandlerService) { }
 
-  ngOnInit(): void {
-    this.handleEvents();
-  }
+  ngOnInit(): void { }
 
   ngOnDestroy(): void {
     this.subscriptionHandlerService.unsubscribeAll();
   }
 
-  openLeftSidePanel(): void {
-    this.leftSidePanelService.open.next();
+  isShowed(): boolean {
+    return this.leftSidePanelService.isHandled && !this.leftSidePanelService.isOpen;
   }
 
-  private handleEvents(): void {
-    this.subscriptionHandlerService.data.panelOpening = this.leftSidePanelService.open.subscribe(() => {
-      this.isVisible = false;
-    });
-    this.subscriptionHandlerService.data.panelClosing = this.leftSidePanelService.close.subscribe(() => {
-      this.isVisible = true;
-    });
+  openLeftSidePanel(): void {
+    this.leftSidePanelService.open.next();
   }
 
 }

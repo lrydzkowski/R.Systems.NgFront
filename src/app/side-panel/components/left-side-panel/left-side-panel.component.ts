@@ -1,47 +1,47 @@
-import { transition, trigger, useAnimation } from '@angular/animations';
+import { animate, animation, style, transition, trigger, useAnimation } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SubscriptionHandlerService } from 'src/app/shared/services/subscription-handler.service';
 import { LeftSidePanelService } from '../../service/left-side-panel.service';
 
+const showAnimation = animation([
+  style({ transform: '{{transform}}', opacity: 0 }),
+  animate('{{transition}}')
+]);
+
+const hideAnimation = animation([
+  animate('{{transition}}', style({ transform: '{{transform}}', opacity: 0 }))
+]);
+
 @Component({
   selector: 'left-side-panel',
   templateUrl: './left-side-panel.component.html',
-  // animations: [
-  //   trigger('panelState', [
-  //     transition('void => visible', [
-  //         useAnimation(showAnimation)
-  //     ]),
-  //     transition('visible => void', [
-  //         useAnimation(hideAnimation)
-  //     ])
-  //   ])
-  // ],
   styleUrls: ['./left-side-panel.component.css'],
+  animations: [
+    trigger('panelState', [
+      transition('void => visible', [
+        useAnimation(showAnimation)
+      ])/*,
+      transition('visible => void', [
+        useAnimation(hideAnimation)
+      ])*/
+    ])
+  ],
   providers: [SubscriptionHandlerService]
 })
 export class LeftSidePanelComponent implements OnInit, OnDestroy {
 
-  isOpened: boolean = false;
+  transitionOptions: string = '150ms cubic-bezier(0, 0, 0.2, 1)';
+
+  transformOptions: any = "translate3d(-100%, 0px, 0px)";
 
   constructor(
-    private leftSidePanelService: LeftSidePanelService,
+    public leftSidePanelService: LeftSidePanelService,
     private subscriptionHandlerService: SubscriptionHandlerService) { }
 
-  ngOnInit(): void {
-    this.handleEvents();
-  }
+  ngOnInit(): void { }
 
   ngOnDestroy(): void {
     this.subscriptionHandlerService.unsubscribeAll();
-  }
-
-  handleEvents(): void {
-    this.subscriptionHandlerService.data.panelOpening = this.leftSidePanelService.open.subscribe(() => {
-      this.isOpened = true;
-    });
-    this.subscriptionHandlerService.data.panelClosing = this.leftSidePanelService.close.subscribe(() => {
-      this.isOpened = false;
-    });
   }
 
   closePanel(): void {

@@ -16,8 +16,12 @@ body {
 body * {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 }
-h1, p {
+h1, h2, p {
   margin: 0;
+}
+small {
+  display: block;
+  font-size: 1rem;
 }
 
 /* PrimeNG */
@@ -32,4 +36,28 @@ h1, p {
 .p-card {
   box-shadow: none;
   border: 1px solid #dee2e6;
+}
+.p-card.full-height-card {
+  height: 100%;
+}
+.p-card.card-with-hover:hover {
+  background-color: #F5FBFF;
+}
+.p-tabview .p-tabview-nav {
+  border-width: 0 0 1px 0;
+}
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  border-width: 0 0 1px 0;
+  margin: 0 0 -1px 0;
+}
+.p-progress-spinner.form-loading-animation {
+  height: 60px;
+  position: absolute;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  width: 60px;
+}
+.p-datatable .custom-table .p-sortable-column .p-sortable-column-icon {
+  line-height: 2rem;
+  vertical-align: top;
 }

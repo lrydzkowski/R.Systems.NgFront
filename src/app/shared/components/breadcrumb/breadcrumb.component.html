@@ -1,1 +1,3 @@
-<p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+<div *ngIf="breadcrumbHandler.isShowed">
+  <p-breadcrumb [home]="home" [model]="breadcrumbHandler.items"></p-breadcrumb>
+</div>

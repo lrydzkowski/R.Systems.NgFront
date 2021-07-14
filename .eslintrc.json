@@ -23,7 +23,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "app",
+            "prefix": ["app", "shared"],
             "style": "camelCase"
           }
         ],
@@ -31,7 +31,9 @@
           "error",
           {
             "type": "element",
-            "prefix": ["app", "core", "user-auth", "user-administration", "shared", "lexica", "left-side-panel"],
+            "prefix": [
+              "app", "core", "user-auth", "user-administration", "shared", "lexica", "left-side-panel", "dashboard", "test"
+            ],
             "style": "kebab-case"
           }
         ],
