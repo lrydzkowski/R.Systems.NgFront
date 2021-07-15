@@ -38,6 +38,10 @@ export class MenuService {
         label: 'Lexica',
         routerLink: [$localize`/lexica/main`],
         visible: authenticated
+      },
+      {
+        label: $localize`Tests`,
+        routerLink: [$localize`/tests/main`]
       }
     ];
   }

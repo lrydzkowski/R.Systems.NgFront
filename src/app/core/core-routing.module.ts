@@ -29,6 +29,13 @@ const routes: Routes = [
     }
   },
   {
+    path: 'tests',
+    loadChildren: () => import('../modules/tests/tests.module').then(m => m.TestsModule),
+    data: {
+      breadcrumb: $localize`Tests`
+    }
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }
