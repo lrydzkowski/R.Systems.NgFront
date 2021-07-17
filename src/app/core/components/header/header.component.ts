@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { UserService } from 'src/app/modules/user-auth/services/user.service';
-import { DeviceDetectorService } from '../../services/device-detector.service';
 import { MenuService } from '../../services/menu.service';
 
 @Component({
@@ -19,7 +18,6 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private menuService: MenuService,
-    private deviceDetectorService: DeviceDetectorService,
     private userService: UserService) { }
 
   ngOnInit(): void {
@@ -39,18 +37,6 @@ export class HeaderComponent implements OnInit {
     }
     this.menuItems = this.menuService.getMenu(authenticated);
     this.userIsLogged = authenticated;
-  }
-
-  showMobileMenu(): void {
-    this.mobileMenuVisible = true;
-  }
-
-  getMobileMenuHeight(): number {
-    return window.innerHeight - 77;
-  }
-
-  isTouchDevice(): boolean {
-    return this.deviceDetectorService.isTouchDevice();
   }
 
   logout(): void {
