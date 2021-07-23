@@ -38,6 +38,11 @@ export class MenuService {
         label: 'Lexica',
         routerLink: [$localize`/lexica/main`],
         visible: authenticated
+      },
+      {
+        label: 'Mock',
+        routerLink: [$localize`/api-mock`],
+        visible: authenticated
       }
     ];
   }

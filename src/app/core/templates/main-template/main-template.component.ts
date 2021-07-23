@@ -10,7 +10,7 @@ import { BreadcrumbHandlerService } from 'src/app/shared/services/breadcrumb-han
 export class MainTemplateComponent implements OnInit {
 
   constructor(
-    private breadcrumbHandler: BreadcrumbHandlerService) { }
+    public breadcrumbHandler: BreadcrumbHandlerService) { }
 
   ngOnInit(): void {
     this.breadcrumbHandler.handleNavigationEndEvent();

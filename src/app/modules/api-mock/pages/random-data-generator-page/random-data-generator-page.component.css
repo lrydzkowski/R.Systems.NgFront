@@ -1,9 +1,15 @@
 .main-container {
   height: 100%;
 }
-.p-col-fixed {
-  width: 250px;
+.col-fixed {
+  width: 170px;
 }
 p-cart > div {
   height: 100%;
+}
+
+@media all and (min-width: 800px) {
+  .col-fixed {
+    width: 250px;
+  }
 }

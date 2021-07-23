@@ -1,13 +1,20 @@
-<div class="main-container p-d-flex p-ai-strech p-grid">
-  <div class="p-col-fixed">
+<div class="main-container flex flex-row flex-nowrap align-items-stretch grid grid-nogutter">
+  <div class="col-fixed mr-1 sm:mr-3">
     <p-card styleClass="full-height-card">
-      <div class="p-d-flex p-flex-column">
-        <button pButton type="button" label="Refresh" (click)="refreshResult()" class="p-mb-4"></button>
-        <button pButton type="button" label="Generate random users list" (click)="generateRandomUsersList()"></button>
+      <div class="flex flex-column">
+        <button pButton
+                type="button"
+                label="Refresh"
+                (click)="refreshResult()"
+                class="mb-4"></button>
+        <button pButton
+                type="button"
+                label="Generate random users list"
+                (click)="generateRandomUsersList()"></button>
       </div>
     </p-card>
   </div>
-  <div class="p-col">
+  <div class="col">
     <p-card header="Result" i18n-header styleClass="full-height-card">
       <pre>{{result}}</pre>
     </p-card>
