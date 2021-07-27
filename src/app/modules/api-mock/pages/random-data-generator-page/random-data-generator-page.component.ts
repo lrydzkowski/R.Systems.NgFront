@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/modules/user-administration/models/user';
+import { RandomDataGeneratorService } from '../../services/random-data-generator.service';
 
 @Component({
   selector: 'app-random-data-generator-page',
@@ -9,7 +11,9 @@ export class RandomDataGeneratorPageComponent implements OnInit {
 
   result: string = '';
 
-  constructor() { }
+  constructor(
+    private randomDataGenerator: RandomDataGeneratorService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -19,7 +23,11 @@ export class RandomDataGeneratorPageComponent implements OnInit {
   }
 
   generateRandomUsersList(): void {
-
+    this.randomDataGenerator.generateUsers(10000).subscribe({
+      next: (users: User[]) => {
+        this.result = JSON.stringify(users, null, 2);
+      }
+    });
   }
 
 }

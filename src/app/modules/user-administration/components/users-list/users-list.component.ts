@@ -28,7 +28,6 @@ export class UsersListComponent implements OnInit {
   getUsers(): void {
     this.userApi.getUsers().subscribe({
       next: (users: User[]) => {
-        console.log(users);
         this.users = users;
       }
     });
