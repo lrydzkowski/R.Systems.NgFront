@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { DividerModule } from 'primeng/divider';
 
+import { LoadingModule } from 'src/app/loading/loading.module';
 import { RandomDataGeneratorPageComponent } from './pages/random-data-generator-page/random-data-generator-page.component';
 import { ApiMockRoutingModule } from './api-mock-routing.module';
 
@@ -18,7 +20,9 @@ import { ApiMockRoutingModule } from './api-mock-routing.module';
 
     ButtonModule,
     CardModule,
+    DividerModule,
 
+    LoadingModule,
     ApiMockRoutingModule
   ]
 })

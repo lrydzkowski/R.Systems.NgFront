@@ -1,33 +1,71 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ClipboardService } from 'ngx-clipboard';
+import { delay, finalize } from 'rxjs/operators';
+import { LoadingService } from 'src/app/loading/services/loading.service';
 import { User } from 'src/app/modules/user-administration/models/user';
+import { MaxHeightCalculatorService } from 'src/app/shared/services/max-height-calculator.service';
 import { RandomDataGeneratorService } from '../../services/random-data-generator.service';
 
 @Component({
   selector: 'app-random-data-generator-page',
   templateUrl: './random-data-generator-page.component.html',
-  styleUrls: ['./random-data-generator-page.component.css']
+  styleUrls: ['./random-data-generator-page.component.css'],
+  providers: [
+    MaxHeightCalculatorService
+  ]
 })
-export class RandomDataGeneratorPageComponent implements OnInit {
+export class RandomDataGeneratorPageComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  result: string = '';
+  @ViewChild('jsonContainer') jsonContainer?: ElementRef;
+
+  json: string = '';
+
+  loadingAnimationKey: string = 'randomDataGenerator';
 
   constructor(
-    private randomDataGenerator: RandomDataGeneratorService
+    private randomDataGenerator: RandomDataGeneratorService,
+    private loadingService: LoadingService,
+    private clipboardService: ClipboardService,
+    private maxHeightCalculator: MaxHeightCalculatorService
   ) { }
 
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+    this.maxHeightCalculator.destroy();
+  }
+
+  ngAfterViewInit(): void {
+    if (this.jsonContainer instanceof ElementRef) {
+      this.maxHeightCalculator.init(this.jsonContainer);
+    }
+  }
+
   refreshResult(): void {
-    this.result = '';
+    this.json = '';
   }
 
   generateRandomUsersList(): void {
-    this.randomDataGenerator.generateUsers(10000).subscribe({
-      next: (users: User[]) => {
-        this.result = JSON.stringify(users, null, 2);
-      }
-    });
+    this.loadingService.showLoadingAnimation(this.loadingAnimationKey);
+    this.randomDataGenerator.generateUsers(500)
+      .pipe(
+        finalize(() => this.loadingService.hideLoadingAnimation(this.loadingAnimationKey))
+      )
+      .subscribe({
+        next: (users: User[]) => {
+          this.json = JSON.stringify(users, null, 2);
+        }
+      });
+  }
+
+  dataExists(): boolean {
+    return this.json.length > 0;
+  }
+
+  copyJsonToClipboard(): void {
+    this.clipboardService.copy(this.json);
   }
 
 }

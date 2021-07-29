@@ -6,17 +6,34 @@
                 type="button"
                 label="Clear result"
                 (click)="refreshResult()"
-                class="mb-4"></button>
+                class="mb-4"
+                i18n-label></button>
         <button pButton
                 type="button"
                 label="Generate random users list"
-                (click)="generateRandomUsersList()"></button>
+                (click)="generateRandomUsersList()"
+                i18n-label></button>
       </div>
     </div>
   </div>
   <div class="col">
     <div class="card p-3">
-      <pre class="m-0">{{result}}</pre>
+      <div class="result-content">
+        <div class="buttons pb-3">
+          <button pButton
+                  type="button"
+                  label="Copy"
+                  icon="pi pi-copy"
+                  class="p-button-outlined"
+                  i18n-label
+                  [disabled]="!dataExists()"
+                  (click)="copyJsonToClipboard()"></button>
+        </div>
+        <div #jsonContainer class="jsonContainer p-1">
+          <pre *ngIf="dataExists()" class="m-0 mt-1">{{json}}</pre>
+        </div>
+        <loading-animation [loadingAnimationKey]="loadingAnimationKey"></loading-animation>
+      </div>
     </div>
   </div>
 </div>

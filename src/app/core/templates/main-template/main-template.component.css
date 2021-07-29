@@ -9,6 +9,7 @@ main {
 }
 #content {
   flex-grow: 1;
+  max-width: 100%;
 }
 shared-breadcrumb {
   flex-grow: 1;

@@ -32,7 +32,8 @@
           {
             "type": "element",
             "prefix": [
-              "app", "core", "user-auth", "user-administration", "shared", "lexica", "left-side-panel", "dashboard", "test"
+              "app", "core", "user-auth", "user-administration", "shared", "lexica", "left-side-panel", "dashboard",
+              "test", "loading"
             ],
             "style": "kebab-case"
           }
