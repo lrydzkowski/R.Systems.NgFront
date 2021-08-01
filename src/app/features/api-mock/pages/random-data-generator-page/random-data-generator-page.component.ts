@@ -2,8 +2,8 @@ import { AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClipboardService } from 'ngx-clipboard';
 import { delay, finalize } from 'rxjs/operators';
-import { LoadingService } from 'src/app/loading/services/loading.service';
-import { User } from 'src/app/modules/user-administration/models/user';
+import { LoadingService } from 'src/app/libs/loading/services/loading.service';
+import { User } from 'src/app/features/user-administration/models/user';
 import { MaxHeightCalculatorService } from 'src/app/shared/services/max-height-calculator.service';
 import { RandomDataGeneratorService } from '../../services/random-data-generator.service';
 

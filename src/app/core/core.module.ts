@@ -14,10 +14,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MainTemplateComponent } from './templates/main-template/main-template.component';
-import { UserAuthModule } from '../modules/user-auth/user-auth.module';
-import { SidePanelModule } from '../side-panel/side-panel.module';
+import { UserAuthModule } from '../features/user-auth/user-auth.module';
+import { SidePanelModule } from '../libs/side-panel/side-panel.module';
 import { TimezoneOffsetInterceptor } from './interceptors/timezone-offset.interceptor';
-import { FakeBackendInterceptor } from '../modules/api-mock/interceptors/fake-backend.interceptor';
+import { FakeBackendInterceptor } from '../features/api-mock/interceptors/fake-backend.interceptor';
 import { InfoButtonComponent } from './components/info-button/info-button.component';
 import { SharedModule } from '../shared/shared.module';
 
