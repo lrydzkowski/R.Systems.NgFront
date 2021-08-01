@@ -39,7 +39,13 @@ export class RandomDataGeneratorPageComponent implements OnInit, OnDestroy, Afte
 
   ngAfterViewInit(): void {
     if (this.jsonContainer instanceof ElementRef) {
-      this.maxHeightCalculator.init(this.jsonContainer);
+      this.maxHeightCalculator.init({
+        elementRef: this.jsonContainer,
+        staticReservedHeight: {
+          sm: 19,
+          lg: 29
+        }
+      });
     }
   }
 

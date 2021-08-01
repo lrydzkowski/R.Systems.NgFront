@@ -17,6 +17,9 @@
 .jsonContainer {
   overflow: auto;
 }
+pre {
+  font-family: Consolas, monospace;
+}
 
 @media all and (min-width: 800px) {
   .col-fixed {

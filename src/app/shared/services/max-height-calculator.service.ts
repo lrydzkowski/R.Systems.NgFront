@@ -1,13 +1,14 @@
 import { ElementRef, Injectable } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { MaxHeightCalculatorConfig } from '../models/max-height-calculator-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MaxHeightCalculatorService {
 
-  private elementRef: ElementRef | null = null;
+  private config: MaxHeightCalculatorConfig | null = null;
 
   private windowResizeSubscription: Subscription | null = null;
 
@@ -31,19 +32,36 @@ export class MaxHeightCalculatorService {
       })
   }
 
-  init(elementRef: ElementRef): void {
-    this.elementRef = elementRef;
-    this.setElementHeight();
+  init(config: MaxHeightCalculatorConfig): void {
+    this.config = config;
+    setTimeout(() => {
+      this.setElementHeight();
+    }, 0);
   }
 
   setElementHeight(): void {
-    const nativeElement = this.elementRef?.nativeElement;
+    const nativeElement = this.config?.elementRef?.nativeElement;
     if (nativeElement === null) {
       return;
     }
     const offsets = nativeElement.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-    const maxHeight = windowHeight - offsets.top - 29;
+    const staticHeight = this.getStaticReservedHeight();
+    const maxHeight = windowHeight - offsets.top - staticHeight;
     nativeElement.style.maxHeight = `${maxHeight}px`;
+  }
+
+  private getStaticReservedHeight(): number {
+    const windowWidth = window.innerWidth;
+    if (windowWidth < 576 && typeof this.config?.staticReservedHeight.sm === 'number') {
+      return this.config?.staticReservedHeight.sm;
+    }
+    if (windowWidth < 768 && typeof this.config?.staticReservedHeight.md === 'number') {
+      return this.config?.staticReservedHeight.md;
+    }
+    if (typeof this.config?.staticReservedHeight.lg === 'number') {
+      return this.config?.staticReservedHeight.lg;
+    }
+    return 0;
   }
 }
