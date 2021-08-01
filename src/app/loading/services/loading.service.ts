@@ -12,13 +12,11 @@ export class LoadingService {
   showLoadingAnimation(key: string): void {
     this.initRegister(key);
     this.register[key]++;
-    console.log(this.register[key]);
   }
 
   hideLoadingAnimation(key: string): void {
     this.initRegister(key);
     this.register[key]--;
-    console.log(this.register[key]);
   }
 
   isVisible(key: string): boolean {
