@@ -13,6 +13,6 @@ export class UserApiService {
   ) { }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>('/users');
+    return this.http.get<User[]>('/assets/data/users.json');
   }
 }
