@@ -10,7 +10,15 @@
                 i18n-label></button>
         <button pButton
                 type="button"
+                label="Copy result"
+                class="mb-4"
+                i18n-label
+                [disabled]="!dataExists()"
+                (click)="copyJsonToClipboard()"></button>
+        <button pButton
+                type="button"
                 label="Generate random users list"
+                class="mb-4"
                 (click)="generateRandomUsersList()"
                 i18n-label></button>
       </div>
@@ -19,17 +27,8 @@
   <div class="col">
     <div class="card p-3">
       <div class="result-content">
-        <div class="buttons pb-3">
-          <button pButton
-                  type="button"
-                  label="Copy"
-                  icon="pi pi-copy"
-                  class="p-button-outlined"
-                  i18n-label
-                  [disabled]="!dataExists()"
-                  (click)="copyJsonToClipboard()"></button>
-        </div>
-        <div #jsonContainer class="jsonContainer p-1">
+        <h2 class="mb-3">Random Data Generator</h2>
+        <div #jsonContainer class="jsonContainer">
           <pre *ngIf="dataExists()" class="m-0 mt-1">{{json}}</pre>
         </div>
         <loading-animation [loadingAnimationKey]="loadingAnimationKey"></loading-animation>

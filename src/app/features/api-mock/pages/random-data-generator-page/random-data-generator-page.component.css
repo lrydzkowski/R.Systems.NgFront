@@ -15,6 +15,8 @@
   width: 100%;
 }
 .jsonContainer {
+  border-top: 1px dashed #dee2e6;
+  border-bottom: 1px dashed #dee2e6;
   overflow: auto;
 }
 pre {

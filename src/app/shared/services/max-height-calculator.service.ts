@@ -2,6 +2,7 @@ import { ElementRef, Injectable } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { MaxHeightCalculatorConfig } from '../models/max-height-calculator-config';
+import { MaxHeightCalculatorMode } from '../models/max-height-calculator-mode';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,14 @@ export class MaxHeightCalculatorService {
     const windowHeight = window.innerHeight;
     const staticHeight = this.getStaticReservedHeight();
     const maxHeight = windowHeight - offsets.top - staticHeight;
-    nativeElement.style.maxHeight = `${maxHeight}px`;
+    switch (this.config?.mode) {
+      case MaxHeightCalculatorMode.Height:
+        nativeElement.style.height = `${maxHeight}px`;
+        break;
+      default:
+        nativeElement.style.maxHeight = `${maxHeight}px`;
+        break;
+    }
   }
 
   private getStaticReservedHeight(): number {

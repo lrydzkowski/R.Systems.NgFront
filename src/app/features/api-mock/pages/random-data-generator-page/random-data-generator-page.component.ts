@@ -6,6 +6,7 @@ import { LoadingService } from 'src/app/libs/loading/services/loading.service';
 import { User } from 'src/app/features/user-administration/models/user';
 import { MaxHeightCalculatorService } from 'src/app/shared/services/max-height-calculator.service';
 import { RandomDataGeneratorService } from '../../services/random-data-generator.service';
+import { MaxHeightCalculatorMode } from 'src/app/shared/models/max-height-calculator-mode';
 
 @Component({
   selector: 'app-random-data-generator-page',
@@ -44,7 +45,8 @@ export class RandomDataGeneratorPageComponent implements OnInit, OnDestroy, Afte
         staticReservedHeight: {
           sm: 19,
           lg: 29
-        }
+        },
+        mode: MaxHeightCalculatorMode.Height
       });
     }
   }

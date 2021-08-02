@@ -3,7 +3,7 @@ import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Role } from '../../user-administration/models/role';
 import { User } from '../../user-administration/models/user';
-import { MockDataApiService } from './mock-data-api.service';
+import { MockDataApiService } from '../api/services/mock-data-api.service';
 
 @Injectable({
   providedIn: 'root'
