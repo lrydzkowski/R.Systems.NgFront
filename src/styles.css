@@ -8,6 +8,7 @@ html {
   box-sizing: border-box;
   font-size: 14px;
   height: 100%;
+  line-height: 1;
 }
 body {
   height: 100%;
