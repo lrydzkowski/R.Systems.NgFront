@@ -9,6 +9,9 @@
 .card {
   height: 100%;
 }
+h2 {
+  color: #333333
+}
 .result-content {
   height: 100%;
   position: relative;
