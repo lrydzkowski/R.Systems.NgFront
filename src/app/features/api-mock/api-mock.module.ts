@@ -5,7 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 
-import { LoadingModule } from 'src/app/libs/loading/loading.module';
+import { LoadingModule } from '@shared/loading/loading.module';
 import { RandomDataGeneratorPageComponent } from './pages/random-data-generator-page/random-data-generator-page.component';
 import { ApiMockRoutingModule } from './api-mock-routing.module';
 

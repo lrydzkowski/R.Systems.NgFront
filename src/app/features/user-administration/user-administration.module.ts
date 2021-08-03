@@ -8,10 +8,10 @@ import { TableModule } from 'primeng/table';
 
 import { UserAdministrationRoutingModule } from './user-administration-routing.module';
 import { UsersListPageComponent } from './pages/users-list-page/users-list-page.component';
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from '@shared/shared/shared.module';
 import { UserFormPageComponent } from './pages/user-form-page/user-form-page.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
-import { SidePanelModule } from '../../libs/side-panel/side-panel.module';
+import { SidePanelModule } from '@shared/side-panel/side-panel.module';
 import { UsersListComponent } from './components/users-list/users-list.component';
 
 

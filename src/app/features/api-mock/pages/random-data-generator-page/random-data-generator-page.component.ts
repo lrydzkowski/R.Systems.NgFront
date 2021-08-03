@@ -2,11 +2,11 @@ import { AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClipboardService } from 'ngx-clipboard';
 import { delay, finalize } from 'rxjs/operators';
-import { LoadingService } from 'src/app/libs/loading/services/loading.service';
-import { User } from 'src/app/features/user-administration/models/user';
-import { MaxHeightCalculatorService } from 'src/app/shared/services/max-height-calculator.service';
+import { LoadingService } from '@shared/loading/services/loading.service';
+import { MaxHeightCalculatorService } from '@shared/shared/services/max-height-calculator.service';
+import { MaxHeightCalculatorMode } from '@shared/shared/models/max-height-calculator-mode';
+import { User } from '@features/user-administration/models/user';
 import { RandomDataGeneratorService } from '../../services/random-data-generator.service';
-import { MaxHeightCalculatorMode } from 'src/app/shared/models/max-height-calculator-mode';
 
 @Component({
   selector: 'app-random-data-generator-page',

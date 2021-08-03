@@ -20,6 +20,10 @@ body * {
 h1, h2, p {
   margin: 0;
 }
+h1, h2 {
+  color: #333333;
+  font-family: Roboto, Helvetica;
+}
 small {
   display: block;
   font-size: 1rem;

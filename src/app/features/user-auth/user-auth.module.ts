@@ -14,7 +14,7 @@ import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { UserAuthRoutingModule } from './user-auth-routing.module';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '@shared/shared/shared.module';
 import { JwtTokenService } from './services/jwt-token.service';
 
 

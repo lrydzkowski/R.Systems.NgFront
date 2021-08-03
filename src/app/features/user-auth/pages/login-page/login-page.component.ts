@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormHandlerService } from 'src/app/shared/services/form-handler.service';
+import { FormHandlerService } from '@shared/shared/services/form-handler.service';
 import { LoginRequest } from '../../api/models/login-request';
 import { UserAuthApiService } from '../../api/services/user-auth-api.service';
 import { finalize } from 'rxjs/operators';

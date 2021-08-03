@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SubscriptionHandlerService } from 'src/app/shared/services/subscription-handler.service';
+import { SubscriptionHandlerService } from '@shared/shared/services/subscription-handler.service';
 import { LeftSidePanelService } from '../../service/left-side-panel.service';
 
 @Component({
