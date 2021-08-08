@@ -9,6 +9,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { SlideMenuModule } from 'primeng/slidemenu';
 import { RippleModule } from 'primeng/ripple';
 import { DialogModule } from 'primeng/dialog';
+import { TieredMenuModule } from 'primeng/tieredmenu';
 
 import { SidePanelModule } from '@shared/side-panel/side-panel.module';
 import { SharedModule } from '@shared/shared/shared.module';
@@ -19,10 +20,10 @@ import { UserAuthModule } from '@features/user-auth/user-auth.module';
 import { HeaderComponent } from './components/header/header.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MainTemplateComponent } from './templates/main-template/main-template.component';
-import { InfoButtonComponent } from './components/info-button/info-button.component';
 import { TimezoneOffsetInterceptor } from './interceptors/timezone-offset.interceptor';
 import { CoreRoutingModule } from './core-routing.module';
 import { AboutAppComponent } from './components/about-app/about-app.component';
+import { AppMenuComponent } from './components/app-menu/app-menu.component';
 
 
 @NgModule({
@@ -32,8 +33,8 @@ import { AboutAppComponent } from './components/about-app/about-app.component';
     MainTemplateComponent,
     PageNotFoundComponent,
     MainTemplateComponent,
-    InfoButtonComponent,
-    AboutAppComponent
+    AboutAppComponent,
+    AppMenuComponent
   ],
   imports: [
     CommonModule,
@@ -45,6 +46,7 @@ import { AboutAppComponent } from './components/about-app/about-app.component';
     SlideMenuModule,
     RippleModule,
     DialogModule,
+    TieredMenuModule,
 
     SidePanelModule,
     SharedModule,
