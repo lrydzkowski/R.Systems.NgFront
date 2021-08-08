@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalWindowOperationEnum } from '@shared/shared/models/modal-window-operation-enum';
 import { ModalWindowHandlerService } from '@shared/shared/services/modal-window-handler.service';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'core-about-app',
@@ -11,6 +12,8 @@ import { Subscription } from 'rxjs';
 export class AboutAppComponent implements OnInit, OnDestroy {
 
   visible: boolean = false;
+
+  version: string = environment.version;
 
   private openWindowSubscription: Subscription | null = null;
 
