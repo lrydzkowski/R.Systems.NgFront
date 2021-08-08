@@ -15,6 +15,8 @@ export class AboutAppComponent implements OnInit, OnDestroy {
 
   version: string = environment.version;
 
+  build: string = environment.build;
+
   private openWindowSubscription: Subscription | null = null;
 
   constructor(private modalWindowHandler: ModalWindowHandlerService) { }
