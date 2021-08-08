@@ -20,7 +20,7 @@ export class AppMenuComponent implements OnInit {
   initAppMenuItems(): void {
     this.appMenuItems = [
       {
-        label: 'O aplikacji',
+        label: $localize`About app`,
         icon: '',
         command: () => {
           this.modalWindowHandler.openWindow('about-app');
