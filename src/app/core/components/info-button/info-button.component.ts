@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalWindowHandlerService } from '@shared/shared/services/modal-window-handler.service';
 
 @Component({
   selector: 'core-info-button',
@@ -7,24 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoButtonComponent implements OnInit {
 
-  dialogIsShowed: boolean = false;
-
-  constructor() { }
+  constructor(private modalWindowHandler: ModalWindowHandlerService) { }
 
   ngOnInit(): void {
   }
 
   showDialog(): void {
-    this.dialogIsShowed = true;
-  }
-
-  getYearsRange(): string {
-    const startYear = 2021;
-    const currentYear: number = new Date().getFullYear();
-    if (startYear === currentYear) {
-      return startYear.toString();
-    }
-    return `${startYear} - ${currentYear}`;
+    this.modalWindowHandler.openWindow('about-app');
   }
 
 }

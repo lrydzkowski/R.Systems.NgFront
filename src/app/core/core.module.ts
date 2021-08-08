@@ -22,6 +22,7 @@ import { MainTemplateComponent } from './templates/main-template/main-template.c
 import { InfoButtonComponent } from './components/info-button/info-button.component';
 import { TimezoneOffsetInterceptor } from './interceptors/timezone-offset.interceptor';
 import { CoreRoutingModule } from './core-routing.module';
+import { AboutAppComponent } from './components/about-app/about-app.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { CoreRoutingModule } from './core-routing.module';
     MainTemplateComponent,
     PageNotFoundComponent,
     MainTemplateComponent,
-    InfoButtonComponent
+    InfoButtonComponent,
+    AboutAppComponent
   ],
   imports: [
     CommonModule,
