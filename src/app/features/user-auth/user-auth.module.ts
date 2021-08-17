@@ -10,6 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { FocusTrapModule } from 'primeng/focustrap';
 import { TieredMenuModule } from 'primeng/tieredmenu';
+import { DialogModule } from 'primeng/dialog';
 
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 
@@ -19,6 +20,7 @@ import { SharedModule } from '@shared/shared/shared.module';
 import { JwtTokenService } from './services/jwt-token.service';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+import { PasswordChangeFormComponent } from './components/password-change-form/password-change-form.component';
 
 
 export function jwtOptionsFactory(jwtTokenService: JwtTokenService) {
@@ -33,7 +35,8 @@ export function jwtOptionsFactory(jwtTokenService: JwtTokenService) {
   declarations: [
     LoginPageComponent,
     UserMenuComponent,
-    LogoutButtonComponent
+    LogoutButtonComponent,
+    PasswordChangeFormComponent
   ],
   imports: [
     CommonModule,
@@ -47,6 +50,7 @@ export function jwtOptionsFactory(jwtTokenService: JwtTokenService) {
     ProgressSpinnerModule,
     FocusTrapModule,
     TieredMenuModule,
+    DialogModule,
 
     SharedModule,
     UserAuthRoutingModule,

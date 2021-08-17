@@ -20,10 +20,10 @@ export class UserMenuComponent implements OnInit {
   initUserMenuItems(): void {
     this.userMenuItems = [
       {
-        label: $localize`Change password`,
+        label: $localize`Password change`,
         icon: '',
         command: () => {
-          this.modalWindowHandler.openWindow('password-change');
+          this.modalWindowHandler.openWindow('password-change-form');
         }
       }
     ];
