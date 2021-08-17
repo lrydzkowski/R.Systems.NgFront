@@ -30,22 +30,19 @@ export class LoginPageComponent implements OnInit {
     public formHandler: FormHandlerService,
     private formBuilder: FormBuilder,
     private userAuthApi: UserAuthApiService,
-    private userService: UserService
-  ) { }
+    private userService: UserService) { }
 
-  ngOnInit(): void {
-    this.formHandler.setFormGroup(this.form);
-  }
+  ngOnInit(): void { }
 
   submit(): void {
     if (this.isProcessing) {
       return;
     }
-    if (!this.formHandler.isFormValid()) {
+    if (!this.formHandler.isFormValid(this.form)) {
       return;
     }
     this.isProcessing = true;
-    const formData: LoginRequest = this.formHandler.getFieldValues() as LoginRequest;
+    const formData: LoginRequest = this.formHandler.getFieldValues(this.form) as LoginRequest;
     this.userAuthApi.login(formData)
       .pipe(finalize(() => this.isProcessing = false))
       .subscribe({

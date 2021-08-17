@@ -5,15 +5,23 @@
         <div class="field col-12">
           <label for="login" i18n>Login</label>
           <input id="login" type="text" pInputText formControlName="login" class="w-full">
-          <ng-container *ngIf="formHandler.isFieldInvalid('login')">
-            <small class="p-error" *ngIf="formHandler.hasError('login', 'required')" i18n>Enter your login.</small>
+          <ng-container *ngIf="formHandler.isFieldInvalid(form, 'login')">
+            <small  *ngIf="formHandler.fieldHasValidationError(form, 'login', 'required')"
+                    class="p-error"
+                    i18n>
+              Enter your login.
+            </small>
           </ng-container>
         </div>
         <div class="field col-12">
           <label for="password" i18n>Password</label>
-          <input id="password" type="text" pPassword [feedback]="false" formControlName="password" class="w-full">
-          <ng-container *ngIf="formHandler.isFieldInvalid('password')">
-            <small class="p-error" *ngIf="formHandler.hasError('password', 'required')" i18n>Enter your password.</small>
+          <input id="password" type="password" pPassword formControlName="password" class="w-full" [feedback]="false">
+          <ng-container *ngIf="formHandler.isFieldInvalid(form, 'password')">
+            <small  *ngIf="formHandler.fieldHasValidationError(form, 'password', 'required')"
+                    class="p-error"
+                    i18n>
+              Enter your password.
+            </small>
           </ng-container>
         </div>
       </div>

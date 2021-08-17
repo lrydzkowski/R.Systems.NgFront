@@ -1,42 +1,41 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormHandlerService {
 
-  private formGroup: FormGroup = new FormGroup({});
-
   constructor() { }
 
-  setFormGroup(formGroup: FormGroup): void {
-    this.formGroup = formGroup;
-  }
-
-  isFieldInvalid(fieldName: string): boolean {
-    if (this.formGroup.get(fieldName)?.invalid && this.formGroup.get(fieldName)?.dirty) {
+  isFieldInvalid(formGroup: FormGroup, fieldName: string): boolean {
+    const field: AbstractControl | null = formGroup.get(fieldName);
+    if (field?.invalid && field?.dirty) {
       return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
-  hasError(fieldName: string, errorName: string): boolean {
-    return this.formGroup.get(fieldName)?.errors?.[errorName];
+  fieldHasValidationError(formGroup: FormGroup, fieldName: string, validationErrorName: string): boolean {
+    const field: AbstractControl | null = formGroup.get(fieldName);
+    if (field === null) {
+      return false;
+    }
+    return field?.hasError(validationErrorName);
   }
 
-  isFormValid(): boolean {
-    if (this.formGroup.valid) {
-      return true;
+  isFormValid(formGroup: FormGroup): boolean {
+    if (formGroup.invalid) {
+      this.validateAllFields(formGroup);
+      return false;
     }
-    this.formGroup.markAsDirty({ onlySelf: true });
-    this.validateAllFields(this.formGroup);
-    return false;
+    return true;
   }
 
   private validateAllFields(formGroup: FormGroup): void {
-    Object.keys(this.formGroup.controls).forEach(field => {
-      const control = this.formGroup.get(field);
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
       if (control instanceof FormControl) {
         control.markAsDirty({ onlySelf: true });
       } else if (control instanceof FormGroup) {
@@ -45,24 +44,38 @@ export class FormHandlerService {
     });
   }
 
-  getFieldValues(data: { [key: string]: any } = {}, formGroup: FormGroup | null = null): { [key: string]: any } {
-    if (formGroup === null) {
-      formGroup = this.formGroup;
-    }
-    Object.keys(this.formGroup.controls).forEach(field => {
-      const control = this.formGroup.get(field);
-      if (control instanceof FormGroup) {
-        data = this.getFieldValues(data, control);
-        return;
-      }
+  getFieldValues(formGroup: FormGroup, values: { [key: string]: unknown } = {}): object {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
       if (control instanceof FormControl) {
-        let val = control.value;
-        if (typeof val === 'string') {
-          val = val.trim();
+        if (control.value instanceof Date) {
+          const date = control.value;
+          if (date == null) {
+            values[field] = null;
+          } else {
+            values[field] = date.toISOString();
+          }
+        } else {
+          let value = control.value;
+          if (typeof value === 'string') {
+            value = value.trim();
+            if (value.length === 0) {
+              value = null;
+            }
+          } else if (typeof value === 'number') {
+            value = control.value;
+            if (value === 0) {
+              value = null;
+            }
+          } else {
+            value = control.value;
+          }
+          values[field] = value;
         }
-        data[field] = val;
+      } else if (control instanceof FormGroup) {
+        values[field] = this.getFieldValues(control, {});
       }
     });
-    return data;
+    return values;
   }
 }

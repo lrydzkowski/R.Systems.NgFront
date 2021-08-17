@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalWindowOperationEnum } from '@shared/shared/models/modal-window-operation-enum';
-import { FormToolsService } from '@shared/shared/services/form-tools.service';
+import { FormHandlerService } from '@shared/shared/services/form-handler.service';
 import { ModalWindowHandlerService } from '@shared/shared/services/modal-window-handler.service';
 import { Subscription } from 'rxjs';
 
@@ -36,7 +36,7 @@ export class PasswordChangeFormComponent implements OnInit, OnDestroy {
   constructor(
     private modalWindowHandler: ModalWindowHandlerService,
     private formBuilder: FormBuilder,
-    public formTools: FormToolsService) { }
+    public formHandler: FormHandlerService) { }
 
   ngOnInit(): void {
     this.subscribeOpenWindowEvent();
@@ -65,10 +65,10 @@ export class PasswordChangeFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    if (!this.formTools.isFormValid(this.form)) {
+    if (!this.formHandler.isFormValid(this.form)) {
       return;
     }
-    const fieldValues: object = this.formTools.getFieldValues({}, this.form);
+    const fieldValues: object = this.formHandler.getFieldValues(this.form);
     console.log('submit');
     console.log(fieldValues);
   }
