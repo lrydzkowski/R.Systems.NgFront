@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { UserService } from '@features/user-auth/services/user.service';
-import { MenuService } from '../../services/menu.service';
+import { AppMenuService } from '../../app-menu.service';
 
 @Component({
   selector: 'core-header',
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   userIsLogged: boolean = false;
 
   constructor(
-    private menuService: MenuService,
+    private appMenuService: AppMenuService,
     private userService: UserService) { }
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   }
 
   handleMenuUpdate(): void {
-    this.menuService.updateState.subscribe((authenticated: boolean) => {
+    this.appMenuService.updateState.subscribe((authenticated: boolean) => {
       this.initMenu(authenticated);
     });
   }
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
     if (authenticated === null) {
       authenticated = this.userService.tokensExist();
     }
-    this.menuItems = this.menuService.getMenu(authenticated);
+    this.menuItems = this.appMenuService.getMenu(authenticated);
     this.userIsLogged = authenticated;
   }
 

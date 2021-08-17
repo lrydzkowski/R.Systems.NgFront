@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuService } from 'src/app/core/services/menu.service';
+import { AppMenuService } from '@app/core/app-menu.service';
 import { TokenInfo } from '../models/token-info';
 import { JwtTokenService } from './jwt-token.service';
 
@@ -16,13 +16,13 @@ export class UserService {
   constructor(
     private jwtTokenService: JwtTokenService,
     private router: Router,
-    private menuService: MenuService
+    private appMenuService: AppMenuService
   ) { }
 
   login(tokenInfo: TokenInfo): void {
     this.jwtTokenService.setTokens(tokenInfo);
     this.redirectAfterLogin();
-    this.menuService.updateState.next(true);
+    this.appMenuService.updateState.next(true);
   }
 
   redirectAfterLogin(): void {
@@ -32,7 +32,7 @@ export class UserService {
   logout(): void {
     this.clearTokens();
     this.redirectAfterLogout();
-    this.menuService.updateState.next(false);
+    this.appMenuService.updateState.next(false);
   }
 
   redirectAfterLogout(): void {
