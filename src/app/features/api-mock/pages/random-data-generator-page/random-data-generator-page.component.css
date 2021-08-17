@@ -25,6 +25,7 @@ h2 {
   overflow: auto;
 }
 pre {
+  color: #495057;
   font-family: Consolas, monospace;
 }
 
