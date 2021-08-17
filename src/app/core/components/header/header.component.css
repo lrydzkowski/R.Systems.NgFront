@@ -6,9 +6,10 @@ header {
   width: 100%;
 }
 h1 {
-  color: #333333;
+  color: #495057;
   font-family: Roboto, Helvetica;
   font-size: 1.8rem;
+  margin-top: 5px;
   margin-bottom: 2px;
 }
 nav {
@@ -21,6 +22,11 @@ nav {
   display: inline-flex;
 }
 
+@media all and (min-width: 576px) {
+  h1 {
+    margin-top: 0;
+  }
+}
 @media all and (min-width: 1000px) and (min-height: 350px) {
   .big {
     display: inline-flex;
