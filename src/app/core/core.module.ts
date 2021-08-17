@@ -24,6 +24,7 @@ import { TimezoneOffsetInterceptor } from './interceptors/timezone-offset.interc
 import { CoreRoutingModule } from './core-routing.module';
 import { AboutAppComponent } from './components/about-app/about-app.component';
 import { AppMenuComponent } from './components/app-menu/app-menu.component';
+import { ChangelogComponent } from './components/changelog/changelog.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AppMenuComponent } from './components/app-menu/app-menu.component';
     PageNotFoundComponent,
     MainTemplateComponent,
     AboutAppComponent,
-    AppMenuComponent
+    AppMenuComponent,
+    ChangelogComponent
   ],
   imports: [
     CommonModule,

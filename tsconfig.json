@@ -28,6 +28,9 @@
       ],
       "@features/*": [
         "src/app/features/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
       ]
     }
   },
