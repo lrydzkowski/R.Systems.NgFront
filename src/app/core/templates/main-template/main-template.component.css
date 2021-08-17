@@ -6,6 +6,7 @@
 main {
   background-color: #F8F9FA;
   flex-grow: 1;
+  overflow: auto;
 }
 #content {
   flex-grow: 1;
