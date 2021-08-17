@@ -5,6 +5,9 @@ p {
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
+p:last-of-type {
+  margin-bottom: 0;
+}
 a {
   color: #2196F3;
   text-decoration: none;
