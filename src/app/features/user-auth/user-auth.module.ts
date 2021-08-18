@@ -21,6 +21,7 @@ import { JwtTokenService } from './services/jwt-token.service';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 import { PasswordChangeFormComponent } from './components/password-change-form/password-change-form.component';
+import { PasswordChangeWindowComponent } from './components/password-change-window/password-change-window.component';
 
 
 export function jwtOptionsFactory(jwtTokenService: JwtTokenService) {
@@ -36,7 +37,8 @@ export function jwtOptionsFactory(jwtTokenService: JwtTokenService) {
     LoginPageComponent,
     UserMenuComponent,
     LogoutButtonComponent,
-    PasswordChangeFormComponent
+    PasswordChangeFormComponent,
+    PasswordChangeWindowComponent
   ],
   imports: [
     CommonModule,

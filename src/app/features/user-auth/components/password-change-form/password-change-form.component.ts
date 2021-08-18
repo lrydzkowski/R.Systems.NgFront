@@ -1,20 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModalWindowOperationEnum } from '@shared/shared/models/modal-window-operation-enum';
 import { FormHandlerService } from '@shared/shared/services/form-handler.service';
-import { ModalWindowHandlerService } from '@shared/shared/services/modal-window-handler.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'user-auth-password-change-form',
   templateUrl: './password-change-form.component.html',
   styleUrls: ['./password-change-form.component.css']
 })
-export class PasswordChangeFormComponent implements OnInit, OnDestroy {
-
-  visible: boolean = false;
-
-  private openWindowSubscription: Subscription | null = null;
+export class PasswordChangeFormComponent implements OnInit {
 
   private passwordMaxLength: number = 40;
 
@@ -34,35 +27,10 @@ export class PasswordChangeFormComponent implements OnInit, OnDestroy {
   });
 
   constructor(
-    private modalWindowHandler: ModalWindowHandlerService,
     private formBuilder: FormBuilder,
     public formHandler: FormHandlerService) { }
 
-  ngOnInit(): void {
-    this.subscribeOpenWindowEvent();
-  }
-
-  ngOnDestroy(): void {
-    this.unsubscribeOpenWindowEvent();
-  }
-
-  private subscribeOpenWindowEvent(): void {
-    this.modalWindowHandler.onOpenWindow('password-change-form').subscribe({
-      next: (modalWindowOperation: ModalWindowOperationEnum) => {
-        if (modalWindowOperation != ModalWindowOperationEnum.Open) {
-          return;
-        }
-        this.visible = true;
-      }
-    });
-  }
-
-  private unsubscribeOpenWindowEvent(): void {
-    if (this.openWindowSubscription === null) {
-      return;
-    }
-    this.openWindowSubscription.unsubscribe();
-  }
+  ngOnInit(): void { }
 
   onSubmit(): void {
     if (!this.formHandler.isFormValid(this.form)) {
@@ -72,5 +40,4 @@ export class PasswordChangeFormComponent implements OnInit, OnDestroy {
     console.log('submit');
     console.log(fieldValues);
   }
-
 }
