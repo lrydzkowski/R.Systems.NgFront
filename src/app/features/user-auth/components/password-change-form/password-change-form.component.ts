@@ -1,6 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormHandlerService } from '@shared/shared/services/form-handler.service';
+import { ToastMessageService } from '@shared/shared/services/toast-message.service';
 
 @Component({
   selector: 'user-auth-password-change-form',
@@ -8,6 +9,8 @@ import { FormHandlerService } from '@shared/shared/services/form-handler.service
   styleUrls: ['./password-change-form.component.css']
 })
 export class PasswordChangeFormComponent implements OnInit {
+
+  @Output() confirm = new EventEmitter<void>();
 
   private passwordMaxLength: number = 40;
 
@@ -28,7 +31,8 @@ export class PasswordChangeFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public formHandler: FormHandlerService) { }
+    public formHandler: FormHandlerService,
+    private toastMessageService: ToastMessageService) { }
 
   ngOnInit(): void { }
 
@@ -39,5 +43,11 @@ export class PasswordChangeFormComponent implements OnInit {
     const fieldValues: object = this.formHandler.getFieldValues(this.form);
     console.log('submit');
     console.log(fieldValues);
+    this.confirm.emit();
+    this.toastMessageService.showToastMessage({
+      severity: 'success',
+      summary: $localize`Confirmation`,
+      detail: $localize`Your password has been changed.`
+    });
   }
 }

@@ -45,4 +45,8 @@ export class PasswordChangeWindowComponent implements OnInit, OnDestroy {
     }
     this.openWindowSubscription.unsubscribe();
   }
+
+  onFormConfirm(): void {
+    this.visible = false;
+  }
 }
