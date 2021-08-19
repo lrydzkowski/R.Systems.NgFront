@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ModalWindowHandlerService } from '@shared/shared/services/modal-window-handler.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -9,9 +9,11 @@ import { MenuItem } from 'primeng/api';
 })
 export class UserMenuComponent implements OnInit {
 
+  private urlPasswordChangeForm: string = $localize`user-account/password-change`;
+
   userMenuItems: MenuItem[] = [];
 
-  constructor(private modalWindowHandler: ModalWindowHandlerService) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.initUserMenuItems();
@@ -23,7 +25,7 @@ export class UserMenuComponent implements OnInit {
         label: $localize`Password change`,
         icon: '',
         command: () => {
-          this.modalWindowHandler.openWindow('password-change-form');
+          this.router.navigate([this.urlPasswordChangeForm]);
         }
       }
     ];

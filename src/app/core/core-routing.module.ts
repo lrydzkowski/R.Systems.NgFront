@@ -13,8 +13,13 @@ const routes: Routes = [
   },
   {
     path: $localize`administration`,
-    loadChildren: () => import('../features/user-administration/user-administration.module').then(m => m.UserAdministrationModule),
+    loadChildren: () => import('../features/user-administration/user-administration.module')
+      .then(m => m.UserAdministrationModule),
     canActivate: [AuthGuardService]
+  },
+  {
+    path: $localize`user-account`,
+    loadChildren: () => import('../features/user-account/user-account.module').then(m => m.UserAccountModule)
   },
   {
     path: 'lexica',
