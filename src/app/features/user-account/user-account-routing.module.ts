@@ -12,6 +12,10 @@ const routes: Routes = [
       breadcrumb: $localize`Password change`,
       hasBreadcrumb: true
     }
+  },
+  {
+    path: '',
+    redirectTo: $localize`password-change`
   }
 ];
 
