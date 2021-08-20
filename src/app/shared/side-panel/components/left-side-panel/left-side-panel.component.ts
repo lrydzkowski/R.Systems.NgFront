@@ -45,7 +45,7 @@ export class LeftSidePanelComponent implements OnInit, OnDestroy {
   }
 
   closePanel(): void {
-    this.leftSidePanelService.close.next();
+    this.leftSidePanelService.close();
   }
 
 }

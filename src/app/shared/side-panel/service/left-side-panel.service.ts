@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+import { OperationEnum } from '../models/operation-enum';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,9 @@ export class LeftSidePanelService {
 
   isOpen: boolean = false;
 
-  isHandled: boolean = false;
+  private isHandled: boolean = false;
 
-  open: Subject<any> = new Subject();
-
-  close: Subject<any> = new Subject();
+  private operationSubject = new Subject<OperationEnum>();
 
   constructor(
     private router: Router,
@@ -22,12 +21,38 @@ export class LeftSidePanelService {
       this.handleEvents();
   }
 
+  isShowed(): boolean {
+    return this.isHandled && !this.isOpen;
+  }
+
+  open(): void {
+    this.operationSubject.next(OperationEnum.Open);
+  }
+
+  onOpen(): Observable<OperationEnum> {
+    return this.operationSubject.asObservable()
+      .pipe(filter((operation: OperationEnum) => operation === OperationEnum.Open));
+  }
+
+  close(): void {
+    this.operationSubject.next(OperationEnum.Close);
+  }
+
+  onClose(): Observable<OperationEnum> {
+    return this.operationSubject.asObservable()
+      .pipe(filter((operation: OperationEnum) => operation === OperationEnum.Close));
+  }
+
   private handleEvents() {
-    this.open.subscribe(() => {
-      this.isOpen = true;
+    this.operationSubject.subscribe((operation: OperationEnum) => {
+      if (operation == OperationEnum.Open) {
+        this.isOpen = true;
+      }
     });
-    this.close.subscribe(() => {
-      this.isOpen = false;
+    this.operationSubject.subscribe((operation: OperationEnum) => {
+      if (operation == OperationEnum.Close) {
+        this.isOpen = false;
+      }
     });
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -39,8 +64,8 @@ export class LeftSidePanelService {
   private checkLeftSidePanelState(): void {
     const hasLeftSidePanel: boolean = this.getLeftSidePanelInfo(this.activatedRoute.root);
     this.isHandled = hasLeftSidePanel;
-    if (this.isOpen && !hasLeftSidePanel) {
-      this.close.next();
+    if (this.isOpen && !this.isHandled) {
+      this.close();
     }
   }
 

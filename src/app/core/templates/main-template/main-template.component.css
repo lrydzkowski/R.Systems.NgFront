@@ -8,5 +8,5 @@ main {
   background-color: #F8F9FA;
 }
 #content {
-  max-width: 100%;
+  width: calc(100% - 30rem);
 }

@@ -21,11 +21,11 @@ export class LeftSidePanelButtonComponent implements OnInit, OnDestroy {
   }
 
   isShowed(): boolean {
-    return this.leftSidePanelService.isHandled && !this.leftSidePanelService.isOpen;
+    return this.leftSidePanelService.isShowed();
   }
 
   openLeftSidePanel(): void {
-    this.leftSidePanelService.open.next();
+    this.leftSidePanelService.open();
   }
 
 }
