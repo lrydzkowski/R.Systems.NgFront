@@ -10,8 +10,7 @@ export class AuthService {
 
   constructor(
     private jwtTokenService: JwtTokenService,
-    private jwtHelper: JwtHelperService
-  ) { }
+    private jwtHelper: JwtHelperService) { }
 
   isAuthenticated(): Observable<boolean> {
     let token = this.jwtTokenService.getToken();

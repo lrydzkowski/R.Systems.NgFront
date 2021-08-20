@@ -26,8 +26,7 @@ export class MockDataApiService {
   };
 
   constructor(
-    private httpClient: HttpClient
-  ) { }
+    private httpClient: HttpClient) { }
 
   getStaticData(key: string, useCache: boolean = true): Observable<string[]> {
     if (this.canUseCache(key, useCache)) {

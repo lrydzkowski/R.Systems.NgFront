@@ -16,8 +16,7 @@ export class UserService {
   constructor(
     private jwtTokenService: JwtTokenService,
     private router: Router,
-    private appMenuService: AppMenuService
-  ) { }
+    private appMenuService: AppMenuService) { }
 
   login(tokenInfo: TokenInfo): void {
     this.jwtTokenService.setTokens(tokenInfo);

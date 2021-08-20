@@ -28,8 +28,7 @@ export class RandomDataGeneratorPageComponent implements OnInit, OnDestroy, Afte
     private randomDataGenerator: RandomDataGeneratorService,
     private loadingService: LoadingService,
     private clipboardService: ClipboardService,
-    private maxHeightCalculator: MaxHeightCalculatorService
-  ) { }
+    private maxHeightCalculator: MaxHeightCalculatorService) { }
 
   ngOnInit(): void {
   }

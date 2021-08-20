@@ -22,8 +22,7 @@ export class RandomDataGeneratorService {
   ];
 
   constructor(
-    private mockDataApiService: MockDataApiService
-  ) { }
+    private mockDataApiService: MockDataApiService) { }
 
   generateUsers(numOfUsers: number): Observable<User[]> {
     const observables = {

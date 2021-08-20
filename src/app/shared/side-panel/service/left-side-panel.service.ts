@@ -18,9 +18,8 @@ export class LeftSidePanelService {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {
-    this.handleEvents();
+    private activatedRoute: ActivatedRoute) {
+      this.handleEvents();
   }
 
   private handleEvents() {

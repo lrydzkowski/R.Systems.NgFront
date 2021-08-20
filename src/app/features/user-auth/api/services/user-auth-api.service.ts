@@ -10,8 +10,7 @@ import { LoginRequest } from '../models/login-request';
 export class UserAuthApiService {
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient) { }
 
   login(request: LoginRequest): Observable<TokenInfo> {
     return this.http.post<TokenInfo>('/login', request);

@@ -12,8 +12,7 @@ export class AnonymousGuardService implements CanActivate {
 
   constructor(
     private authService: AuthService,
-    private userService: UserService
-  ) { }
+    private userService: UserService) { }
 
   canActivate(): Observable<boolean> {
     return this.authService.isAuthenticated()
