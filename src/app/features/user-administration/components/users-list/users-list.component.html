@@ -51,6 +51,7 @@
               [rowsPerPageOptions]="[10,25,50]"
               [rows]="50"
               sortMode="multiple"
+              [multiSortMeta]="[{field: 'userId', order: 1}]"
               [scrollable]="true"
               [scrollHeight]="tableHeightCalculator.tableMaxHeightPx + 'px'">
       <ng-template pTemplate="header" let-columns>
