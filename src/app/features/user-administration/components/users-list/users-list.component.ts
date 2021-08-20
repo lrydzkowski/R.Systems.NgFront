@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingService } from '@shared/loading/services/loading.service';
+import { TableCol } from '@shared/table/models/table-col';
 import { TableHeightCalculatorService } from '@shared/table/services/table-height-calculator.service';
 import { MenuItem } from 'primeng/api';
 import { Table } from 'primeng/table';
@@ -26,13 +27,13 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   users: User[] = [];
 
-  cols = [
-    { field: 'userId', header: 'Id', className: 'id-col', type: 'text' },
-    { field: 'login', header: $localize`Login`, className: 'login-col', type: 'text' },
-    { field: 'email', header: $localize`Email`, className: 'email-col', type: 'text' },
-    { field: 'firstName', header: $localize`First name`, className: 'firstName-col', type: 'text' },
-    { field: 'lastName', header: $localize`Last name`, className: 'lastName-col', type: 'text' },
-    { field: 'roles', header: $localize`Roles`, className: 'roles-col', type: 'roles' }
+  cols: TableCol[] = [
+    { field: 'userId', header: 'Id', className: 'id-col', type: 'text', filterType: 'numeric' },
+    { field: 'login', header: $localize`Login`, className: 'login-col', type: 'text', filterType: 'text' },
+    { field: 'email', header: $localize`Email`, className: 'email-col', type: 'text', filterType: 'text' },
+    { field: 'firstName', header: $localize`First name`, className: 'firstName-col', type: 'text', filterType: 'text' },
+    { field: 'lastName', header: $localize`Last name`, className: 'lastName-col', type: 'text', filterType: 'text' },
+    { field: 'roles', header: $localize`Roles`, className: 'roles-col', type: 'roles', filterType: 'text' }
   ];
 
   tableMenuItems: MenuItem[] = [];

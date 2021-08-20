@@ -59,7 +59,7 @@
           <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]="col.className">
             {{col.header}}
             <p-sortIcon [field]="col.field"></p-sortIcon>
-            <p-columnFilter type="text"
+            <p-columnFilter [type]="col.filterType"
                             [field]="col.field"
                             display="menu"
                             class="ml-2"></p-columnFilter>
