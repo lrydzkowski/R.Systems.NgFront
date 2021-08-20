@@ -19,7 +19,8 @@ export class UsersListComponent implements OnInit {
     { field: 'lastName', header: $localize`Last name`, className: 'lastName-col', type: 'text' }
   ];
 
-  constructor(private userApi: UserApiService) { }
+  constructor(
+    private userApi: UserApiService) { }
 
   ngOnInit(): void {
     this.getUsers();

@@ -9,8 +9,7 @@ import { User } from '../../models/user';
 export class UserApiService {
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>('/assets/data/users.json');
