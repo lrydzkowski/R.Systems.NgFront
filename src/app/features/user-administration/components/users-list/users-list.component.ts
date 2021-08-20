@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { LoadingService } from '@shared/loading/services/loading.service';
+import { TableHeightCalculatorService } from '@shared/table/services/table-height-calculator.service';
 import { Table } from 'primeng/table';
 import { finalize } from 'rxjs/operators';
 import { UserApiService } from '../../api/services/user-api.service';
@@ -8,9 +9,12 @@ import { User } from '../../models/user';
 @Component({
   selector: 'user-administration-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.css'],
+  providers: [
+    TableHeightCalculatorService
+  ]
 })
-export class UsersListComponent implements OnInit {
+export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild('tableContainer') tableContainer?: ElementRef;
 
@@ -29,10 +33,28 @@ export class UsersListComponent implements OnInit {
 
   constructor(
     private userApi: UserApiService,
-    private loadingAnimationService: LoadingService) { }
+    private loadingAnimationService: LoadingService,
+    public tableHeightCalculator: TableHeightCalculatorService) { }
 
   ngOnInit(): void {
     this.getUsers();
+  }
+
+  ngOnDestroy(): void {
+    this.tableHeightCalculator.destroy();
+  }
+
+  ngAfterViewInit(): void {
+    if (!(this.tableContainer instanceof ElementRef)) {
+      return;
+    }
+    this.tableHeightCalculator.init({
+      containerRef: this.tableContainer,
+      staticReservedHeight: {
+        sm: 19,
+        lg: 29
+      }
+    });
   }
 
   getUsers(): void {

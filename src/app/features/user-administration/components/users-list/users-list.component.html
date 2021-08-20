@@ -11,7 +11,7 @@
               [rows]="50"
               sortMode="multiple"
               [scrollable]="true"
-              scrollHeight="250px">
+              [scrollHeight]="tableHeightCalculator.tableMaxHeightPx + 'px'">
       <ng-template pTemplate="caption">
         <div class="flex">
           <button pButton
