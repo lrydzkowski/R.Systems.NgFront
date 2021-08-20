@@ -5,6 +5,8 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
+import { TieredMenuModule } from 'primeng/tieredmenu';
+import { TooltipModule } from 'primeng/tooltip';
 
 import { UserAdministrationRoutingModule } from './user-administration-routing.module';
 import { UsersListPageComponent } from './pages/users-list-page/users-list-page.component';
@@ -32,6 +34,8 @@ import { UserRolesPipe } from './pipes/user-roles.pipe';
     ButtonModule,
     InputTextModule,
     TableModule,
+    TieredMenuModule,
+    TooltipModule,
 
     SharedModule,
     SidePanelModule,

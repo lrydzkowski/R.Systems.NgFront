@@ -1,5 +1,46 @@
-<div class="card relative p-3">
-  <h2 class="mb-3" i18n>Users</h2>
+<div class="card relative p-2 sm:p-3">
+  <div class="header flex align-items-center mb-2">
+    <h2 class="title" i18n>Users</h2>
+    <div class="ml-2 sm:ml-3 mr-2 sm:mr-3 vertical-separator"></div>
+    <button pButton
+            type="button"
+            class="menu-button p-button-outlined"
+            icon="pi pi-ellipsis-h"
+            (click)="tableMenu.toggle($event)"></button>
+    <div class="buttons">
+      <button pButton
+              type="button"
+              label="Add user"
+              class="p-button-outlined p-button-success mr-2"
+              icon="pi pi-plus"
+              (click)="redirectToAddUserForm()"
+              pTooltip="Add new user"
+              tooltipPosition="top"
+              i18n-label
+              i18n-pTooltip></button>
+      <button pButton
+              type="button"
+              label="Delete user"
+              class="p-button-outlined p-button-danger mr-2"
+              icon="pi pi-trash"
+              (click)="deleteUser()"
+              pTooltip="Delete existing user"
+              tooltipPosition="top"
+              i18n-label
+              i18n-pTooltip></button>
+      <button pButton
+              type="button"
+              label="Clear state"
+              class="p-button-outlined"
+              icon="pi pi-filter-slash"
+              (click)="clear(dt)"
+              pTooltip="Clear table state"
+              tooltipPosition="top"
+              i18n-label
+              i18n-pTooltip></button>
+    </div>
+  </div>
+  <p-tieredMenu #tableMenu [model]="tableMenuItems" [popup]="true" appendTo="body"></p-tieredMenu>
   <div #tableContainer class="relative">
     <p-table  #dt
               tableStyleClass="custom-table"
@@ -12,15 +53,6 @@
               sortMode="multiple"
               [scrollable]="true"
               [scrollHeight]="tableHeightCalculator.tableMaxHeightPx + 'px'">
-      <ng-template pTemplate="caption">
-        <div class="flex">
-          <button pButton
-                  label="Clear"
-                  class="p-button-outlined"
-                  icon="pi pi-filter-slash"
-                  (click)="clear(dt)"></button>
-        </div>
-      </ng-template>
       <ng-template pTemplate="header" let-columns>
         <tr>
           <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]="col.className">

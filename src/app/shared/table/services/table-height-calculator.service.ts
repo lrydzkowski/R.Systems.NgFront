@@ -65,7 +65,7 @@ export class TableHeightCalculatorService {
 
   private getTablePartsHeight(containerNativeElement: any): number {
     let height = 0;
-    const classNames: string[] = ['p-datatable-header', 'p-datatable-scrollable-header', 'p-paginator-bottom'];
+    const classNames: string[] = ['p-datatable-scrollable-header', 'p-paginator-bottom'];
     for (const className of classNames) {
       const elements = containerNativeElement.getElementsByClassName(className);
       for (const element of elements) {

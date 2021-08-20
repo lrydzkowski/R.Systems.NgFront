@@ -1,3 +1,14 @@
+@import "../../../../shared/table/css/form.css";
+
+.title {
+  flex-grow: 1;
+}
+.vertical-separator {
+  display: none;
+}
+.buttons {
+  display: none;
+}
 .id-col {
   width: 115px;
 }
@@ -15,4 +26,19 @@
 }
 .roles-col {
   width: 250px;
+}
+
+@media all and (min-width: 710px) {
+  .title {
+    flex-grow: unset;
+  }
+  .vertical-separator {
+    display: block;
+  }
+  .menu-button {
+    display: none;
+  }
+  .buttons {
+    display: block;
+  }
 }

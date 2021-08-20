@@ -1,0 +1,16 @@
+.header {
+  height: 2.3rem;
+}
+.header h2 {
+  margin-bottom: 2px;
+}
+.vertical-separator {
+  background-color: #DDE2E6;
+  height: 100%;
+  width: 1px;
+}
+.buttons {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 3px;
+}

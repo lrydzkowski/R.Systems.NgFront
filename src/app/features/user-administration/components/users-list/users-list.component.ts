@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoadingService } from '@shared/loading/services/loading.service';
 import { TableHeightCalculatorService } from '@shared/table/services/table-height-calculator.service';
+import { MenuItem } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { finalize } from 'rxjs/operators';
 import { UserApiService } from '../../api/services/user-api.service';
@@ -15,6 +17,8 @@ import { User } from '../../models/user';
   ]
 })
 export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
+
+  @ViewChild('dt') table?: Table;
 
   @ViewChild('tableContainer') tableContainer?: ElementRef;
 
@@ -31,13 +35,46 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     { field: 'roles', header: $localize`Roles`, className: 'roles-col', type: 'roles' }
   ];
 
+  tableMenuItems: MenuItem[] = [];
+
   constructor(
     private userApi: UserApiService,
     private loadingAnimationService: LoadingService,
-    public tableHeightCalculator: TableHeightCalculatorService) { }
+    public tableHeightCalculator: TableHeightCalculatorService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getUsers();
+    this.initTableMenuItems();
+  }
+
+  private initTableMenuItems(): void {
+    this.tableMenuItems = [
+      {
+        label: $localize`Add new user`,
+        icon: 'pi pi-plus',
+        command: () => {
+          this.redirectToAddUserForm();
+        }
+      },
+      {
+        label: $localize`Delete user`,
+        icon: 'pi pi-trash',
+        command: () => {
+          this.deleteUser();
+        }
+      },
+      {
+        label: $localize`Clear table state`,
+        icon: 'pi pi-filter-slash',
+        command: () => {
+          if (!this.table) {
+            return;
+          }
+          this.clear(this.table);
+        }
+      }
+    ];
   }
 
   ngOnDestroy(): void {
@@ -51,7 +88,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.tableHeightCalculator.init({
       containerRef: this.tableContainer,
       staticReservedHeight: {
-        sm: 19,
+        sm: 12,
         lg: 29
       }
     });
@@ -66,6 +103,14 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
           this.users = users;
         }
       });
+  }
+
+  redirectToAddUserForm(): void {
+    this.router.navigate([$localize`/administration/users/new`]);
+  }
+
+  deleteUser(): void {
+
   }
 
   clear(table: Table): void {
