@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LoadingService } from '@shared/loading/services/loading.service';
 import { Table } from 'primeng/table';
 import { finalize } from 'rxjs/operators';
@@ -12,15 +12,19 @@ import { User } from '../../models/user';
 })
 export class UsersListComponent implements OnInit {
 
+  @ViewChild('tableContainer') tableContainer?: ElementRef;
+
   loadingAnimationKey: string = 'users-list-loading-animation';
 
   users: User[] = [];
 
   cols = [
+    { field: 'userId', header: 'Id', className: 'id-col', type: 'text' },
     { field: 'login', header: $localize`Login`, className: 'login-col', type: 'text' },
     { field: 'email', header: $localize`Email`, className: 'email-col', type: 'text' },
     { field: 'firstName', header: $localize`First name`, className: 'firstName-col', type: 'text' },
-    { field: 'lastName', header: $localize`Last name`, className: 'lastName-col', type: 'text' }
+    { field: 'lastName', header: $localize`Last name`, className: 'lastName-col', type: 'text' },
+    { field: 'roles', header: $localize`Roles`, className: 'roles-col', type: 'roles' }
   ];
 
   constructor(

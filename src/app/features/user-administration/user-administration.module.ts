@@ -14,6 +14,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { SidePanelModule } from '@shared/side-panel/side-panel.module';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { LoadingModule } from '@shared/loading/loading.module';
+import { UserRolesPipe } from './pipes/user-roles.pipe';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { LoadingModule } from '@shared/loading/loading.module';
     UsersListPageComponent,
     UserFormPageComponent,
     UserFormComponent,
-    UsersListComponent
+    UsersListComponent,
+    UserRolesPipe
   ],
   imports: [
     CommonModule,
