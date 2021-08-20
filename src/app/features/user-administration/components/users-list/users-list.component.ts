@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingService } from '@shared/loading/services/loading.service';
 import { Table } from 'primeng/table';
+import { finalize } from 'rxjs/operators';
 import { UserApiService } from '../../api/services/user-api.service';
 import { User } from '../../models/user';
 
@@ -9,6 +11,8 @@ import { User } from '../../models/user';
   styleUrls: ['./users-list.component.css']
 })
 export class UsersListComponent implements OnInit {
+
+  loadingAnimationKey: string = 'users-list-loading-animation';
 
   users: User[] = [];
 
@@ -20,18 +24,22 @@ export class UsersListComponent implements OnInit {
   ];
 
   constructor(
-    private userApi: UserApiService) { }
+    private userApi: UserApiService,
+    private loadingAnimationService: LoadingService) { }
 
   ngOnInit(): void {
     this.getUsers();
   }
 
   getUsers(): void {
-    this.userApi.getUsers().subscribe({
-      next: (users: User[]) => {
-        this.users = users;
-      }
-    });
+    this.loadingAnimationService.showLoadingAnimation(this.loadingAnimationKey);
+    this.userApi.getUsers()
+      .pipe(finalize(() => this.loadingAnimationService.hideLoadingAnimation(this.loadingAnimationKey)))
+      .subscribe({
+        next: (users: User[]) => {
+          this.users = users;
+        }
+      });
   }
 
   clear(table: Table): void {

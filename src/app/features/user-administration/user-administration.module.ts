@@ -13,6 +13,7 @@ import { UserFormPageComponent } from './pages/user-form-page/user-form-page.com
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { SidePanelModule } from '@shared/side-panel/side-panel.module';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { LoadingModule } from '@shared/loading/loading.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
 
     SharedModule,
     SidePanelModule,
+    LoadingModule,
     UserAdministrationRoutingModule
   ]
 })
