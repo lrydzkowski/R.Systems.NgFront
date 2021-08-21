@@ -27,6 +27,8 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   users: User[] = [];
 
+  selectedUsers: User[] = [];
+
   cols: TableCol[] = [
     { field: 'userId', header: 'Id', className: 'id-col', type: 'text', filterType: 'numeric' },
     { field: 'login', header: $localize`Login`, className: 'login-col', type: 'text', filterType: 'text' },

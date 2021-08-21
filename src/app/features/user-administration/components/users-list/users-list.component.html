@@ -53,9 +53,16 @@
               sortMode="multiple"
               [multiSortMeta]="[{field: 'userId', order: 1}]"
               [scrollable]="true"
-              [scrollHeight]="tableHeightCalculator.tableMaxHeightPx + 'px'">
+              [scrollHeight]="tableHeightCalculator.tableMaxHeightPx + 'px'"
+              selectionMode="multiple"
+              [(selection)]="selectedUsers"
+              [metaKeySelection]="true"
+              dataKey="userId">
       <ng-template pTemplate="header" let-columns>
         <tr>
+          <th class="checkbox-col">
+            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+          </th>
           <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]="col.className">
             {{col.header}}
             <p-sortIcon [field]="col.field"></p-sortIcon>
@@ -66,8 +73,11 @@
           </th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-row let-columns="columns">
-        <tr>
+      <ng-template pTemplate="body" let-row let-columns="columns" let-rowIndex="rowIndex">
+        <tr [pSelectableRow]="row" [pSelectableRowIndex]="rowIndex">
+          <td class="checkbox-col">
+            <p-tableCheckbox [value]="row" [index]="rowIndex"></p-tableCheckbox>
+          </td>
           <td *ngFor="let col of columns" [class]="col.className">
             <ng-container [ngSwitch]="col.type">
               <span *ngSwitchCase="'text'">{{row[col.field]}}</span>
