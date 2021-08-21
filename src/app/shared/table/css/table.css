@@ -17,3 +17,11 @@
 .checkbox-col {
   width: 2.5rem;
 }
+.edit-col {
+  width: 2.5rem;
+}
+.edit-col button {
+  height: 1.3rem;
+  padding: 0;
+  width: 1.3rem;
+}
