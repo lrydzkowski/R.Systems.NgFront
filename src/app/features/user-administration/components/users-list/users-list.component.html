@@ -60,7 +60,8 @@
               [contextMenu]="tableContextMenu"
               dataKey="userId"
               stateStorage="session"
-              stateKey="users-session">
+              stateKey="users-session"
+              [rowTrackBy]="identifyUser">
       <ng-template pTemplate="header" let-columns>
         <tr>
           <th class="checkbox-col">

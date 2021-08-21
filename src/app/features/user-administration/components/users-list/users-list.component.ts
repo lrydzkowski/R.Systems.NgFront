@@ -177,4 +177,8 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     table.clear();
   }
 
+  identifyUser(index: number, user: User): number {
+    return user.userId;
+  }
+
 }
