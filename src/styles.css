@@ -80,7 +80,30 @@ small {
   left: calc(50% - 30px);
   width: 60px;
 }
-.p-datatable .custom-table .p-sortable-column .p-sortable-column-icon {
+.p-datatable .p-sortable-column .p-sortable-column-icon {
   line-height: 2rem;
   vertical-align: top;
+}
+.p-datatable .checkbox-col {
+  width: 2.5rem;
+}
+.p-datatable .p-paginator-bottom {
+  border-top: 1px solid #e9ecef;
+  top: -1px;
+  position: relative;
+}
+.p-checkbox .p-checkbox-box {
+  border: 1px solid #ced4da;
+}
+
+/* Temporary */
+.p-datatable .p-datatable-tbody > tr.p-highlight > td,
+.p-datatable.p-datatable-striped .p-datatable-tbody > tr:nth-child(even).p-highlight > td {
+  background: #E3F2FD;
+}
+.p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight):hover > td {
+  background: #e9ecef;
+}
+.p-datatable.p-datatable-striped .p-datatable-tbody > tr:nth-child(even) > td {
+  background: #fcfcfc;
 }

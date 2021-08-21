@@ -10,22 +10,22 @@
   display: none;
 }
 .id-col {
-  width: 115px;
+  width: 8rem;
 }
 .login-col {
-  width: 300px;
+  width: 21rem;
 }
 .email-col {
-  width: 300px;
+  width: 21rem;
 }
 .firstName-col {
-  width: 300px
+  width: 21rem;
 }
 .lastName-col {
-  width: 300px;
+  width: 21rem;
 }
 .roles-col {
-  width: 250px;
+  width: 21rem;
 }
 
 @media all and (min-width: 710px) {

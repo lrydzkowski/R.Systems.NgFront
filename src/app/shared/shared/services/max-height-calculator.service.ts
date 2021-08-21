@@ -9,6 +9,8 @@ import { MaxHeightCalculatorMode } from '../models/max-height-calculator-mode';
 })
 export class MaxHeightCalculatorService {
 
+  private readonly defaultMinHeightPx = 300;
+
   private config: MaxHeightCalculatorConfig | null = null;
 
   private windowResizeSubscription: Subscription | null = null;
@@ -48,13 +50,17 @@ export class MaxHeightCalculatorService {
     const offsets = nativeElement.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     const staticHeight = this.getStaticReservedHeight();
-    const maxHeight = windowHeight - offsets.top - staticHeight;
+    let maxHeightPx = windowHeight - offsets.top - staticHeight;
+    if (maxHeightPx < this.getMinHeight()) {
+      nativeElement.style.height = 'auto';
+      return;
+    }
     switch (this.config?.mode) {
       case MaxHeightCalculatorMode.Height:
-        nativeElement.style.height = `${maxHeight}px`;
+        nativeElement.style.height = `${maxHeightPx}px`;
         break;
       default:
-        nativeElement.style.maxHeight = `${maxHeight}px`;
+        nativeElement.style.maxHeight = `${maxHeightPx}px`;
         break;
     }
   }
@@ -71,5 +77,12 @@ export class MaxHeightCalculatorService {
       return this.config?.staticReservedHeight.lg;
     }
     return 0;
+  }
+
+  private getMinHeight(): number {
+    if (this.config?.minHeightPx) {
+      return this.config.minHeightPx;
+    }
+    return this.defaultMinHeightPx;
   }
 }

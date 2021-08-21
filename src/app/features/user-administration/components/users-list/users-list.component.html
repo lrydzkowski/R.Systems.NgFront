@@ -46,13 +46,14 @@
               tableStyleClass="custom-table"
               [columns]="cols"
               [value]="users"
-              styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+              styleClass="p-datatable-sm p-datatable-striped"
               [paginator]="true"
               [pageLinks]="3"
               [rows]="50"
               sortMode="multiple"
               [scrollable]="true"
-              [scrollHeight]="tableHeightCalculator.tableMaxHeightPx + 'px'"
+              scrollHeight="flex"
+              scrollDirection="vertical"
               selectionMode="multiple"
               [(selection)]="selectedUsers"
               [metaKeySelection]="true"
@@ -64,7 +65,7 @@
               [rowTrackBy]="identifyUser">
       <ng-template pTemplate="header" let-columns>
         <tr>
-          <th class="checkbox-col">
+          <th class="checkbox-col justify-content-center p-0">
             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
           </th>
           <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]="col.className">
@@ -79,7 +80,7 @@
       </ng-template>
       <ng-template pTemplate="body" let-row let-columns="columns" let-rowIndex="rowIndex">
         <tr [pSelectableRow]="row" [pSelectableRowIndex]="rowIndex" [pContextMenuRow]="row">
-          <td class="checkbox-col">
+          <td class="checkbox-col justify-content-center p-0">
             <p-tableCheckbox [value]="row" [index]="rowIndex"></p-tableCheckbox>
           </td>
           <td *ngFor="let col of columns" [class]="col.className">

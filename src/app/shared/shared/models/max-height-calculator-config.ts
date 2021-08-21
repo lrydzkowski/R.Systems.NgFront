@@ -7,6 +7,7 @@ export interface MaxHeightCalculatorConfig {
     sm?: number,
     md?: number,
     lg?: number
-  },
+  };
   mode: MaxHeightCalculatorMode;
+  minHeightPx?: number;
 }

@@ -1,8 +1,9 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingService } from '@shared/loading/services/loading.service';
+import { MaxHeightCalculatorMode } from '@shared/shared/models/max-height-calculator-mode';
+import { MaxHeightCalculatorService } from '@shared/shared/services/max-height-calculator.service';
 import { TableCol } from '@shared/table/models/table-col';
-import { TableHeightCalculatorService } from '@shared/table/services/table-height-calculator.service';
 import { MenuItem } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { finalize } from 'rxjs/operators';
@@ -14,7 +15,7 @@ import { User } from '../../models/user';
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css'],
   providers: [
-    TableHeightCalculatorService
+    MaxHeightCalculatorService
   ]
 })
 export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -32,12 +33,18 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
   selectedUserForContextMenu: User | null = null;
 
   cols: TableCol[] = [
-    { field: 'userId', header: 'Id', className: 'id-col', type: 'text', filterType: 'numeric' },
-    { field: 'login', header: $localize`Login`, className: 'login-col', type: 'text', filterType: 'text' },
-    { field: 'email', header: $localize`Email`, className: 'email-col', type: 'text', filterType: 'text' },
-    { field: 'firstName', header: $localize`First name`, className: 'firstName-col', type: 'text', filterType: 'text' },
-    { field: 'lastName', header: $localize`Last name`, className: 'lastName-col', type: 'text', filterType: 'text' },
-    { field: 'roles', header: $localize`Roles`, className: 'roles-col', type: 'roles', filterType: 'text' }
+    { field: 'userId', header: 'Id', className: 'standard-col flex-grow-0 id-col', type: 'text',
+      filterType: 'numeric' },
+    { field: 'login', header: $localize`Login`, className: 'standard-col flex-grow-1 login-col', type: 'text',
+      filterType: 'text' },
+    { field: 'email', header: $localize`Email`, className: 'standard-col flex-grow-1 email-col', type: 'text',
+      filterType: 'text' },
+    { field: 'firstName', header: $localize`First name`, className: 'standard-col flex-grow-1 firstName-col',
+      type: 'text', filterType: 'text' },
+    { field: 'lastName', header: $localize`Last name`, className: 'standard-col flex-grow-1 lastName-col',
+      type: 'text', filterType: 'text' },
+    { field: 'roles', header: $localize`Roles`, className: 'standard-col roles-col', type: 'roles',
+      filterType: 'text' }
   ];
 
   tableMenuItems: MenuItem[] = [];
@@ -47,13 +54,31 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private userApi: UserApiService,
     private loadingAnimationService: LoadingService,
-    public tableHeightCalculator: TableHeightCalculatorService,
-    private router: Router) { }
+    private router: Router,
+    private maxHeightCalculator: MaxHeightCalculatorService) { }
 
   ngOnInit(): void {
     this.getUsers();
     this.initTableMenuItems();
     this.initTableContextMenuItems();
+  }
+
+  ngOnDestroy(): void {
+    this.maxHeightCalculator.destroy();
+  }
+
+  ngAfterViewInit(): void {
+    if (!(this.tableContainer instanceof ElementRef)) {
+      return;
+    }
+    this.maxHeightCalculator.init({
+      elementRef: this.tableContainer,
+      staticReservedHeight: {
+        sm: 12,
+        lg: 29
+      },
+      mode: MaxHeightCalculatorMode.Height
+    });
   }
 
   private initTableMenuItems(): void {
@@ -127,23 +152,6 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
       return;
     }
     this.deleteUser([this.selectedUserForContextMenu.userId]);
-  }
-
-  ngOnDestroy(): void {
-    this.tableHeightCalculator.destroy();
-  }
-
-  ngAfterViewInit(): void {
-    if (!(this.tableContainer instanceof ElementRef)) {
-      return;
-    }
-    this.tableHeightCalculator.init({
-      containerRef: this.tableContainer,
-      staticReservedHeight: {
-        sm: 12,
-        lg: 29
-      }
-    });
   }
 
   getUsers(): void {
