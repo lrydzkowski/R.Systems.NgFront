@@ -7,6 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { TooltipModule } from 'primeng/tooltip';
+import { ContextMenuModule } from 'primeng/contextmenu';
 
 import { UserAdministrationRoutingModule } from './user-administration-routing.module';
 import { UsersListPageComponent } from './pages/users-list-page/users-list-page.component';
@@ -36,6 +37,7 @@ import { UserRolesPipe } from './pipes/user-roles.pipe';
     TableModule,
     TieredMenuModule,
     TooltipModule,
+    ContextMenuModule,
 
     SharedModule,
     SidePanelModule,

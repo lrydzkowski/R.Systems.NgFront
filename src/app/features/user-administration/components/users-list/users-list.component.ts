@@ -29,6 +29,8 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   selectedUsers: User[] = [];
 
+  selectedUserForContextMenu: User | null = null;
+
   cols: TableCol[] = [
     { field: 'userId', header: 'Id', className: 'id-col', type: 'text', filterType: 'numeric' },
     { field: 'login', header: $localize`Login`, className: 'login-col', type: 'text', filterType: 'text' },
@@ -40,6 +42,8 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   tableMenuItems: MenuItem[] = [];
 
+  tableContextMenuItems: MenuItem[] = [];
+
   constructor(
     private userApi: UserApiService,
     private loadingAnimationService: LoadingService,
@@ -49,6 +53,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     this.getUsers();
     this.initTableMenuItems();
+    this.initTableContextMenuItems();
   }
 
   private initTableMenuItems(): void {
@@ -64,7 +69,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
         label: $localize`Delete user`,
         icon: 'pi pi-trash',
         command: () => {
-          this.deleteUser();
+          this.deleteUser(this.getSelectedUsersIds());
         }
       },
       {
@@ -78,6 +83,50 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       }
     ];
+  }
+
+  getSelectedUsersIds(): number[] {
+    if (this.selectedUsers.length === 0) {
+      return [];
+    }
+    return this.selectedUsers.map(user => user.userId);
+  }
+
+  private initTableContextMenuItems(): void {
+    this.tableContextMenuItems = [
+      {
+        label: $localize`Edit`,
+        icon: 'pi pi-pencil',
+        command: () => {
+          if (this.selectedUserForContextMenu === null) {
+            return;
+          }
+          this.redirectToEditUserForm(this.selectedUserForContextMenu.userId);
+        }
+      },
+      {
+        label: $localize`Delete`,
+        icon: 'pi pi-trash',
+        command: () => this.onDeleteButtonClick
+      },
+      {
+        label: $localize`Show details`,
+        icon: 'pi pi-eye',
+        command: () => {
+          if (this.selectedUserForContextMenu === null) {
+            return;
+          }
+          this.showUserDetails(this.selectedUserForContextMenu.userId);
+        }
+      }
+    ]
+  }
+
+  onDeleteButtonClick(): void {
+    if (this.selectedUserForContextMenu === null) {
+      return;
+    }
+    this.deleteUser([this.selectedUserForContextMenu.userId]);
   }
 
   ngOnDestroy(): void {
@@ -112,8 +161,16 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.router.navigate([$localize`/administration/users/new`]);
   }
 
-  deleteUser(): void {
+  redirectToEditUserForm(userId: number): void {
+    this.router.navigate([$localize`/administration/users/${userId}`]);
+  }
 
+  deleteUser(userIds: number[]): void {
+    throw new Error('Method not implemented.');
+  }
+
+  private showUserDetails(userId: number): void {
+    throw new Error('Method not implemented.');
   }
 
   clear(table: Table): void {
