@@ -2,9 +2,9 @@
   <h1 class="ml-2 mr-2 sm:ml-3 sm:mr-3">R.Systems</h1>
   <nav>
     <p-menubar [model]="menuItems" styleClass="header-menubar">
-      <user-auth-user-menu *ngIf="userIsLogged" class="ml-2"></user-auth-user-menu>
+      <core-user-menu *ngIf="userIsLogged" class="ml-2"></core-user-menu>
       <core-app-menu class="ml-2"></core-app-menu>
-      <user-auth-logout-button *ngIf="userIsLogged" class="ml-2"></user-auth-logout-button>
+      <core-logout-button *ngIf="userIsLogged" class="ml-2"></core-logout-button>
     </p-menubar>
   </nav>
 </header>

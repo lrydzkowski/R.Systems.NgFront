@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 
 @Component({
-  selector: 'user-auth-user-menu',
+  selector: 'core-user-menu',
   templateUrl: './user-menu.component.html',
   styleUrls: ['./user-menu.component.css']
 })

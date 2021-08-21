@@ -25,6 +25,8 @@ import { CoreRoutingModule } from './core-routing.module';
 import { AboutAppComponent } from './components/about-app/about-app.component';
 import { AppMenuComponent } from './components/app-menu/app-menu.component';
 import { ChangelogComponent } from './components/changelog/changelog.component';
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { ChangelogComponent } from './components/changelog/changelog.component';
     MainTemplateComponent,
     AboutAppComponent,
     AppMenuComponent,
-    ChangelogComponent
+    ChangelogComponent,
+    UserMenuComponent,
+    LogoutButtonComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +56,7 @@ import { ChangelogComponent } from './components/changelog/changelog.component';
 
     SidePanelModule,
     SharedModule,
-    
+
     UserAuthModule,
     CoreRoutingModule
   ],

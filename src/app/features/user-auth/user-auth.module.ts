@@ -18,8 +18,6 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { UserAuthRoutingModule } from './user-auth-routing.module';
 import { SharedModule } from '@shared/shared/shared.module';
 import { JwtTokenService } from './services/jwt-token.service';
-import { UserMenuComponent } from './components/user-menu/user-menu.component';
-import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 
 
 export function jwtOptionsFactory(jwtTokenService: JwtTokenService) {
@@ -32,9 +30,7 @@ export function jwtOptionsFactory(jwtTokenService: JwtTokenService) {
 
 @NgModule({
   declarations: [
-    LoginPageComponent,
-    UserMenuComponent,
-    LogoutButtonComponent
+    LoginPageComponent
   ],
   imports: [
     CommonModule,
@@ -61,9 +57,6 @@ export function jwtOptionsFactory(jwtTokenService: JwtTokenService) {
       }
     })
   ],
-  exports: [
-    UserMenuComponent,
-    LogoutButtonComponent
-  ]
+  exports: []
 })
 export class UserAuthModule { }
