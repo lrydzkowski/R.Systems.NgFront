@@ -51,7 +51,6 @@
               [rowsPerPageOptions]="[10,25,50]"
               [rows]="50"
               sortMode="multiple"
-              [multiSortMeta]="[{field: 'userId', order: 1}]"
               [scrollable]="true"
               [scrollHeight]="tableHeightCalculator.tableMaxHeightPx + 'px'"
               selectionMode="multiple"
@@ -59,7 +58,9 @@
               [metaKeySelection]="true"
               [(contextMenuSelection)]="selectedUserForContextMenu"
               [contextMenu]="tableContextMenu"
-              dataKey="userId">
+              dataKey="userId"
+              stateStorage="session"
+              stateKey="users-session">
       <ng-template pTemplate="header" let-columns>
         <tr>
           <th class="checkbox-col">
