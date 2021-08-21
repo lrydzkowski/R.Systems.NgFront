@@ -41,6 +41,13 @@ small {
   background-color: #ffffff;
   border: 0;
 }
+.header-menubar .p-menubar-button {
+  height: 2.2rem;
+  width: 2.2rem;
+}
+.header-menubar .p-menubar-button .pi-bars {
+  font-size: 1.5rem;
+}
 .header-slidemenu.p-slidemenu {
   border: 0;
   width: 100%;
@@ -76,11 +83,4 @@ small {
 .p-datatable .custom-table .p-sortable-column .p-sortable-column-icon {
   line-height: 2rem;
   vertical-align: top;
-}
-.p-menubar .p-menubar-button {
-  height: 2.2rem;
-  width: 2.2rem;
-}
-.p-menubar .p-menubar-button .pi-bars {
-  font-size: 1.5rem;
 }
