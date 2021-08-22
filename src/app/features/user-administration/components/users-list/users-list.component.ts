@@ -205,4 +205,12 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     return user.userId;
   }
 
+  handlePageEvent(event: { first: number; rows: number; }): void {
+    this.clearSelection();
+  }
+
+  private clearSelection(): void {
+    this.selectedUsers = [];
+  }
+
 }

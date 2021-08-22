@@ -72,7 +72,8 @@
               dataKey="userId"
               stateStorage="session"
               stateKey="users-session"
-              [rowTrackBy]="identifyUser">
+              [rowTrackBy]="identifyUser"
+              (onPage)="handlePageEvent($event)">
       <ng-template pTemplate="header" let-columns>
         <tr>
           <th class="checkbox-col justify-content-center p-0">
