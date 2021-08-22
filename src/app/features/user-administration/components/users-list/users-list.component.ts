@@ -6,7 +6,7 @@ import { MaxHeightCalculatorMode } from '@shared/shared/models/max-height-calcul
 import { MaxHeightCalculatorService } from '@shared/shared/services/max-height-calculator.service';
 import { ToastMessageService } from '@shared/shared/services/toast-message.service';
 import { TableCol } from '@shared/table/models/table-col';
-import { MenuItem } from 'primeng/api';
+import { ConfirmationService, ConfirmEventType, MenuItem } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { finalize } from 'rxjs/operators';
 import { UserApiService } from '../../api/services/user-api.service';
@@ -17,7 +17,8 @@ import { User } from '../../models/user';
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css'],
   providers: [
-    MaxHeightCalculatorService
+    MaxHeightCalculatorService,
+    ConfirmationService
   ]
 })
 export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -58,7 +59,8 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     private loadingAnimationService: LoadingService,
     private router: Router,
     private maxHeightCalculator: MaxHeightCalculatorService,
-    private toastMessageService: ToastMessageService) { }
+    private toastMessageService: ToastMessageService,
+    private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -112,7 +114,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
         label: $localize`Delete user`,
         icon: 'pi pi-trash',
         command: () => {
-          this.deleteUser(this.getSelectedUsersIds());
+          this.onDeleteButtonClick(this.selectedUsers);
         },
         data: {
           tooltip: $localize`Delete existing user`,
@@ -179,7 +181,12 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
       {
         label: $localize`Delete`,
         icon: 'pi pi-trash',
-        command: () => this.onDeleteButtonClick
+        command: () => {
+          if (this.selectedUserForContextMenu === null) {
+            return;
+          }
+          this.onDeleteButtonClick([this.selectedUserForContextMenu]);
+        }
       },
       {
         label: $localize`Show details`,
@@ -208,11 +215,39 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.redirectToEditUserForm(this.selectedUsers[0].userId);
   }
 
-  onDeleteButtonClick(): void {
-    if (this.selectedUserForContextMenu === null) {
+  onDeleteButtonClick(selectedUsers: User[]): void {
+    this.toastMessageService.clearToastMessage();
+    if (selectedUsers.length === 0) {
+      this.toastMessageService.showToastMessage({
+        severity: 'error',
+        summary: $localize`Error`,
+        detail: $localize`You have to select at least one user.`,
+        life: 5000
+      });
       return;
     }
-    this.deleteUser([this.selectedUserForContextMenu.userId]);
+    this.confirmationService.confirm({
+      message: $localize`Are you sure that you want to delete selected users?`,
+      header: $localize`Delete confirmation`,
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.deleteUser(this.selectedUsers.map(selectedUser => selectedUser.userId));
+      },
+      reject: (type: ConfirmEventType) => {
+        switch(type) {
+          case ConfirmEventType.REJECT:
+            this.toastMessageService.showToastMessage(
+              { severity: 'warn', summary: $localize`Rejected`, detail: $localize`You have rejected.` }
+            );
+          break;
+          case ConfirmEventType.CANCEL:
+            this.toastMessageService.showToastMessage(
+              { severity: 'warn', summary: $localize`Cancelled`, detail: $localize`You have cancelled.` }
+            );
+          break;
+        }
+      }
+    });
   }
 
   getUsers(): void {
@@ -235,7 +270,13 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   deleteUser(userIds: number[]): void {
-    throw new Error('Method not implemented.');
+    console.log(userIds);
+    this.toastMessageService.showToastMessage({
+      severity: 'success',
+      summary: $localize`Success`,
+      detail: $localize`The operation has been successful.`,
+      life: 5000
+    });
   }
 
   clearTableState(table: Table): void {

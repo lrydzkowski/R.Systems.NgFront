@@ -8,6 +8,7 @@ import { TableModule } from 'primeng/table';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { TooltipModule } from 'primeng/tooltip';
 import { ContextMenuModule } from 'primeng/contextmenu';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 import { UserAdministrationRoutingModule } from './user-administration-routing.module';
 import { UsersListPageComponent } from './pages/users-list-page/users-list-page.component';
@@ -38,6 +39,7 @@ import { UserRolesPipe } from './pipes/user-roles.pipe';
     TieredMenuModule,
     TooltipModule,
     ContextMenuModule,
+    ConfirmDialogModule,
 
     SharedModule,
     SidePanelModule,

@@ -86,5 +86,9 @@
     </p-table>
   </div>
   <p-contextMenu #tableContextMenu [model]="tableContextMenuItems" appendTo="body"></p-contextMenu>
+  <p-confirmDialog  [baseZIndex]="10000"
+                    rejectButtonStyleClass="p-button-text p-button-danger"
+                    acceptButtonStyleClass="p-button-outlined p-button-success"
+                    styleClass="custom-confirm-dialog"></p-confirmDialog>
   <loading-animation [loadingAnimationKey]="loadingAnimationKey"></loading-animation>
 </div>

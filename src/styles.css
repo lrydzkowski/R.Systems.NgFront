@@ -95,6 +95,10 @@ small {
 .p-checkbox .p-checkbox-box {
   border: 1px solid #ced4da;
 }
+.custom-confirm-dialog {
+  max-width: 42rem;
+  width: 100%;
+}
 
 /* Temporary */
 .p-datatable .p-datatable-tbody > tr.p-highlight > td,
