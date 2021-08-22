@@ -89,7 +89,10 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-row let-columns="columns" let-rowIndex="rowIndex">
-        <tr [pSelectableRow]="row" [pSelectableRowIndex]="rowIndex" [pContextMenuRow]="row">
+        <tr [pSelectableRow]="row"
+            [pSelectableRowIndex]="rowIndex"
+            [pContextMenuRow]="row"
+            (dblclick)="redirectToEditUserForm(row.userId)">
           <td class="checkbox-col justify-content-center p-0">
             <p-tableCheckbox [value]="row" [index]="rowIndex"></p-tableCheckbox>
           </td>
