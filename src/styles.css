@@ -87,11 +87,6 @@ small {
 .p-datatable .checkbox-col {
   width: 2.5rem;
 }
-.p-datatable .p-paginator-bottom {
-  border-top: 1px solid #e9ecef;
-  top: -1px;
-  position: relative;
-}
 .p-checkbox .p-checkbox-box {
   border: 1px solid #ced4da;
 }

@@ -3,6 +3,7 @@ import { fromEvent } from 'rxjs';
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { TableHeightCalculatorConfig } from '../models/table-height-calculator-config';
+import { scrollbarWidth } from '@xobotyi/scrollbar-width';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,15 @@ export class TableHeightCalculatorService {
 
   private readonly defaultTableMinHeightPx = 200;
 
+  private readonly defaultTableRowsMaxNumber = 50;
+
+  private readonly defaultTableRowsMinNumber = 10;
+
+  private readonly rowHeightPx = 28;
+
   tableMaxHeightPx: number = this.defaultTableMaxHeightPx;
+
+  tableRowsNumber: number = this.defaultTableRowsMaxNumber;
 
   private config: TableHeightCalculatorConfig | null = null;
 
@@ -35,6 +44,7 @@ export class TableHeightCalculatorService {
       .subscribe({
         next: () => {
           this.setTableMaxHeight();
+          this.setNumberOfRows();
         }
       })
   }
@@ -43,10 +53,11 @@ export class TableHeightCalculatorService {
     this.config = config;
     setTimeout(() => {
       this.setTableMaxHeight();
+      this.setNumberOfRows();
     }, 0);
   }
 
-  setTableMaxHeight(): void {
+  private setTableMaxHeight(): void {
     const containerNativeElement = this.config?.containerRef?.nativeElement;
     if (containerNativeElement === null) {
       return;
@@ -63,9 +74,18 @@ export class TableHeightCalculatorService {
     this.tableMaxHeightPx = tableMaxHeightPx;
   }
 
+  private setNumberOfRows(): void {
+    let scrollbarWidthVal = scrollbarWidth();
+    if (!scrollbarWidthVal) {
+      scrollbarWidthVal = 0;
+    }
+    const availableHeightPx = this.tableMaxHeightPx - scrollbarWidthVal;
+    this.tableRowsNumber = Math.floor(availableHeightPx / this.rowHeightPx);
+  }
+
   private getTablePartsHeight(containerNativeElement: any): number {
     let height = 0;
-    const classNames: string[] = ['p-datatable-scrollable-header', 'p-paginator-bottom'];
+    const classNames: string[] = ['p-datatable-thead', 'p-paginator-bottom'];
     for (const className of classNames) {
       const elements = containerNativeElement.getElementsByClassName(className);
       for (const element of elements) {

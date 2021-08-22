@@ -24,3 +24,6 @@
   flex-basis: auto !important;
   flex-shrink: 0 !important;
 }
+tr td {
+  height: 2rem;
+}

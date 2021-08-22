@@ -6,6 +6,7 @@ import { MaxHeightCalculatorMode } from '@shared/shared/models/max-height-calcul
 import { MaxHeightCalculatorService } from '@shared/shared/services/max-height-calculator.service';
 import { ToastMessageService } from '@shared/shared/services/toast-message.service';
 import { TableCol } from '@shared/table/models/table-col';
+import { TableHeightCalculatorService } from '@shared/table/services/table-height-calculator.service';
 import { ConfirmationService, ConfirmEventType, MenuItem } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { finalize } from 'rxjs/operators';
@@ -18,6 +19,7 @@ import { User } from '../../models/user';
   styleUrls: ['./users-list.component.css'],
   providers: [
     MaxHeightCalculatorService,
+    TableHeightCalculatorService,
     ConfirmationService
   ]
 })
@@ -59,6 +61,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     private loadingAnimationService: LoadingService,
     private router: Router,
     private maxHeightCalculator: MaxHeightCalculatorService,
+    public tableHeightCalculator: TableHeightCalculatorService,
     private toastMessageService: ToastMessageService,
     private confirmationService: ConfirmationService) { }
 
@@ -70,6 +73,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     this.maxHeightCalculator.destroy();
+    this.tableHeightCalculator.destroy();
   }
 
   ngAfterViewInit(): void {
@@ -83,6 +87,13 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
         lg: 29
       },
       mode: MaxHeightCalculatorMode.Height
+    });
+    this.tableHeightCalculator.init({
+      containerRef: this.tableContainer,
+      staticReservedHeight: {
+        sm: 12,
+        lg: 29
+      }
     });
   }
 
