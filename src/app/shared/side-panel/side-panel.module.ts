@@ -4,14 +4,14 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
 
-import { LeftSidePanelComponent } from './components/left-side-panel/left-side-panel.component';
-import { LeftSidePanelButtonComponent } from './components/left-side-panel-button/left-side-panel-button.component';
+import { RightSidePanelComponent } from './components/right-side-panel/right-side-panel.component';
+import { RightSidePanelButtonComponent } from './components/right-side-panel-button/right-side-panel-button.component';
 
 
 @NgModule({
   declarations: [
-    LeftSidePanelButtonComponent,
-    LeftSidePanelComponent
+    RightSidePanelButtonComponent,
+    RightSidePanelComponent
   ],
   imports: [
     CommonModule,
@@ -20,8 +20,8 @@ import { LeftSidePanelButtonComponent } from './components/left-side-panel-butto
     TabViewModule
   ],
   exports: [
-    LeftSidePanelButtonComponent,
-    LeftSidePanelComponent
+    RightSidePanelButtonComponent,
+    RightSidePanelComponent
   ]
 })
 export class SidePanelModule { }

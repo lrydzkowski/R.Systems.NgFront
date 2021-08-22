@@ -2,7 +2,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 main {
   background-color: #F8F9FA;

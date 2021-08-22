@@ -1,17 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SubscriptionHandlerService } from '@shared/shared/services/subscription-handler.service';
-import { LeftSidePanelService } from '../../service/left-side-panel.service';
+import { RightSidePanelService } from '../../service/right-side-panel.service';
 
 @Component({
-  selector: 'left-side-panel-button',
-  templateUrl: './left-side-panel-button.component.html',
-  styleUrls: ['./left-side-panel-button.component.css'],
+  selector: 'right-side-panel-button',
+  templateUrl: './right-side-panel-button.component.html',
+  styleUrls: ['./right-side-panel-button.component.css'],
   providers: [SubscriptionHandlerService]
 })
-export class LeftSidePanelButtonComponent implements OnInit, OnDestroy {
+export class RightSidePanelButtonComponent implements OnInit, OnDestroy {
 
   constructor(
-    public leftSidePanelService: LeftSidePanelService,
+    public leftSidePanelService: RightSidePanelService,
     private subscriptionHandlerService: SubscriptionHandlerService) { }
 
   ngOnInit(): void { }

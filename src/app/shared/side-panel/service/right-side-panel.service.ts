@@ -7,7 +7,7 @@ import { OperationEnum } from '../models/operation-enum';
 @Injectable({
   providedIn: 'root'
 })
-export class LeftSidePanelService {
+export class RightSidePanelService {
 
   isOpen: boolean = false;
 

@@ -1,0 +1,9 @@
+/* button {
+  margin-right: calc(-0.25rem - 2px);
+}
+
+@media all and (min-width: 576px) {
+  button {
+    margin-right: calc(-1rem - 2px);
+  }
+} */

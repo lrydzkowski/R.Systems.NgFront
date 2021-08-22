@@ -3,7 +3,7 @@
       (click)="closePanel()"></div>
 <div  *ngIf="leftSidePanelService.isOpen"
       [@panelState]="{value: 'visible', params: {transform: transformOptions, transition: transitionOptions}}"
-      class="left-side-panel">
+      class="right-side-panel">
   <div class="content-wrapper flex flex-column">
     <div class="buttons-container p-3">
       <button pButton
