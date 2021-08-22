@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingService } from '@shared/loading/services/loading.service';
+import { CustomMenuItem } from '@shared/shared/models/custom-menu-item';
 import { MaxHeightCalculatorMode } from '@shared/shared/models/max-height-calculator-mode';
 import { MaxHeightCalculatorService } from '@shared/shared/services/max-height-calculator.service';
 import { ToastMessageService } from '@shared/shared/services/toast-message.service';
@@ -48,7 +49,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
       filterType: 'text' }
   ];
 
-  tableMenuItems: MenuItem[] = [];
+  tableMenuItems: CustomMenuItem[] = [];
 
   tableContextMenuItems: MenuItem[] = [];
 
@@ -86,10 +87,25 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
   private initTableMenuItems(): void {
     this.tableMenuItems = [
       {
-        label: $localize`Add new user`,
+        label: $localize`Add user`,
         icon: 'pi pi-plus',
         command: () => {
           this.redirectToAddUserForm();
+        },
+        data: {
+          tooltip: $localize`Add new user`,
+          className: 'p-button-outlined p-button-success mr-2'
+        }
+      },
+      {
+        label: $localize`Edit user`,
+        icon: 'pi pi-pencil',
+        command: () => {
+          this.onEditButtonClick();
+        },
+        data: {
+          tooltip: $localize`Edit existing user`,
+          className: 'p-button-outlined mr-2'
         }
       },
       {
@@ -97,6 +113,10 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
         icon: 'pi pi-trash',
         command: () => {
           this.deleteUser(this.getSelectedUsersIds());
+        },
+        data: {
+          tooltip: $localize`Delete existing user`,
+          className: 'p-button-outlined p-button-danger mr-2'
         }
       },
       {
@@ -107,9 +127,34 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
             return;
           }
           this.clear(this.table);
+        },
+        data: {
+          tooltip: $localize`Clear table state`,
+          className: 'p-button-outlined'
         }
       }
     ];
+  }
+
+  getButtonLabel(menuItem: CustomMenuItem): string {
+    if (!menuItem.label) {
+      return '';
+    }
+    return menuItem.label;
+  }
+
+  getButtonIcon(menuItem: CustomMenuItem): string {
+    if (!menuItem.icon) {
+      return '';
+    }
+    return menuItem.icon;
+  }
+
+  handleMenuButtonClick(menuItem: CustomMenuItem): void {
+    if (!menuItem.command) {
+      return;
+    }
+    menuItem.command();
   }
 
   getSelectedUsersIds(): number[] {
