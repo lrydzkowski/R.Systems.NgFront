@@ -1,15 +1,12 @@
 import { animate, animation, style, transition, trigger, useAnimation } from '@angular/animations';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SubscriptionHandlerService } from '@shared/shared/services/subscription-handler.service';
+import { RightSidePanelStateService } from '@shared/side-panel/service/right-side-panel-state.service';
 import { RightSidePanelService } from '../../service/right-side-panel.service';
 
 const showAnimation = animation([
   style({ transform: '{{transform}}', opacity: 0 }),
   animate('{{transition}}')
-]);
-
-const hideAnimation = animation([
-  animate('{{transition}}', style({ transform: '{{transform}}', opacity: 0 }))
 ]);
 
 @Component({
@@ -20,32 +17,27 @@ const hideAnimation = animation([
     trigger('panelState', [
       transition('void => visible', [
         useAnimation(showAnimation)
-      ])/*,
-      transition('visible => void', [
-        useAnimation(hideAnimation)
-      ])*/
+      ])
     ])
   ],
-  providers: [SubscriptionHandlerService]
+  providers: [
+    SubscriptionHandlerService
+  ]
 })
-export class RightSidePanelComponent implements OnInit, OnDestroy {
+export class RightSidePanelComponent implements OnInit {
 
   transitionOptions: string = '150ms cubic-bezier(0, 0, 0.2, 1)';
 
   transformOptions: any = "translate3d(100%, 0px, 0px)";
 
   constructor(
-    public leftSidePanelService: RightSidePanelService,
-    private subscriptionHandlerService: SubscriptionHandlerService) { }
+    private rightSidePanelService: RightSidePanelService,
+    public rightSidePanelStateService: RightSidePanelStateService) { }
 
   ngOnInit(): void { }
 
-  ngOnDestroy(): void {
-    this.subscriptionHandlerService.unsubscribeAll();
-  }
-
   closePanel(): void {
-    this.leftSidePanelService.close();
+    this.rightSidePanelService.close();
   }
 
 }

@@ -1,7 +1,7 @@
-<div  *ngIf="leftSidePanelService.isOpen"
+<div  *ngIf="rightSidePanelStateService.panelExists && rightSidePanelStateService.panelIsOpen"
       class="mask"
       (click)="closePanel()"></div>
-<div  *ngIf="leftSidePanelService.isOpen"
+<div  *ngIf="rightSidePanelStateService.panelExists && rightSidePanelStateService.panelIsOpen"
       [@panelState]="{value: 'visible', params: {transform: transformOptions, transition: transitionOptions}}"
       class="right-side-panel">
   <div class="content-wrapper flex flex-column">
@@ -15,10 +15,10 @@
     <div class="content pt-3 pl-2 pr-2">
       <p-tabView>
         <p-tabPanel header="Details" i18n-header>
-           Content 1
+          Content 1
         </p-tabPanel>
         <p-tabPanel header="Sth different" i18n-header>
-            Content 2
+          Content 2
         </p-tabPanel>
       </p-tabView>
     </div>

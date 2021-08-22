@@ -1,31 +1,25 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { SubscriptionHandlerService } from '@shared/shared/services/subscription-handler.service';
+import { RightSidePanelStateService } from '@shared/side-panel/service/right-side-panel-state.service';
 import { RightSidePanelService } from '../../service/right-side-panel.service';
 
 @Component({
   selector: 'right-side-panel-button',
   templateUrl: './right-side-panel-button.component.html',
   styleUrls: ['./right-side-panel-button.component.css'],
-  providers: [SubscriptionHandlerService]
+  providers: [
+    SubscriptionHandlerService
+  ]
 })
-export class RightSidePanelButtonComponent implements OnInit, OnDestroy {
+export class RightSidePanelButtonComponent implements OnInit {
 
   constructor(
-    public leftSidePanelService: RightSidePanelService,
-    private subscriptionHandlerService: SubscriptionHandlerService) { }
+    private rightSidePanelService: RightSidePanelService,
+    public rightSidePanelStateService: RightSidePanelStateService) { }
 
   ngOnInit(): void { }
 
-  ngOnDestroy(): void {
-    this.subscriptionHandlerService.unsubscribeAll();
-  }
-
-  isShowed(): boolean {
-    return this.leftSidePanelService.isShowed();
-  }
-
   openLeftSidePanel(): void {
-    this.leftSidePanelService.open();
+    this.rightSidePanelService.open();
   }
-
 }

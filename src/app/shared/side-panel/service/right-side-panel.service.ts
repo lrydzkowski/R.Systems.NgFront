@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { OperationEnum } from '../models/operation-enum';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { OperationTypeEnum } from '../models/operation-type-enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RightSidePanelService {
 
-  isOpen: boolean = false;
+  private operationSubject = new BehaviorSubject<OperationTypeEnum>(OperationTypeEnum.Initialization);
 
-  private isHandled: boolean = false;
-
-  private operationSubject = new Subject<OperationEnum>();
+  private isCurrentlyOpen = false;
 
   constructor(
     private router: Router,
@@ -21,39 +19,7 @@ export class RightSidePanelService {
       this.handleEvents();
   }
 
-  isShowed(): boolean {
-    return this.isHandled && !this.isOpen;
-  }
-
-  open(): void {
-    this.operationSubject.next(OperationEnum.Open);
-  }
-
-  onOpen(): Observable<OperationEnum> {
-    return this.operationSubject.asObservable()
-      .pipe(filter((operation: OperationEnum) => operation === OperationEnum.Open));
-  }
-
-  close(): void {
-    this.operationSubject.next(OperationEnum.Close);
-  }
-
-  onClose(): Observable<OperationEnum> {
-    return this.operationSubject.asObservable()
-      .pipe(filter((operation: OperationEnum) => operation === OperationEnum.Close));
-  }
-
-  private handleEvents() {
-    this.operationSubject.subscribe((operation: OperationEnum) => {
-      if (operation == OperationEnum.Open) {
-        this.isOpen = true;
-      }
-    });
-    this.operationSubject.subscribe((operation: OperationEnum) => {
-      if (operation == OperationEnum.Close) {
-        this.isOpen = false;
-      }
-    });
+  private handleEvents(): void {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -63,8 +29,12 @@ export class RightSidePanelService {
 
   private checkLeftSidePanelState(): void {
     const hasLeftSidePanel: boolean = this.getLeftSidePanelInfo(this.activatedRoute.root);
-    this.isHandled = hasLeftSidePanel;
-    if (this.isOpen && !this.isHandled) {
+    if (hasLeftSidePanel) {
+      this.activate();
+      return;
+    }
+    this.deactivate();
+    if (this.isCurrentlyOpen) {
       this.close();
     }
   }
@@ -80,5 +50,44 @@ export class RightSidePanelService {
       hasLeftSidePanel = false;
     }
     return this.getLeftSidePanelInfo(child, hasLeftSidePanel);
+  }
+
+  open(): void {
+    this.operationSubject.next(OperationTypeEnum.Open);
+  }
+
+  close(): void {
+    this.operationSubject.next(OperationTypeEnum.Close);
+  }
+
+  private activate(): void {
+    this.operationSubject.next(OperationTypeEnum.Activate);
+  }
+
+  private deactivate(): void {
+    this.operationSubject.next(OperationTypeEnum.Deactivate);
+  }
+
+  onOpen(): Observable<OperationTypeEnum> {
+    return this.getOperationSubjectObservable(OperationTypeEnum.Open);
+  }
+
+  onClose(): Observable<OperationTypeEnum> {
+    return this.getOperationSubjectObservable(OperationTypeEnum.Close);
+  }
+
+  onActivate(): Observable<OperationTypeEnum> {
+    return this.getOperationSubjectObservable(OperationTypeEnum.Activate);
+  }
+
+  onDeactivate(): Observable<OperationTypeEnum> {
+    return this.getOperationSubjectObservable(OperationTypeEnum.Deactivate);
+  }
+
+  private getOperationSubjectObservable(expectedOperation: OperationTypeEnum): Observable<OperationTypeEnum> {
+    return this.operationSubject.asObservable()
+      .pipe(
+        filter((operation: OperationTypeEnum) => operation === expectedOperation)
+      );
   }
 }
