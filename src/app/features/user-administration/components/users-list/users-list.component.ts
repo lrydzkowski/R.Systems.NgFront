@@ -126,7 +126,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
           if (!this.table) {
             return;
           }
-          this.clear(this.table);
+          this.clearTableState(this.table);
         },
         data: {
           tooltip: $localize`Clear table state`,
@@ -238,6 +238,11 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     throw new Error('Method not implemented.');
   }
 
+  clearTableState(table: Table): void {
+    this.clear(table);
+    this.selectedUsers = [];
+  }
+
   private showUserDetails(userId: number): void {
     throw new Error('Method not implemented.');
   }
@@ -250,7 +255,15 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     return user.userId;
   }
 
-  handlePageEvent(event: { first: number; rows: number; }): void {
+  handlePageEvent(): void {
+    this.clearSelection();
+  }
+
+  handleSortEvent(): void {
+    this.clearSelection();
+  }
+
+  handleFilterEvent(): void {
     this.clearSelection();
   }
 

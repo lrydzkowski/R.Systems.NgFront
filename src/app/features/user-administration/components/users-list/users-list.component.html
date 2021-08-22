@@ -44,7 +44,9 @@
               stateStorage="session"
               stateKey="users-session"
               [rowTrackBy]="identifyUser"
-              (onPage)="handlePageEvent($event)">
+              (onPage)="handlePageEvent()"
+              (onSort)="handleSortEvent()"
+              (onFilter)="handleFilterEvent()">
       <ng-template pTemplate="header" let-columns>
         <tr>
           <th class="checkbox-col justify-content-center p-0">
