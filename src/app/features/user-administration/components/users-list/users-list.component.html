@@ -20,6 +20,16 @@
               i18n-pTooltip></button>
       <button pButton
               type="button"
+              label="Edit user"
+              class="p-button-outlined mr-2"
+              icon="pi pi-pencil"
+              (click)="onEditButtonClick()"
+              pTooltip="Edit existing user"
+              tooltipPosition="top"
+              i18n-label
+              i18n-pTooltip></button>
+      <button pButton
+              type="button"
               label="Delete user"
               class="p-button-outlined p-button-danger mr-2"
               icon="pi pi-trash"

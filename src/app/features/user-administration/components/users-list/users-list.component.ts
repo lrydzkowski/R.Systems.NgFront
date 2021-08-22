@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoadingService } from '@shared/loading/services/loading.service';
 import { MaxHeightCalculatorMode } from '@shared/shared/models/max-height-calculator-mode';
 import { MaxHeightCalculatorService } from '@shared/shared/services/max-height-calculator.service';
+import { ToastMessageService } from '@shared/shared/services/toast-message.service';
 import { TableCol } from '@shared/table/models/table-col';
 import { MenuItem } from 'primeng/api';
 import { Table } from 'primeng/table';
@@ -55,7 +56,8 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     private userApi: UserApiService,
     private loadingAnimationService: LoadingService,
     private router: Router,
-    private maxHeightCalculator: MaxHeightCalculatorService) { }
+    private maxHeightCalculator: MaxHeightCalculatorService,
+    private toastMessageService: ToastMessageService) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -145,6 +147,20 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       }
     ]
+  }
+
+  onEditButtonClick(): void {
+    this.toastMessageService.clearToastMessage();
+    if (this.selectedUsers?.length !== 1) {
+      this.toastMessageService.showToastMessage({
+        severity: 'error',
+        summary: $localize`Error`,
+        detail: $localize`You have to select exactly one user.`,
+        life: 5000
+      });
+      return;
+    }
+    this.redirectToEditUserForm(this.selectedUsers[0].userId);
   }
 
   onDeleteButtonClick(): void {
