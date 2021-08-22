@@ -18,6 +18,7 @@ export class ToastMessageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.handleShowToastMessageEvent();
+    this.handleClearToastMessageEvent();
   }
 
   ngOnDestroy(): void {
@@ -26,10 +27,21 @@ export class ToastMessageComponent implements OnInit, OnDestroy {
 
   private handleShowToastMessageEvent(): void {
     this.subscriptionHandler.data.showToastMessage = this.toastMessageService.onShowToastMessage().subscribe({
-      next: (msg: Message) => {
+      next: (msg: Message | null) => {
+        if (msg === null) {
+          return;
+        }
         this.messageService.add(msg);
       }
     });
+  }
+
+  private handleClearToastMessageEvent(): void {
+    this.subscriptionHandler.data.clearToastMessage = this.toastMessageService.onClearToastMessage().subscribe({
+      next: () => {
+        this.messageService.clear();
+      }
+    })
   }
 
 }
