@@ -9,9 +9,9 @@ import { MenuItem } from 'primeng/api';
 })
 export class UserMenuComponent implements OnInit {
 
-  private urlPasswordChangeForm: string = $localize`user-account/password-change`;
-
   userMenuItems: MenuItem[] = [];
+
+  private urlPasswordChangeForm: string = $localize`user-account/password-change`;
 
   constructor(private router: Router) { }
 

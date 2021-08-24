@@ -7,9 +7,9 @@ import { Subject } from 'rxjs';
 })
 export class AppMenuService {
 
-  constructor() { }
-
   updateState: Subject<boolean> = new Subject<boolean>();
+
+  constructor() { }
 
   getMenu(authenticated: boolean): MenuItem[] {
     return [

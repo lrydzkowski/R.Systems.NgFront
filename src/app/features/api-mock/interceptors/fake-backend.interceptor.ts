@@ -9,6 +9,7 @@ import {
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import users from '../data/users.json';
+import tokens from '../data/tokens.json';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -27,8 +28,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     console.log(url);
     if (url === '/login' && method === 'POST') {
       const body = {
-        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6WyJzdXBlciIsInVzZXIiXSwiZXhwIjoxNjIzOTUwNjg5fQ.WcH6yfRFs8UWXgvGuv7HCt2OKnV6zKvleOgy1hsk-0E",
-        "refreshToken": "yGfbNkAbd8ViQWVbXPPJ/pw/obpPAeJEEv3iAgSIXBw="
+        accessToken: tokens.accessToken,
+        refreshToken: tokens.refreshToken
       };
       return of(new HttpResponse({ status: 200, body })).pipe(delay(500));
     } else if (url === '/users' && method === 'GET') {

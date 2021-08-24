@@ -33,18 +33,7 @@ export class FormHandlerService {
     return true;
   }
 
-  private validateAllFields(formGroup: FormGroup): void {
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsDirty({ onlySelf: true });
-      } else if (control instanceof FormGroup) {
-        this.validateAllFields(control);
-      }
-    });
-  }
-
-  getFieldValues(formGroup: FormGroup, values: { [key: string]: unknown } = {}): object {
+  getFieldValues<T extends object>(formGroup: FormGroup, values: { [key: string]: unknown } = {}): T {
     Object.keys(formGroup.controls).forEach(field => {
       const control = formGroup.get(field);
       if (control instanceof FormControl) {
@@ -76,6 +65,17 @@ export class FormHandlerService {
         values[field] = this.getFieldValues(control, {});
       }
     });
-    return values;
+    return values as T;
+  }
+
+  private validateAllFields(formGroup: FormGroup): void {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsDirty({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFields(control);
+      }
+    });
   }
 }

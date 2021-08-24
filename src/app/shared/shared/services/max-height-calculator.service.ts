@@ -32,7 +32,7 @@ export class MaxHeightCalculatorService {
         next: () => {
           this.setElementHeight();
         }
-      })
+      });
   }
 
   init(config: MaxHeightCalculatorConfig): void {
@@ -50,7 +50,7 @@ export class MaxHeightCalculatorService {
     const offsets = nativeElement.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     const staticHeight = this.getStaticReservedHeight();
-    let maxHeightPx = windowHeight - offsets.top - staticHeight;
+    const maxHeightPx = windowHeight - offsets.top - staticHeight;
     if (maxHeightPx < this.getMinHeight()) {
       nativeElement.style.height = 'auto';
       return;

@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AboutAppComponent implements OnInit, OnDestroy {
 
-  visible: boolean = false;
+  visible = false;
 
   version: string = environment.version;
 
@@ -29,10 +29,19 @@ export class AboutAppComponent implements OnInit, OnDestroy {
     this.unsubscribeOpenWindowEvent();
   }
 
+  getYearsRange(): string {
+    const startYear = 2021;
+    const currentYear: number = new Date().getFullYear();
+    if (startYear === currentYear) {
+      return startYear.toString();
+    }
+    return `${startYear} - ${currentYear}`;
+  }
+
   private subscribeOpenWindowEvent(): void {
     this.modalWindowHandler.onOpenWindow('about-app').subscribe({
       next: (modalWindowOperation: ModalWindowOperationEnum) => {
-        if (modalWindowOperation != ModalWindowOperationEnum.Open) {
+        if (modalWindowOperation !== ModalWindowOperationEnum.Open) {
           return;
         }
         this.visible = true;
@@ -45,15 +54,6 @@ export class AboutAppComponent implements OnInit, OnDestroy {
       return;
     }
     this.openWindowSubscription.unsubscribe();
-  }
-
-  getYearsRange(): string {
-    const startYear = 2021;
-    const currentYear: number = new Date().getFullYear();
-    if (startYear === currentYear) {
-      return startYear.toString();
-    }
-    return `${startYear} - ${currentYear}`;
   }
 
 }

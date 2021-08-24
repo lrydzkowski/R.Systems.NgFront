@@ -47,7 +47,7 @@ export class RandomDataGeneratorService {
 
   generateUser(words: string[], firstNames: string[], lastNames: string[], userId: number): User {
     const user: User = {
-      userId: userId,
+      userId,
       login: words[this.getRandomInteger(0, words.length)],
       email: words[this.getRandomInteger(0, words.length)] + '@lukaszrydzkowski.pl',
       firstName: firstNames[this.getRandomInteger(0, firstNames.length)],

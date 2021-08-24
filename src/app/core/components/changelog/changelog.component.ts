@@ -13,7 +13,7 @@ export class ChangelogComponent implements OnInit, OnDestroy {
 
   changelog = changelog;
 
-  visible: boolean = false;
+  visible = false;
 
   private openWindowSubscription: Subscription | null = null;
 
@@ -30,7 +30,7 @@ export class ChangelogComponent implements OnInit, OnDestroy {
   private subscribeOpenWindowEvent(): void {
     this.modalWindowHandler.onOpenWindow('changelog').subscribe({
       next: (modalWindowOperation: ModalWindowOperationEnum) => {
-        if (modalWindowOperation != ModalWindowOperationEnum.Open) {
+        if (modalWindowOperation !== ModalWindowOperationEnum.Open) {
           return;
         }
         this.visible = true;

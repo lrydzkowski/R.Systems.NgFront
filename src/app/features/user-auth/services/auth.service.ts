@@ -13,11 +13,11 @@ export class AuthService {
     private jwtHelper: JwtHelperService) { }
 
   isAuthenticated(): Observable<boolean> {
-    let token = this.jwtTokenService.getToken();
+    const token = this.jwtTokenService.getToken();
     if (token === null || token.length === 0) {
       return of(false);
     }
-    let isTokenExpired = this.jwtHelper.isTokenExpired(token);
+    const isTokenExpired = this.jwtHelper.isTokenExpired(token);
     if (isTokenExpired) {
 
     }

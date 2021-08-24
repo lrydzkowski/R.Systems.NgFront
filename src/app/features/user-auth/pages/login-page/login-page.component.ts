@@ -24,7 +24,7 @@ export class LoginPageComponent implements OnInit {
     ]]
   });
 
-  isProcessing: boolean = false;
+  isProcessing = false;
 
   constructor(
     public formHandler: FormHandlerService,
@@ -42,7 +42,7 @@ export class LoginPageComponent implements OnInit {
       return;
     }
     this.isProcessing = true;
-    const formData: LoginRequest = this.formHandler.getFieldValues(this.form) as LoginRequest;
+    const formData: LoginRequest = this.formHandler.getFieldValues<LoginRequest>(this.form);
     this.userAuthApi.login(formData)
       .pipe(finalize(() => this.isProcessing = false))
       .subscribe({

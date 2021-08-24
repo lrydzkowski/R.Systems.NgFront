@@ -41,7 +41,7 @@ export class ToastMessageComponent implements OnInit, OnDestroy {
       next: () => {
         this.messageService.clear();
       }
-    })
+    });
   }
 
 }

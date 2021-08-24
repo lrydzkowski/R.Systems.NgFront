@@ -29,7 +29,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild('tableContainer') tableContainer?: ElementRef;
 
-  loadingAnimationKey: string = 'users-list-loading-animation';
+  loadingAnimationKey = 'users-list-loading-animation';
 
   users: User[] = [];
 
@@ -97,58 +97,6 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  private initTableMenuItems(): void {
-    this.tableMenuItems = [
-      {
-        label: $localize`Add user`,
-        icon: 'pi pi-plus',
-        command: () => {
-          this.redirectToAddUserForm();
-        },
-        data: {
-          tooltip: $localize`Add new user`,
-          className: 'p-button-outlined p-button-success mr-2'
-        }
-      },
-      {
-        label: $localize`Edit user`,
-        icon: 'pi pi-pencil',
-        command: () => {
-          this.onEditButtonClick();
-        },
-        data: {
-          tooltip: $localize`Edit existing user`,
-          className: 'p-button-outlined mr-2'
-        }
-      },
-      {
-        label: $localize`Delete user`,
-        icon: 'pi pi-trash',
-        command: () => {
-          this.onDeleteButtonClick(this.selectedUsers);
-        },
-        data: {
-          tooltip: $localize`Delete existing user`,
-          className: 'p-button-outlined p-button-danger mr-2'
-        }
-      },
-      {
-        label: $localize`Clear table state`,
-        icon: 'pi pi-filter-slash',
-        command: () => {
-          if (!this.table) {
-            return;
-          }
-          this.clearTableState(this.table);
-        },
-        data: {
-          tooltip: $localize`Clear table state`,
-          className: 'p-button-outlined'
-        }
-      }
-    ];
-  }
-
   getButtonLabel(menuItem: CustomMenuItem): string {
     if (!menuItem.label) {
       return '';
@@ -175,41 +123,6 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
       return [];
     }
     return this.selectedUsers.map(user => user.userId);
-  }
-
-  private initTableContextMenuItems(): void {
-    this.tableContextMenuItems = [
-      {
-        label: $localize`Edit`,
-        icon: 'pi pi-pencil',
-        command: () => {
-          if (this.selectedUserForContextMenu === null) {
-            return;
-          }
-          this.redirectToEditUserForm(this.selectedUserForContextMenu.userId);
-        }
-      },
-      {
-        label: $localize`Delete`,
-        icon: 'pi pi-trash',
-        command: () => {
-          if (this.selectedUserForContextMenu === null) {
-            return;
-          }
-          this.onDeleteButtonClick([this.selectedUserForContextMenu]);
-        }
-      },
-      {
-        label: $localize`Show details`,
-        icon: 'pi pi-eye',
-        command: () => {
-          if (this.selectedUserForContextMenu === null) {
-            return;
-          }
-          this.showUserDetails(this.selectedUserForContextMenu.userId);
-        }
-      }
-    ]
   }
 
   onEditButtonClick(): void {
@@ -295,10 +208,6 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.selectedUsers = [];
   }
 
-  private showUserDetails(userId: number): void {
-    throw new Error('Method not implemented.');
-  }
-
   clear(table: Table): void {
     table.clear();
   }
@@ -317,6 +226,97 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   handleFilterEvent(): void {
     this.clearSelection();
+  }
+
+  private initTableMenuItems(): void {
+    this.tableMenuItems = [
+      {
+        label: $localize`Add user`,
+        icon: 'pi pi-plus',
+        command: () => {
+          this.redirectToAddUserForm();
+        },
+        data: {
+          tooltip: $localize`Add new user`,
+          className: 'p-button-outlined p-button-success mr-2'
+        }
+      },
+      {
+        label: $localize`Edit user`,
+        icon: 'pi pi-pencil',
+        command: () => {
+          this.onEditButtonClick();
+        },
+        data: {
+          tooltip: $localize`Edit existing user`,
+          className: 'p-button-outlined mr-2'
+        }
+      },
+      {
+        label: $localize`Delete user`,
+        icon: 'pi pi-trash',
+        command: () => {
+          this.onDeleteButtonClick(this.selectedUsers);
+        },
+        data: {
+          tooltip: $localize`Delete existing user`,
+          className: 'p-button-outlined p-button-danger mr-2'
+        }
+      },
+      {
+        label: $localize`Clear table state`,
+        icon: 'pi pi-filter-slash',
+        command: () => {
+          if (!this.table) {
+            return;
+          }
+          this.clearTableState(this.table);
+        },
+        data: {
+          tooltip: $localize`Clear table state`,
+          className: 'p-button-outlined'
+        }
+      }
+    ];
+  }
+
+  private initTableContextMenuItems(): void {
+    this.tableContextMenuItems = [
+      {
+        label: $localize`Edit`,
+        icon: 'pi pi-pencil',
+        command: () => {
+          if (this.selectedUserForContextMenu === null) {
+            return;
+          }
+          this.redirectToEditUserForm(this.selectedUserForContextMenu.userId);
+        }
+      },
+      {
+        label: $localize`Delete`,
+        icon: 'pi pi-trash',
+        command: () => {
+          if (this.selectedUserForContextMenu === null) {
+            return;
+          }
+          this.onDeleteButtonClick([this.selectedUserForContextMenu]);
+        }
+      },
+      {
+        label: $localize`Show details`,
+        icon: 'pi pi-eye',
+        command: () => {
+          if (this.selectedUserForContextMenu === null) {
+            return;
+          }
+          this.showUserDetails(this.selectedUserForContextMenu.userId);
+        }
+      }
+    ];
+  }
+
+  private showUserDetails(userId: number): void {
+    throw new Error('Method not implemented.');
   }
 
   private clearSelection(): void {

@@ -7,9 +7,9 @@ import { RightSidePanelService } from './right-side-panel.service';
 })
 export class RightSidePanelStateService {
 
-  panelExists: boolean = false;
+  panelExists = false;
 
-  panelIsOpen: boolean = false;
+  panelIsOpen = false;
 
   private subscriptions: { [key: string]: Subscription } = {};
 

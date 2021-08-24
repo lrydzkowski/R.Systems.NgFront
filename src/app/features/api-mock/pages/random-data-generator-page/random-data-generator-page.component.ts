@@ -20,9 +20,9 @@ export class RandomDataGeneratorPageComponent implements OnInit, OnDestroy, Afte
 
   @ViewChild('jsonContainer') jsonContainer?: ElementRef;
 
-  json: string = '';
+  json = '';
 
-  loadingAnimationKey: string = 'randomDataGenerator';
+  loadingAnimationKey = 'randomDataGenerator';
 
   constructor(
     private randomDataGenerator: RandomDataGeneratorService,

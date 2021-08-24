@@ -8,7 +8,7 @@ import { LoadingService } from '../../services/loading.service';
 })
 export class LoadingAnimationComponent implements OnInit {
 
-  @Input() loadingAnimationKey: string = 'global';
+  @Input() loadingAnimationKey = 'global';
 
   constructor(private loadingService: LoadingService) { }
 

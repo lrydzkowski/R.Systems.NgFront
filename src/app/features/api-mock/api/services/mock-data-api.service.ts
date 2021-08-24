@@ -8,9 +8,9 @@ import { map, tap } from 'rxjs/operators';
 })
 export class MockDataApiService {
 
-  private url: string = '/assets/words/';
+  private url = '/assets/words/';
 
-  private cache: { [key: string]: { fileName: string, data: string[] } } = {
+  private cache: { [key: string]: { fileName: string; data: string[] } } = {
     words: {
       fileName: 'words.txt',
       data: []
@@ -25,8 +25,7 @@ export class MockDataApiService {
     }
   };
 
-  constructor(
-    private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   getStaticData(key: string, useCache: boolean = true): Observable<string[]> {
     if (this.canUseCache(key, useCache)) {

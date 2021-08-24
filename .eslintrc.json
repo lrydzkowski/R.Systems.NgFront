@@ -16,6 +16,8 @@
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
@@ -38,7 +40,29 @@
             "style": "kebab-case"
           }
         ],
-        "@angular-eslint/no-empty-lifecycle-method": "off"
+        "@angular-eslint/no-empty-lifecycle-method": "off",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "enumMember",
+            "format": ["PascalCase"]
+          }
+        ],
+        "max-len": [
+          "error",
+          {
+            "code": 120
+          }
+        ],
+        "@typescript-eslint/ban-types": [
+          "error",
+          {
+            "types": {
+              "object": false
+            },
+            "extendDefaults": true
+          }
+        ]
       }
     },
     {

@@ -9,7 +9,7 @@ import { BreadcrumbInfo } from '../models/breadcrumb-info';
 })
 export class BreadcrumbHandlerService {
 
-  isShowed: boolean = false;
+  isShowed = false;
 
   items: MenuItem[] = [];
 
@@ -46,18 +46,25 @@ export class BreadcrumbHandlerService {
     if (routeURL !== '') {
       url += `/${routeURL}`;
     }
-    return url
+    return url;
   }
 
-  private addBreadcrumbItem(activatedRouteSnapshot: ActivatedRouteSnapshot, breadcrumbInfo: BreadcrumbInfo, url: string): void {
-    const label = activatedRouteSnapshot.data['breadcrumb'];
+  private addBreadcrumbItem(
+    activatedRouteSnapshot: ActivatedRouteSnapshot,
+    breadcrumbInfo: BreadcrumbInfo,
+    url: string
+  ): void {
+    const label = activatedRouteSnapshot.data.breadcrumb;
     if (typeof label === 'string') {
       breadcrumbInfo.items.push({label, routerLink: [url]});
     }
   }
 
-  private setBreadcrumbVisibility(activatedRouteSnapshot: ActivatedRouteSnapshot, breadcrumbInfo: BreadcrumbInfo): void {
-    let hasBreadcrumb = activatedRouteSnapshot.data['hasBreadcrumb'];
+  private setBreadcrumbVisibility(
+    activatedRouteSnapshot: ActivatedRouteSnapshot,
+    breadcrumbInfo: BreadcrumbInfo
+  ): void {
+    let hasBreadcrumb = activatedRouteSnapshot.data.hasBreadcrumb;
     if (typeof hasBreadcrumb !== 'boolean') {
       hasBreadcrumb = false;
     }

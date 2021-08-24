@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PasswordChangeRequest } from '@features/user-account/api/models/password-change-request';
 import { FormHandlerService } from '@shared/shared/services/form-handler.service';
 import { ToastMessageService } from '@shared/shared/services/toast-message.service';
 
@@ -9,8 +10,6 @@ import { ToastMessageService } from '@shared/shared/services/toast-message.servi
   styleUrls: ['./password-change-form.component.css']
 })
 export class PasswordChangeFormComponent implements OnInit {
-
-  private passwordMaxLength: number = 40;
 
   form: FormGroup = this.formBuilder.group({
     currentPassword: ['', [
@@ -27,6 +26,8 @@ export class PasswordChangeFormComponent implements OnInit {
     ]]
   });
 
+  private passwordMaxLength = 40;
+
   constructor(
     private formBuilder: FormBuilder,
     public formHandler: FormHandlerService,
@@ -38,7 +39,7 @@ export class PasswordChangeFormComponent implements OnInit {
     if (!this.formHandler.isFormValid(this.form)) {
       return;
     }
-    const fieldValues: object = this.formHandler.getFieldValues(this.form);
+    const fieldValues: PasswordChangeRequest = this.formHandler.getFieldValues<PasswordChangeRequest>(this.form);
     this.showConfirmationMessage();
     this.clearFormValues();
     console.log('submit');

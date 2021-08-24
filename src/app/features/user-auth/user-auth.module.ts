@@ -20,13 +20,9 @@ import { SharedModule } from '@shared/shared/shared.module';
 import { JwtTokenService } from './services/jwt-token.service';
 
 
-export function jwtOptionsFactory(jwtTokenService: JwtTokenService) {
-  return {
-    tokenGetter: () => {
-      return jwtTokenService.getToken();
-    }
-  }
-}
+export const jwtOptionsFactory = (jwtTokenService: JwtTokenService) => ({
+  tokenGetter: () => jwtTokenService.getToken()
+});
 
 @NgModule({
   declarations: [

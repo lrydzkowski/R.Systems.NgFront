@@ -12,9 +12,9 @@ export class HeaderComponent implements OnInit {
 
   menuItems: MenuItem[] = [];
 
-  mobileMenuVisible: boolean = false;
+  mobileMenuVisible = false;
 
-  userIsLogged: boolean = false;
+  userIsLogged = false;
 
   constructor(
     private appMenuService: AppMenuService,

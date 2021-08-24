@@ -7,11 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TileComponent implements OnInit {
 
-  @Input() linkUrl: string = '';
+  @Input() linkUrl = '';
 
-  @Input() header: string = '';
+  @Input() header = '';
 
-  @Input() description: string = '';
+  @Input() description = '';
 
   constructor() { }
 

@@ -10,15 +10,15 @@ import { scrollbarWidth } from '@xobotyi/scrollbar-width';
 })
 export class TableHeightCalculatorService {
 
-  private readonly defaultTableMaxHeightPx = 10000;
+  readonly defaultTableMaxHeightPx = 10000;
 
-  private readonly defaultTableMinHeightPx = 200;
+  readonly defaultTableMinHeightPx = 200;
 
-  private readonly defaultTableRowsMaxNumber = 50;
+  readonly defaultTableRowsMaxNumber = 50;
 
-  private readonly defaultTableRowsMinNumber = 10;
+  readonly defaultTableRowsMinNumber = 10;
 
-  private readonly rowHeightPx = 28;
+  readonly rowHeightPx = 28;
 
   tableMaxHeightPx: number = this.defaultTableMaxHeightPx;
 
@@ -46,7 +46,7 @@ export class TableHeightCalculatorService {
           this.setTableMaxHeight();
           this.setNumberOfRows();
         }
-      })
+      });
   }
 
   init(config: TableHeightCalculatorConfig): void {

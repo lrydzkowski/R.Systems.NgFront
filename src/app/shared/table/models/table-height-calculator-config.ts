@@ -1,11 +1,11 @@
-import { ElementRef } from "@angular/core";
+import { ElementRef } from '@angular/core';
 
 export interface TableHeightCalculatorConfig {
-  containerRef: ElementRef,
+  containerRef: ElementRef;
   staticReservedHeight: {
-    sm?: number,
-    md?: number,
-    lg?: number
-  },
-  tableMinHeightPx?: number
+    sm?: number;
+    md?: number;
+    lg?: number;
+  };
+  tableMinHeightPx?: number;
 }

@@ -26,9 +26,9 @@ const showAnimation = animation([
 })
 export class RightSidePanelComponent implements OnInit {
 
-  transitionOptions: string = '150ms cubic-bezier(0, 0, 0.2, 1)';
+  transitionOptions = '150ms cubic-bezier(0, 0, 0.2, 1)';
 
-  transformOptions: any = "translate3d(100%, 0px, 0px)";
+  transformOptions = 'translate3d(100%, 0px, 0px)';
 
   constructor(
     private rightSidePanelService: RightSidePanelService,

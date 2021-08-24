@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RandomDataGeneratorPageComponent } from './pages/random-data-generator-page/random-data-generator-page.component';
+import { RandomDataGeneratorPageComponent } from
+  './pages/random-data-generator-page/random-data-generator-page.component';
 
 const routes: Routes = [
   {

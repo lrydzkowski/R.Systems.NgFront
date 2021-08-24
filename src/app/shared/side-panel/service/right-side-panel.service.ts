@@ -19,6 +19,38 @@ export class RightSidePanelService {
       this.handleEvents();
   }
 
+  open(): void {
+    this.operationSubject.next(OperationTypeEnum.Open);
+  }
+
+  close(): void {
+    this.operationSubject.next(OperationTypeEnum.Close);
+  }
+
+  onOpen(): Observable<OperationTypeEnum> {
+    return this.getOperationSubjectObservable(OperationTypeEnum.Open);
+  }
+
+  onClose(): Observable<OperationTypeEnum> {
+    return this.getOperationSubjectObservable(OperationTypeEnum.Close);
+  }
+
+  onActivate(): Observable<OperationTypeEnum> {
+    return this.getOperationSubjectObservable(OperationTypeEnum.Activate);
+  }
+
+  onDeactivate(): Observable<OperationTypeEnum> {
+    return this.getOperationSubjectObservable(OperationTypeEnum.Deactivate);
+  }
+
+  private activate(): void {
+    this.operationSubject.next(OperationTypeEnum.Activate);
+  }
+
+  private deactivate(): void {
+    this.operationSubject.next(OperationTypeEnum.Deactivate);
+  }
+
   private handleEvents(): void {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -45,43 +77,11 @@ export class RightSidePanelService {
       return hasLeftSidePanel;
     }
     const child = children[0];
-    hasLeftSidePanel = child.snapshot.data['hasLeftSidePanel'];
+    hasLeftSidePanel = child.snapshot.data.hasLeftSidePanel;
     if (typeof hasLeftSidePanel !== 'boolean') {
       hasLeftSidePanel = false;
     }
     return this.getLeftSidePanelInfo(child, hasLeftSidePanel);
-  }
-
-  open(): void {
-    this.operationSubject.next(OperationTypeEnum.Open);
-  }
-
-  close(): void {
-    this.operationSubject.next(OperationTypeEnum.Close);
-  }
-
-  private activate(): void {
-    this.operationSubject.next(OperationTypeEnum.Activate);
-  }
-
-  private deactivate(): void {
-    this.operationSubject.next(OperationTypeEnum.Deactivate);
-  }
-
-  onOpen(): Observable<OperationTypeEnum> {
-    return this.getOperationSubjectObservable(OperationTypeEnum.Open);
-  }
-
-  onClose(): Observable<OperationTypeEnum> {
-    return this.getOperationSubjectObservable(OperationTypeEnum.Close);
-  }
-
-  onActivate(): Observable<OperationTypeEnum> {
-    return this.getOperationSubjectObservable(OperationTypeEnum.Activate);
-  }
-
-  onDeactivate(): Observable<OperationTypeEnum> {
-    return this.getOperationSubjectObservable(OperationTypeEnum.Deactivate);
   }
 
   private getOperationSubjectObservable(expectedOperation: OperationTypeEnum): Observable<OperationTypeEnum> {
