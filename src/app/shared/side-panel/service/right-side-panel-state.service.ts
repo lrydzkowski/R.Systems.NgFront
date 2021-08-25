@@ -7,6 +7,8 @@ import { RightSidePanelService } from './right-side-panel.service';
 })
 export class RightSidePanelStateService {
 
+  readonly localStorageKey = 'rightSidePanel';
+
   panelExists = false;
 
   panelIsOpen = false;
@@ -15,6 +17,7 @@ export class RightSidePanelStateService {
 
   constructor(public rightSidePanelService: RightSidePanelService) {
     this.handleRightPanelEvents();
+    this.restoreStateFromLocalStorage();
   }
 
   destroy(): void {
@@ -44,13 +47,27 @@ export class RightSidePanelStateService {
       .subscribe({
         next: () => {
           this.panelIsOpen = true;
+          this.saveStateInLocalStorage();
         }
       });
     this.subscriptions.closeRightSidePanel = this.rightSidePanelService.onClose()
       .subscribe({
         next: () => {
           this.panelIsOpen = false;
+          this.saveStateInLocalStorage();
         }
       });
+  }
+
+  private restoreStateFromLocalStorage(): void {
+    const state: string | null = localStorage.getItem(this.localStorageKey);
+    if (state === null) {
+      return;
+    }
+    this.panelIsOpen = state === '1' ? true : false;
+  }
+
+  private saveStateInLocalStorage(): void {
+    localStorage.setItem(this.localStorageKey, this.panelIsOpen ? '1' : '0');
   }
 }
