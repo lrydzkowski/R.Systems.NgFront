@@ -41,8 +41,6 @@
               [(contextMenuSelection)]="selectedUserForContextMenu"
               [contextMenu]="tableContextMenu"
               dataKey="userId"
-              stateStorage="session"
-              stateKey="users-session"
               [rowTrackBy]="identifyUser"
               (onPage)="handlePageEvent()"
               (onSort)="handleSortEvent()"
