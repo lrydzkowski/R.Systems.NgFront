@@ -1,0 +1,31 @@
+<div class="content mx-auto">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" sharedFormAutofocus>
+    <div class="formgrid grid">
+      <div class="field col-12">
+        <label for="text" i18n>Text</label>
+        <input  id="text"
+                type="text"
+                formControlName="text"
+                pInputText
+                class="w-full">
+      </div>
+      <div class="field col-12">
+        <label for="date" i18n>Date</label>
+        <div class="w-full">
+          <p-calendar id="date"
+                      [showIcon]="true"
+                      appendTo="body"
+                      formControlName="date"
+                      [showButtonBar]="true"></p-calendar>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3">
+      <button pButton
+              type="submit"
+              label="Save"
+              i18n-label
+              class="p-button-success p-button-outlined"></button>
+    </div>
+  </form>
+</div>

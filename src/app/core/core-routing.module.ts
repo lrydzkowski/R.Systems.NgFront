@@ -34,6 +34,10 @@ const routes: Routes = [
     }
   },
   {
+    path: 'tests',
+    loadChildren: () => import('../features/tests/tests.module').then(m => m.TestsModule)
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }

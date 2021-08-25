@@ -43,6 +43,16 @@ export class AppMenuService {
         label: 'Mock',
         routerLink: [$localize`/api-mock`],
         visible: authenticated
+      },
+      {
+        label: $localize`Tests`,
+        visible: authenticated,
+        items: [
+          {
+            label: $localize`Reactive Form With Calendar`,
+            routerLink: [$localize`/tests/reactive-form-with-calendar`]
+          }
+        ]
       }
     ];
   }
