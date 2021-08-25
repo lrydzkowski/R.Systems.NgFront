@@ -18,7 +18,7 @@ const routes: Routes = [
         canActivate: [AuthGuardService],
         data: {
           breadcrumb: null,
-          hasLeftSidePanel: true,
+          hasRightSidePanel: true,
           hasBreadcrumb: true
         }
       },

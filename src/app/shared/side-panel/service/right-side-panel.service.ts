@@ -55,13 +55,13 @@ export class RightSidePanelService {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.checkLeftSidePanelState();
+        this.checkRightSidePanelState();
       });
   }
 
-  private checkLeftSidePanelState(): void {
-    const hasLeftSidePanel: boolean = this.getLeftSidePanelInfo(this.activatedRoute.root);
-    if (hasLeftSidePanel) {
+  private checkRightSidePanelState(): void {
+    const hasRightSidePanel: boolean = this.getRightSidePanelInfo(this.activatedRoute.root);
+    if (hasRightSidePanel) {
       this.activate();
       return;
     }
@@ -71,17 +71,17 @@ export class RightSidePanelService {
     }
   }
 
-  private getLeftSidePanelInfo(route: ActivatedRoute, hasLeftSidePanel: boolean = false): boolean {
+  private getRightSidePanelInfo(route: ActivatedRoute, hasRightSidePanel: boolean = false): boolean {
     const children: ActivatedRoute[] = route.children;
     if (children.length === 0) {
-      return hasLeftSidePanel;
+      return hasRightSidePanel;
     }
     const child = children[0];
-    hasLeftSidePanel = child.snapshot.data.hasLeftSidePanel;
-    if (typeof hasLeftSidePanel !== 'boolean') {
-      hasLeftSidePanel = false;
+    hasRightSidePanel = child.snapshot.data.hasRightSidePanel;
+    if (typeof hasRightSidePanel !== 'boolean') {
+      hasRightSidePanel = false;
     }
-    return this.getLeftSidePanelInfo(child, hasLeftSidePanel);
+    return this.getRightSidePanelInfo(child, hasRightSidePanel);
   }
 
   private getOperationSubjectObservable(expectedOperation: OperationTypeEnum): Observable<OperationTypeEnum> {

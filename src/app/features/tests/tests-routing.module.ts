@@ -9,7 +9,8 @@ const routes: Routes = [
     component: ReactiveFormWithCalendarPageComponent,
     data: {
       breadcrumb: $localize`Reactive Form With Calendar`,
-      hasBreadcrumb: true
+      hasBreadcrumb: true,
+      hasRightSidePanel: true
     }
   },
   {

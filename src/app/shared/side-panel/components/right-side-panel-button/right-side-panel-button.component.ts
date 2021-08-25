@@ -19,7 +19,7 @@ export class RightSidePanelButtonComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  openLeftSidePanel(): void {
+  openRightSidePanel(): void {
     this.rightSidePanelService.open();
   }
 }
