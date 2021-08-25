@@ -41,8 +41,13 @@ export class AppMenuService {
       },
       {
         label: 'Mock',
-        routerLink: [$localize`/api-mock`],
-        visible: authenticated
+        visible: authenticated,
+        items: [
+          {
+            label: $localize`Random Data Generator`,
+            routerLink: [$localize`/api-mock/random-data-generator`]
+          }
+        ]
       },
       {
         label: $localize`Tests`,
