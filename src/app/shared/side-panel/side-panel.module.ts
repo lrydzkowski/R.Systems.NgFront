@@ -6,12 +6,14 @@ import { TabViewModule } from 'primeng/tabview';
 
 import { RightSidePanelComponent } from './components/right-side-panel/right-side-panel.component';
 import { RightSidePanelButtonComponent } from './components/right-side-panel-button/right-side-panel-button.component';
+import { TabComponent } from './components/tab/tab.component';
 
 
 @NgModule({
   declarations: [
     RightSidePanelButtonComponent,
-    RightSidePanelComponent
+    RightSidePanelComponent,
+    TabComponent
   ],
   imports: [
     CommonModule,

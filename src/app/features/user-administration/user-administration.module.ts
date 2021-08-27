@@ -19,6 +19,7 @@ import { SidePanelModule } from '@shared/side-panel/side-panel.module';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { LoadingModule } from '@shared/loading/loading.module';
 import { UserRolesPipe } from './pipes/user-roles.pipe';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { UserRolesPipe } from './pipes/user-roles.pipe';
     UserFormPageComponent,
     UserFormComponent,
     UsersListComponent,
-    UserRolesPipe
+    UserRolesPipe,
+    UserDetailsComponent
   ],
   imports: [
     CommonModule,

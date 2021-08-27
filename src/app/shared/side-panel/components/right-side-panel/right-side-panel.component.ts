@@ -1,6 +1,8 @@
 import { animate, animation, style, transition, trigger, useAnimation } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SubscriptionHandlerService } from '@shared/shared/services/subscription-handler.service';
+import { TabInfo } from '@shared/side-panel/models/tab-info';
+import { RightSidePanelInjectorService } from '@shared/side-panel/service/right-side-panel-injector.service';
 import { RightSidePanelStateService } from '../../service/right-side-panel-state.service';
 
 const showAnimation = animation([
@@ -33,12 +35,14 @@ export class RightSidePanelComponent implements OnInit, OnDestroy {
 
   panelIsOpen = false;
 
+  tabs: TabInfo[] = [];
+
   constructor(
     private subscriptionHandler: SubscriptionHandlerService,
-    private rightSidePanelState: RightSidePanelStateService) { }
+    private rightSidePanelState: RightSidePanelStateService,
+    private rightSidePanelInjector: RightSidePanelInjectorService) { }
 
   ngOnInit(): void {
-    console.log('right-side-panel-init');
     this.handleRightPanelEvents();
   }
 
@@ -73,6 +77,12 @@ export class RightSidePanelComponent implements OnInit, OnDestroy {
       .subscribe({
         next: () => {
           this.panelIsOpen = false;
+        }
+      });
+    this.subscriptionHandler.data.settingTabs = this.rightSidePanelInjector.onSettingTabs()
+      .subscribe({
+        next: (tabs: TabInfo[]) => {
+          this.tabs = tabs;
         }
       });
   }

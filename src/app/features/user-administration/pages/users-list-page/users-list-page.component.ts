@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserDetailsComponent } from '@features/user-administration/components/user-details/user-details.component';
+import { RightSidePanelInjectorService } from '@shared/side-panel/service/right-side-panel-injector.service';
 
 @Component({
   selector: 'user-administration-users-list-page',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersListPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private rightSidePanelInjector: RightSidePanelInjectorService) { }
 
   ngOnInit(): void {
+    this.rightSidePanelInjector.setTabs([
+      {
+        header: $localize`Szczegóły`,
+        component: UserDetailsComponent
+      }
+    ]);
   }
 
 }
