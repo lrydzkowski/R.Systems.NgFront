@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { RightSidePanelStateService } from './right-side-panel-state.service';
 
-describe('RightSidePanelStateService', () => {
+describe('RightSidePanelService', () => {
   let service: RightSidePanelStateService;
 
   beforeEach(() => {

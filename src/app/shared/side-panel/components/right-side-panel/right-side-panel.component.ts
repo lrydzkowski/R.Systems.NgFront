@@ -1,8 +1,7 @@
 import { animate, animation, style, transition, trigger, useAnimation } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SubscriptionHandlerService } from '@shared/shared/services/subscription-handler.service';
-import { RightSidePanelStateService } from '@shared/side-panel/service/right-side-panel-state.service';
-import { RightSidePanelService } from '../../service/right-side-panel.service';
+import { RightSidePanelStateService } from '../../service/right-side-panel-state.service';
 
 const showAnimation = animation([
   style({ transform: '{{transform}}', opacity: 0 }),
@@ -24,20 +23,58 @@ const showAnimation = animation([
     SubscriptionHandlerService
   ]
 })
-export class RightSidePanelComponent implements OnInit {
+export class RightSidePanelComponent implements OnInit, OnDestroy {
 
   transitionOptions = '150ms cubic-bezier(0, 0, 0.2, 1)';
 
   transformOptions = 'translate3d(100%, 0px, 0px)';
 
-  constructor(
-    private rightSidePanelService: RightSidePanelService,
-    public rightSidePanelStateService: RightSidePanelStateService) { }
+  panelExists = false;
 
-  ngOnInit(): void { }
+  panelIsOpen = false;
+
+  constructor(
+    private subscriptionHandler: SubscriptionHandlerService,
+    private rightSidePanelState: RightSidePanelStateService) { }
+
+  ngOnInit(): void {
+    console.log('right-side-panel-init');
+    this.handleRightPanelEvents();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionHandler.unsubscribeAll();
+  }
 
   closePanel(): void {
-    this.rightSidePanelService.close();
+    this.rightSidePanelState.close();
+  }
+
+  private handleRightPanelEvents(): void {
+    this.subscriptionHandler.data.activateRightSidePanel = this.rightSidePanelState.onActivate()
+      .subscribe({
+        next: () => {
+          this.panelExists = true;
+        }
+      });
+    this.subscriptionHandler.data.deactivateRightSidePanel = this.rightSidePanelState.onDeactivate()
+      .subscribe({
+        next: () => {
+          this.panelExists = false;
+        }
+      });
+    this.subscriptionHandler.data.openRightSidePanel = this.rightSidePanelState.onOpen()
+      .subscribe({
+        next: () => {
+          this.panelIsOpen = true;
+        }
+      });
+    this.subscriptionHandler.data.closeRightSidePanel = this.rightSidePanelState.onClose()
+      .subscribe({
+        next: () => {
+          this.panelIsOpen = false;
+        }
+      });
   }
 
 }

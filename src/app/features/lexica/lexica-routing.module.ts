@@ -10,7 +10,8 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     data: {
       breadcrumb: 'Lexica',
-      hasBreadcrumb: true
+      hasBreadcrumb: true,
+      hasRightSidePanel: true
     }
   },
   {

@@ -1,7 +1,7 @@
-<div  *ngIf="rightSidePanelStateService.panelExists && rightSidePanelStateService.panelIsOpen"
+<div  *ngIf="panelExists && panelIsOpen"
       class="mask"
       (click)="closePanel()"></div>
-<div  *ngIf="rightSidePanelStateService.panelExists && rightSidePanelStateService.panelIsOpen"
+<div  *ngIf="panelExists && panelIsOpen"
       [@panelState]="{value: 'visible', params: {transform: transformOptions, transition: transitionOptions}}"
       class="right-side-panel">
   <div class="content-wrapper flex flex-column">
