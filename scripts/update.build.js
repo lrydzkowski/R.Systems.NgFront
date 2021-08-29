@@ -23,3 +23,4 @@ try {
 } catch (error) {
   console.error('Error occured:', error);
 }
+console.log('');
