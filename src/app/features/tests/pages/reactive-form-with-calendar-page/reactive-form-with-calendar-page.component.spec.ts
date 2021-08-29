@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
 
 import { ReactiveFormWithCalendarPageComponent } from './reactive-form-with-calendar-page.component';
 
@@ -8,7 +11,8 @@ describe('ReactiveFormWithCalendarPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReactiveFormWithCalendarPageComponent ]
+      declarations: [ ReactiveFormWithCalendarPageComponent ],
+      imports: [ ReactiveFormsModule, CalendarModule, ButtonModule ]
     })
     .compileComponents();
   });

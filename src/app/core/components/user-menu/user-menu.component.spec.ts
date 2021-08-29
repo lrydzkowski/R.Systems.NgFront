@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ButtonModule } from 'primeng/button';
+import { TieredMenuModule } from 'primeng/tieredmenu';
 
 import { UserMenuComponent } from './user-menu.component';
 
@@ -8,7 +11,8 @@ describe('UserMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserMenuComponent ]
+      declarations: [ UserMenuComponent ],
+      imports: [ RouterTestingModule, ButtonModule, TieredMenuModule ]
     })
     .compileComponents();
   });

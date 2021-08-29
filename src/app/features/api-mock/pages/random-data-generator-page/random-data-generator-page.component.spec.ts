@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ButtonModule } from 'primeng/button';
 
 import { RandomDataGeneratorPageComponent } from './random-data-generator-page.component';
 
@@ -8,7 +10,8 @@ describe('RandomDataGeneratorPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RandomDataGeneratorPageComponent ]
+      declarations: [ RandomDataGeneratorPageComponent ],
+      imports: [ HttpClientModule, ButtonModule ]
     })
     .compileComponents();
   });

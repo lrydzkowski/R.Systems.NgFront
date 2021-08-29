@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ToastModule } from 'primeng/toast';
 
 import { ToastMessageComponent } from './toast-message.component';
 
@@ -8,7 +9,8 @@ describe('ToastMessageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ToastMessageComponent ]
+      declarations: [ ToastMessageComponent ],
+      imports: [ ToastModule ]
     })
     .compileComponents();
   });

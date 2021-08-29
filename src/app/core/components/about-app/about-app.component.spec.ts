@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DialogModule } from 'primeng/dialog';
 
 import { AboutAppComponent } from './about-app.component';
 
@@ -8,7 +9,8 @@ describe('AboutAppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AboutAppComponent ]
+      declarations: [ AboutAppComponent ],
+      imports: [ DialogModule ]
     })
     .compileComponents();
   });

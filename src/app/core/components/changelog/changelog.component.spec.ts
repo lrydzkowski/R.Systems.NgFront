@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DialogModule } from 'primeng/dialog';
 
 import { ChangelogComponent } from './changelog.component';
 
@@ -8,7 +9,8 @@ describe('ChangelogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChangelogComponent ]
+      declarations: [ ChangelogComponent ],
+      imports: [ DialogModule ]
     })
     .compileComponents();
   });

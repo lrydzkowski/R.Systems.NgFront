@@ -18,11 +18,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { UserAuthRoutingModule } from './user-auth-routing.module';
 import { SharedModule } from '@shared/shared/shared.module';
 import { JwtTokenService } from './services/jwt-token.service';
+import { jwtOptionsFactory } from './jwt-options-factory';
 
-
-export const jwtOptionsFactory = (jwtTokenService: JwtTokenService) => ({
-  tokenGetter: () => jwtTokenService.getToken()
-});
 
 @NgModule({
   declarations: [

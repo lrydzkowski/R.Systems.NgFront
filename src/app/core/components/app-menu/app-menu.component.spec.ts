@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ButtonModule } from 'primeng/button';
+import { TieredMenuModule } from 'primeng/tieredmenu';
 
 import { AppMenuComponent } from './app-menu.component';
 
@@ -8,7 +10,8 @@ describe('AppMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AppMenuComponent ]
+      declarations: [ AppMenuComponent ],
+      imports: [ ButtonModule, TieredMenuModule ]
     })
     .compileComponents();
   });

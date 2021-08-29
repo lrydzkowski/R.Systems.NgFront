@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { PasswordModule } from 'primeng/password';
 
 import { PasswordChangeFormComponent } from './password-change-form.component';
 
@@ -8,7 +12,8 @@ describe('PasswordChangeFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PasswordChangeFormComponent ]
+      declarations: [ PasswordChangeFormComponent ],
+      imports: [ ReactiveFormsModule, CardModule, ButtonModule, PasswordModule ]
     })
     .compileComponents();
   });
