@@ -9,6 +9,7 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 import { TooltipModule } from 'primeng/tooltip';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DividerModule } from 'primeng/divider';
 
 import { UserAdministrationRoutingModule } from './user-administration-routing.module';
 import { UsersListPageComponent } from './pages/users-list-page/users-list-page.component';
@@ -42,6 +43,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     TooltipModule,
     ContextMenuModule,
     ConfirmDialogModule,
+    DividerModule,
 
     SharedModule,
     SidePanelModule,

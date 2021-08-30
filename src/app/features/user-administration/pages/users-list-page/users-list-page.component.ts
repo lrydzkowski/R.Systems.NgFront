@@ -14,7 +14,7 @@ export class UsersListPageComponent implements OnInit {
   ngOnInit(): void {
     this.rightSidePanelInjector.setTabs([
       {
-        header: $localize`Szczegóły`,
+        header: $localize`Users details`,
         component: UserDetailsComponent
       }
     ]);

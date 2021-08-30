@@ -3,7 +3,7 @@ import { MaxHeightCalculatorMode } from './max-height-calculator-mode';
 
 export interface MaxHeightCalculatorConfig {
   elementRef: ElementRef;
-  staticReservedHeight: {
+  staticReservedHeight?: {
     sm?: number;
     md?: number;
     lg?: number;

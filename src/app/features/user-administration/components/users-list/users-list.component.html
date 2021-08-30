@@ -44,7 +44,9 @@
               [rowTrackBy]="identifyUser"
               (onPage)="handlePageEvent()"
               (onSort)="handleSortEvent()"
-              (onFilter)="handleFilterEvent()">
+              (onFilter)="handleFilterEvent()"
+              (onRowSelect)="handleRowSelect($event)"
+              (onRowUnselect)="handleRowUnselect($event)">
       <ng-template pTemplate="header" let-columns>
         <tr>
           <th class="checkbox-col justify-content-center p-0">

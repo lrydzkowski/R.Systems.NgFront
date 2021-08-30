@@ -67,13 +67,13 @@ export class MaxHeightCalculatorService {
 
   private getStaticReservedHeight(): number {
     const windowWidth = window.innerWidth;
-    if (windowWidth < 576 && typeof this.config?.staticReservedHeight.sm === 'number') {
+    if (windowWidth < 576 && typeof this.config?.staticReservedHeight?.sm === 'number') {
       return this.config?.staticReservedHeight.sm;
     }
-    if (windowWidth < 768 && typeof this.config?.staticReservedHeight.md === 'number') {
+    if (windowWidth < 768 && typeof this.config?.staticReservedHeight?.md === 'number') {
       return this.config?.staticReservedHeight.md;
     }
-    if (typeof this.config?.staticReservedHeight.lg === 'number') {
+    if (typeof this.config?.staticReservedHeight?.lg === 'number') {
       return this.config?.staticReservedHeight.lg;
     }
     return 0;

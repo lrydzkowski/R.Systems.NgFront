@@ -1,0 +1,12 @@
+.container {
+  min-height: 2rem;
+}
+.grid:hover {
+  background-color: #fafafa;
+}
+.col-fixed {
+  width: 100px;
+}
+p {
+  word-break: break-all;
+}

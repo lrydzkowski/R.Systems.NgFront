@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersService } from '@features/user-administration/services/users.service';
 import { LoadingService } from '@shared/loading/services/loading.service';
 import { CustomMenuItem } from '@shared/shared/models/custom-menu-item';
 import { MaxHeightCalculatorMode } from '@shared/shared/models/max-height-calculator-mode';
@@ -63,7 +64,8 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     private maxHeightCalculator: MaxHeightCalculatorService,
     public tableHeightCalculator: TableHeightCalculatorService,
     private toastMessageService: ToastMessageService,
-    private confirmationService: ConfirmationService) { }
+    private confirmationService: ConfirmationService,
+    private usersService: UsersService) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -226,6 +228,14 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   handleFilterEvent(): void {
     this.clearSelection();
+  }
+
+  handleRowSelect(event: { originalEvent: PointerEvent; data: User[]; index: number }): void {
+    this.usersService.selectUser(this.selectedUsers);
+  }
+
+  handleRowUnselect(event: { originalEvent: PointerEvent; data: User[] }): void {
+    this.usersService.selectUser(this.selectedUsers);
   }
 
   private initTableMenuItems(): void {
