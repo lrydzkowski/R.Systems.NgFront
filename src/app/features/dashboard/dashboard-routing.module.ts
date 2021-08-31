@@ -9,7 +9,8 @@ const routes: Routes = [
     component: MainPageComponent,
     canActivate: [AuthGuardService],
     data: {
-      hasBreadcrumb: false
+      hasBreadcrumb: true,
+      breadcrumb: $localize`Dashboard`
     }
   }
 ];
