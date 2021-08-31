@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { User } from '../models/user';
 })
 export class UsersService {
 
-  private userSelectionSubject = new Subject<User[]>();
+  private userSelectionSubject = new BehaviorSubject<User[]>([]);
 
   constructor() { }
 
