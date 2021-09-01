@@ -68,11 +68,12 @@
             [pContextMenuRow]="row"
             (dblclick)="redirectToEditUserForm(row.userId)">
           <td class="checkbox-col justify-content-center p-0">
-            <p-tableCheckbox [value]="row" [index]="rowIndex"></p-tableCheckbox>
+            <p-tableCheckbox [value]="row" [index]="rowIndex" [disabled]="true"></p-tableCheckbox>
           </td>
           <td *ngFor="let col of columns" [class]="col.className">
             <ng-container [ngSwitch]="col.type">
-              <span *ngSwitchCase="'text'">{{row[col.field]}}</span>
+              <span *ngSwitchCase="'text'">{{row[col.field] | nullableFormat}}</span>
+              <span *ngSwitchCase="'dateTime'">{{row[col.field] | date:'medium' | nullableFormat}}</span>
               <span *ngSwitchCase="'roles'">{{row[col.field] | userRoles}}</span>
             </ng-container>
           </td>

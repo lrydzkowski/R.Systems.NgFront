@@ -13,19 +13,22 @@
   width: 8rem;
 }
 .login-col {
-  width: 21rem;
+  width: 15rem;
 }
 .email-col {
   width: 21rem;
 }
 .firstName-col {
-  width: 21rem;
+  width: 15rem;
 }
 .lastName-col {
-  width: 21rem;
+  width: 15rem;
 }
 .roles-col {
-  width: 21rem;
+  width: 15rem;
+}
+.dateTime-col {
+  width: 15rem;
 }
 
 @media all and (min-width: 710px) {

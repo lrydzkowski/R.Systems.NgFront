@@ -50,7 +50,15 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     { field: 'lastName', header: $localize`Last name`, className: 'standard-col flex-grow-1 lastName-col',
       type: 'text', filterType: 'text' },
     { field: 'roles', header: $localize`Roles`, className: 'standard-col roles-col', type: 'roles',
-      filterType: 'text' }
+      filterType: 'text' },
+    { field: 'creatorLogin', header: $localize`Created by`, className: 'standard-col login-col', type: 'text',
+      filterType: 'text' },
+    { field: 'createdDateTime', header: $localize`Created at`, className: 'standard-col dateTime-col',
+      type: 'dateTime', filterType: 'text' },
+    { field: 'lastEditorLogin', header: $localize`Modified by`, className: 'standard-col login-col', type: 'text',
+      filterType: 'text' },
+    { field: 'lastEditedDateTime', header: $localize`Edited at`, className: 'standard-col dateTime-col',
+      type: 'dateTime', filterType: 'text' }
   ];
 
   tableMenuItems: CustomMenuItem[] = [];

@@ -7,13 +7,15 @@ import { ToastModule } from 'primeng/toast';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { ToastMessageComponent } from './components/toast-message/toast-message.component';
+import { NullableFormatPipe } from './pipes/nullable-format.pipe';
 
 
 @NgModule({
   declarations: [
     BreadcrumbComponent,
     AutofocusDirective,
-    ToastMessageComponent
+    ToastMessageComponent,
+    NullableFormatPipe
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { ToastMessageComponent } from './components/toast-message/toast-message.
   exports: [
     BreadcrumbComponent,
     AutofocusDirective,
-    ToastMessageComponent
+    ToastMessageComponent,
+    NullableFormatPipe
   ]
 })
 export class SharedModule { }
