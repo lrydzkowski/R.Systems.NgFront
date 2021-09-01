@@ -36,7 +36,7 @@ small {
   font-weight: 700;
 }
 
-/* PrimeNG */
+/* PrimeNG Menubar */
 .header-menubar {
   background-color: #ffffff;
   border: 0;
@@ -48,10 +48,12 @@ small {
 .header-menubar .p-menubar-button .pi-bars {
   font-size: 1.5rem;
 }
+/* PrimeNG SlideMenu */
 .header-slidemenu.p-slidemenu {
   border: 0;
   width: 100%;
 }
+/* PrimeNG Card */
 .p-card {
   box-shadow: none;
   border: 1px solid #dee2e6;
@@ -62,6 +64,7 @@ small {
 .p-card.card-with-hover:hover {
   background-color: #F5FBFF;
 }
+/* PrimeNG TabView */
 .p-tabview .p-tabview-nav {
   border-width: 0 0 1px 0;
 }
@@ -69,6 +72,7 @@ small {
   border-width: 0 0 1px 0;
   margin: 0 0 -1px 0;
 }
+/* PrimeNG ProgressSpinner */
 .p-progress-spinner.general-loading-animation {
   height: 60px;
   width: 60px;
@@ -80,6 +84,7 @@ small {
   left: calc(50% - 30px);
   width: 60px;
 }
+/* PrimeNG Table */
 .p-datatable .p-sortable-column .p-sortable-column-icon {
   line-height: 2rem;
   vertical-align: top;
@@ -90,9 +95,11 @@ small {
 .p-datatable .checkbox-col .p-checkbox .p-disabled {
   opacity: 1;
 }
+/* PrimeNG Checkbox */
 .p-checkbox .p-checkbox-box {
   border: 1px solid #ced4da;
 }
+/* PrimeNG ConfirmDialog */
 .custom-confirm-dialog {
   max-width: 42rem;
   width: 100%;
