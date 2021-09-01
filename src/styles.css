@@ -87,6 +87,9 @@ small {
 .p-datatable .checkbox-col {
   width: 2.5rem;
 }
+.p-datatable .checkbox-col .p-checkbox .p-disabled {
+  opacity: 1;
+}
 .p-checkbox .p-checkbox-box {
   border: 1px solid #ced4da;
 }
