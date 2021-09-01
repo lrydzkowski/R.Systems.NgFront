@@ -7,4 +7,10 @@ export interface User {
   firstName: string;
   lastName: string;
   roles: Role[];
+  createdDateTime: Date;
+  creatorId: number;
+  creatorLogin: string;
+  lastEditedDateTime: Date | null;
+  lastEditorId: number | null;
+  lastEditorLogin: string | null;
 }

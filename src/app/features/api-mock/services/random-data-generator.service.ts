@@ -37,7 +37,7 @@ export class RandomDataGeneratorService {
         const lastNames: string[] = data.lastNames;
         const users: User[] = [];
         for (let i = 1; i <= numOfUsers; i++) {
-          users.push(this.generateUser(words, firstNames, lastNames, i));
+          users.push(this.generateUser(words, firstNames, lastNames, i, numOfUsers));
         }
         return users;
       })
@@ -45,16 +45,23 @@ export class RandomDataGeneratorService {
     return usersListObservable;
   }
 
-  generateUser(words: string[], firstNames: string[], lastNames: string[], userId: number): User {
+  generateUser(words: string[], firstNames: string[], lastNames: string[], userId: number, numOfUsers: number): User {
+    const wasEdited: boolean = this.tossCoin();
     const user: User = {
       userId,
-      login: words[this.getRandomInteger(0, words.length)],
+      login: this.getRandomLogin(words),
       email: words[this.getRandomInteger(0, words.length)] + '@lukaszrydzkowski.pl',
       firstName: firstNames[this.getRandomInteger(0, firstNames.length)],
       lastName: lastNames[this.getRandomInteger(0, lastNames.length)],
       roles: [
         this.availableUserRoles[this.getRandomInteger(0, this.availableUserRoles.length)]
-      ]
+      ],
+      createdDateTime: this.getRandomDate(new Date(2010, 0, 1), new Date()),
+      creatorId: this.getRandomInteger(1, numOfUsers + 1),
+      creatorLogin: this.getRandomLogin(words),
+      lastEditedDateTime: wasEdited ? this.getRandomDate(new Date(2010, 0, 1), new Date()) : null,
+      lastEditorId: wasEdited ? this.getRandomInteger(1, numOfUsers + 1) : null,
+      lastEditorLogin: wasEdited ? this.getRandomLogin(words) : null
     };
     return user;
   }
@@ -63,5 +70,17 @@ export class RandomDataGeneratorService {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  private getRandomLogin(words: string[]): string {
+    return words[this.getRandomInteger(0, words.length)];
+  }
+
+  private getRandomDate(start: Date, end: Date): Date {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  }
+
+  private tossCoin(): boolean {
+    return this.getRandomInteger(0, 2) === 1 ? true : false;
   }
 }
