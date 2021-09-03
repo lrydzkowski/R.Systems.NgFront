@@ -3,5 +3,5 @@ import npm from '../../package.json';
 export const environment = {
   production: true,
   version: npm.version,
-  build: '2021-09-01T20:44:20'
+  build: '2021-09-04T09:50:23'
 };
