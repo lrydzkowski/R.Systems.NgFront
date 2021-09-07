@@ -1,39 +1,97 @@
 <div class="content mx-auto">
-  <p-card header="User" i18n-header>
-    <div class="formgrid grid">
-      <div class="field col-12">
-        <label for="login" i18n>Login</label>
-        <input id="login" type="text" pInputText class="w-full">
+  <p-card [header]="formHeader" i18n-header>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" sharedFormAutofocus>
+      <div class="formgrid grid">
+        <div class="field col-12">
+          <label for="login" i18n>Login <span class="required">*</span></label>
+          <input  id="login"
+                  formControlName="login"
+                  pInputText
+                  class="w-full">
+          <ng-container *ngIf="formHandler.isFieldInvalid(form, 'login')">
+            <small  *ngIf="formHandler.fieldHasValidationError(form, 'login', 'required')"
+                    class="p-error"
+                    i18n>
+              Login is required.
+            </small>
+            <small  *ngIf="formHandler.fieldHasValidationError(form, 'login', 'maxlength')"
+                    class="p-error"
+                    i18n>
+              Login cannot be longer than {{lengths.login.max}} characters.
+            </small>
+          </ng-container>
+        </div>
+        <div class="field col-12">
+          <label for="email" i18n>Email <span class="required">*</span></label>
+          <input  id="email"
+                  formControlName="email"
+                  pInputText
+                  class="w-full">
+          <ng-container *ngIf="formHandler.isFieldInvalid(form, 'email')">
+            <small  *ngIf="formHandler.fieldHasValidationError(form, 'email', 'required')"
+                    class="p-error"
+                    i18n>
+              Email is required.
+            </small>
+            <small  *ngIf="formHandler.fieldHasValidationError(form, 'email', 'maxlength')"
+                    class="p-error"
+                    i18n>
+              Email cannot be longer than {{lengths.email.max}} characters.
+            </small>
+          </ng-container>
+        </div>
+        <div class="field col-12">
+          <label for="firstName" i18n>First name <span class="required">*</span></label>
+          <input  id="firstName"
+                  formControlName="firstName"
+                  pInputText
+                  class="w-full">
+          <ng-container *ngIf="formHandler.isFieldInvalid(form, 'firstName')">
+            <small  *ngIf="formHandler.fieldHasValidationError(form, 'firstName', 'required')"
+                    class="p-error"
+                    i18n>
+              First name is required.
+            </small>
+            <small  *ngIf="formHandler.fieldHasValidationError(form, 'firstName', 'maxlength')"
+                    class="p-error"
+                    i18n>
+              First name cannot be longer than {{lengths.firstName.max}} characters.
+            </small>
+          </ng-container>
+        </div>
+        <div class="field col-12">
+          <label for="lastName" i18n>Last name <span class="required">*</span></label>
+          <input  id="lastName"
+                  formControlName="lastName"
+                  pInputText
+                  class="w-full">
+          <ng-container *ngIf="formHandler.isFieldInvalid(form, 'lastName')">
+            <small  *ngIf="formHandler.fieldHasValidationError(form, 'lastName', 'required')"
+                    class="p-error"
+                    i18n>
+              Last name is required.
+            </small>
+            <small  *ngIf="formHandler.fieldHasValidationError(form, 'lastName', 'maxlength')"
+                    class="p-error"
+                    i18n>
+              Last name cannot be longer than {{lengths.lastName.max}} characters.
+            </small>
+          </ng-container>
+        </div>
       </div>
-      <div class="field col-12">
-        <label for="email" i18n>Email</label>
-        <input id="email" type="text" pInputText class="w-full">
+      <div class="mt-3">
+        <button pButton
+                type="submit"
+                label="Save"
+                i18n-label
+                class="p-button-success p-button-outlined mr-2"></button>
+        <button pButton
+                type="button"
+                label="Back"
+                i18n-label
+                class="p-button-outlined"
+                [routerLink]="[usersListLink]"></button>
       </div>
-      <div class="field col-12">
-        <label for="firstName" i18n>First name</label>
-        <input id="firstName" type="text" pInputText class="w-full">
-      </div>
-      <div class="field col-12">
-        <label for="lastName" i18n>Last name</label>
-        <input id="lastName" type="text" pInputText class="w-full">
-      </div>
-      <div class="field col-12">
-        <label for="password" i18n>Password</label>
-        <input id="password" type="text" pInputText class="w-full">
-      </div>
-    </div>
-    <div class="mt-3">
-      <button pButton
-              type="button"
-              label="Save"
-              i18n-label
-              class="p-button-success p-button-outlined mr-2"></button>
-      <button pButton
-              type="button"
-              label="Back"
-              i18n-label
-              class="p-button-outlined"
-              [routerLink]="[usersLink]"></button>
-    </div>
+    </form>
   </p-card>
 </div>
