@@ -1,4 +1,4 @@
-# R.Systems.Web
+# R.Systems.WebFrontend
 
 Angular web application that will play the role of a web front end for my different ideas connected with creating
 software.
