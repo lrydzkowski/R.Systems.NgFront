@@ -8,10 +8,12 @@ html {
   box-sizing: border-box;
   font-size: 14px;
   height: 100%;
+  line-height: 1;
 }
 body {
   height: 100%;
   min-width: 320px;
+  overflow: hidden;
 }
 body * {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
@@ -23,16 +25,35 @@ small {
   display: block;
   font-size: 1rem;
 }
+.card {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 3px;
+}
+.card h2 {
+  color: #495057;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
 
-/* PrimeNG */
+/* PrimeNG Menubar */
 .header-menubar {
   background-color: #ffffff;
   border: 0;
 }
+.header-menubar .p-menubar-button {
+  height: 2.2rem;
+  width: 2.2rem;
+}
+.header-menubar .p-menubar-button .pi-bars {
+  font-size: 1.5rem;
+}
+/* PrimeNG SlideMenu */
 .header-slidemenu.p-slidemenu {
   border: 0;
   width: 100%;
 }
+/* PrimeNG Card */
 .p-card {
   box-shadow: none;
   border: 1px solid #dee2e6;
@@ -43,12 +64,18 @@ small {
 .p-card.card-with-hover:hover {
   background-color: #F5FBFF;
 }
+/* PrimeNG TabView */
 .p-tabview .p-tabview-nav {
   border-width: 0 0 1px 0;
 }
 .p-tabview .p-tabview-nav li .p-tabview-nav-link {
   border-width: 0 0 1px 0;
   margin: 0 0 -1px 0;
+}
+/* PrimeNG ProgressSpinner */
+.p-progress-spinner.general-loading-animation {
+  height: 60px;
+  width: 60px;
 }
 .p-progress-spinner.form-loading-animation {
   height: 60px;
@@ -57,7 +84,35 @@ small {
   left: calc(50% - 30px);
   width: 60px;
 }
-.p-datatable .custom-table .p-sortable-column .p-sortable-column-icon {
+/* PrimeNG Table */
+.p-datatable .p-sortable-column .p-sortable-column-icon {
   line-height: 2rem;
   vertical-align: top;
+}
+.p-datatable .checkbox-col {
+  width: 2.5rem;
+}
+.p-datatable .checkbox-col .p-checkbox .p-disabled {
+  opacity: 1;
+}
+/* PrimeNG Checkbox */
+.p-checkbox .p-checkbox-box {
+  border: 1px solid #ced4da;
+}
+/* PrimeNG ConfirmDialog */
+.custom-confirm-dialog {
+  max-width: 42rem;
+  width: 100%;
+}
+
+/* Temporary */
+.p-datatable .p-datatable-tbody > tr.p-highlight > td,
+.p-datatable.p-datatable-striped .p-datatable-tbody > tr:nth-child(even).p-highlight > td {
+  background: #E3F2FD;
+}
+.p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight):hover > td {
+  background: #e9ecef;
+}
+.p-datatable.p-datatable-striped .p-datatable-tbody > tr:nth-child(even) > td {
+  background: #fcfcfc;
 }

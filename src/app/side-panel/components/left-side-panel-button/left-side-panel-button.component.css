@@ -1,9 +1,0 @@
-button {
-  margin-left: -0.25rem;
-}
-
-@media all and (min-width: 576px) {
-  button {
-    margin-left: -1rem;
-  }
-}

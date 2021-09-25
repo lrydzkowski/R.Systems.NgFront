@@ -1,0 +1,29 @@
+.header {
+  height: 2.3rem;
+}
+.header h2 {
+  margin-bottom: 2px;
+}
+.vertical-separator {
+  background-color: #DDE2E6;
+  height: 100%;
+  width: 1px;
+}
+.buttons {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 3px;
+}
+.checkbox-col {
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+  flex-basis: auto !important;
+  width: 2.5rem;
+}
+.standard-col {
+  flex-basis: auto !important;
+  flex-shrink: 0 !important;
+}
+tr td {
+  height: 2rem;
+}

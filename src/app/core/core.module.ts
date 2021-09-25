@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -9,17 +9,24 @@ import { SidebarModule } from 'primeng/sidebar';
 import { SlideMenuModule } from 'primeng/slidemenu';
 import { RippleModule } from 'primeng/ripple';
 import { DialogModule } from 'primeng/dialog';
+import { TieredMenuModule } from 'primeng/tieredmenu';
+
+import { SidePanelModule } from '@shared/side-panel/side-panel.module';
+import { SharedModule } from '@shared/shared/shared.module';
+
+import { FakeBackendInterceptor } from '@features/api-mock/interceptors/fake-backend.interceptor';
+import { UserAuthModule } from '@features/user-auth/user-auth.module';
 
 import { HeaderComponent } from './components/header/header.component';
-import { CoreRoutingModule } from './core-routing.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MainTemplateComponent } from './templates/main-template/main-template.component';
-import { UserAuthModule } from '../modules/user-auth/user-auth.module';
-import { SidePanelModule } from '../side-panel/side-panel.module';
 import { TimezoneOffsetInterceptor } from './interceptors/timezone-offset.interceptor';
-import { FakeBackendInterceptor } from '../modules/api-mock/interceptors/fake-backend.interceptor';
-import { InfoButtonComponent } from './components/info-button/info-button.component';
-import { SharedModule } from '../shared/shared.module';
+import { CoreRoutingModule } from './core-routing.module';
+import { AboutAppComponent } from './components/about-app/about-app.component';
+import { AppMenuComponent } from './components/app-menu/app-menu.component';
+import { ChangelogComponent } from './components/changelog/changelog.component';
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 
 
 @NgModule({
@@ -29,7 +36,11 @@ import { SharedModule } from '../shared/shared.module';
     MainTemplateComponent,
     PageNotFoundComponent,
     MainTemplateComponent,
-    InfoButtonComponent
+    AboutAppComponent,
+    AppMenuComponent,
+    ChangelogComponent,
+    UserMenuComponent,
+    LogoutButtonComponent
   ],
   imports: [
     CommonModule,
@@ -41,9 +52,11 @@ import { SharedModule } from '../shared/shared.module';
     SlideMenuModule,
     RippleModule,
     DialogModule,
+    TieredMenuModule,
 
-    SharedModule,
     SidePanelModule,
+    SharedModule,
+
     UserAuthModule,
     CoreRoutingModule
   ],
@@ -63,4 +76,10 @@ import { SharedModule } from '../shared/shared.module';
     MainTemplateComponent
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+    if (parentModule) {
+      throw new Error('CoreModule has already been loaded. You should only import Core modules in the AppModule only.');
+    }
+  }
+}

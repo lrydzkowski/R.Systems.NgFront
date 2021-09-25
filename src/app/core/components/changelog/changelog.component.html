@@ -1,0 +1,10 @@
+<p-dialog header="Changelog" i18n-header [modal]="true" [draggable]="false" [(visible)]="visible">
+  <div class="content">
+    <div *ngFor="let item of changelog" class="row">
+      <h2>Version: {{item.version}} - {{item.date}}</h2>
+      <ul>
+        <li *ngFor="let change of item.changes">{{change}}</li>
+      </ul>
+    </div>
+  </div>
+</p-dialog>

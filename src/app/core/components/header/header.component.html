@@ -1,24 +1,10 @@
-<header class="p-d-flex p-ai-sm-center p-flex-column p-flex-sm-row p-pt-2 p-pt-sm-0">
-  <h1 class="p-ml-3 p-mr-3">R.Systems</h1>
+<header class="flex sm:align-items-center flex-column sm:flex-row pt-2 sm:pt-0">
+  <h1 class="ml-2 mr-2 sm:ml-3 sm:mr-3">R.Systems</h1>
   <nav>
     <p-menubar [model]="menuItems" styleClass="header-menubar">
-      <button *ngIf="userIsLogged" pButton type="button" class="p-button-outlined p-ml-2" icon="pi pi-user"></button>
-      <core-info-button></core-info-button>
-      <button *ngIf="userIsLogged"
-              pButton
-              type="button"
-              label="Logout"
-              class="p-button-outlined p-button-danger p-ml-2 big"
-              icon="pi pi-sign-out"
-              i18n-label
-              (click)="logout()"></button>
-      <button *ngIf="userIsLogged"
-              pButton
-              type="button"
-              class="p-button-outlined p-button-danger p-ml-2 small"
-              icon="pi pi-sign-out"
-              i18n-label
-              (click)="logout()"></button>
+      <core-user-menu *ngIf="userIsLogged" class="ml-2"></core-user-menu>
+      <core-app-menu class="ml-2"></core-app-menu>
+      <core-logout-button *ngIf="userIsLogged" class="ml-2"></core-logout-button>
     </p-menubar>
   </nav>
 </header>

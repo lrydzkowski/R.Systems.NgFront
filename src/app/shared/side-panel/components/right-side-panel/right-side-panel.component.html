@@ -1,0 +1,23 @@
+<div  *ngIf="panelExists && panelIsOpen"
+      class="mask"
+      (click)="closePanel()"></div>
+<div  *ngIf="panelExists && panelIsOpen"
+      [@panelState]="{value: 'visible', params: {transform: transformOptions, transition: transitionOptions}}"
+      class="right-side-panel">
+  <div class="content-wrapper flex flex-column">
+    <div class="buttons-container p-3">
+      <button pButton
+              type="button"
+              icon="pi pi-times"
+              class="p-button-rounded p-button-text p-button-secondary"
+              (click)="closePanel()"></button>
+    </div>
+    <div class="content pt-3 pl-2 pr-2">
+      <p-tabView>
+        <p-tabPanel *ngFor="let tab of tabs" [header]="tab.header" i18n-header>
+          <side-panel-tab [data]="tab"></side-panel-tab>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</div>

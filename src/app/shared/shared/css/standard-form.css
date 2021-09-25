@@ -1,0 +1,17 @@
+.content {
+  max-width: 400px;
+  position: relative;
+}
+label .required {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+.form-loading-curtain {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}

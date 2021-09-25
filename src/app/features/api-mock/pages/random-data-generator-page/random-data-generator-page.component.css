@@ -1,0 +1,31 @@
+.main-container {
+  height: 100%;
+  max-width: 100%;
+  overflow: auto;
+}
+.col-fixed {
+  width: 170px;
+}
+.card {
+  height: 100%;
+}
+.result-content {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.jsonContainer {
+  border-top: 1px dashed #dee2e6;
+  border-bottom: 1px dashed #dee2e6;
+  overflow: auto;
+}
+pre {
+  color: #495057;
+  font-family: Consolas, monospace;
+}
+
+@media all and (min-width: 800px) {
+  .col-fixed {
+    width: 250px;
+  }
+}

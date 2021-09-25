@@ -2,17 +2,12 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 main {
   background-color: #F8F9FA;
-  flex-grow: 1;
 }
 #content {
-  flex-grow: 1;
-}
-shared-breadcrumb {
-  flex-grow: 1;
-}
-.router-outlet-container {
-  flex-grow: 1;
+  width: calc(100% - 30rem);
 }

@@ -6,6 +6,14 @@
   "overrides": [
     {
       "files": [
+        "scripts/*.js"
+      ],
+      "parserOptions": {
+        "ecmaVersion": 2018
+      }
+    },
+    {
+      "files": [
         "*.ts"
       ],
       "parserOptions": {
@@ -16,6 +24,8 @@
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
@@ -32,12 +42,35 @@
           {
             "type": "element",
             "prefix": [
-              "app", "core", "user-auth", "user-administration", "shared", "lexica", "left-side-panel", "dashboard", "test"
+              "app", "core", "user-auth", "user-administration", "shared", "lexica", "side-panel", "right-side-panel",
+              "dashboard", "test", "loading"
             ],
             "style": "kebab-case"
           }
         ],
-        "@angular-eslint/no-empty-lifecycle-method": "off"
+        "@angular-eslint/no-empty-lifecycle-method": "off",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "enumMember",
+            "format": ["PascalCase"]
+          }
+        ],
+        "max-len": [
+          "error",
+          {
+            "code": 120
+          }
+        ],
+        "@typescript-eslint/ban-types": [
+          "error",
+          {
+            "types": {
+              "object": false
+            },
+            "extendDefaults": true
+          }
+        ]
       }
     },
     {

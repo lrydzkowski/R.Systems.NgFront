@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardService } from '../modules/user-auth/services/auth-guard.service';
+import { AuthGuardService } from '@features/user-auth/services/auth-guard.service';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 
@@ -8,24 +8,36 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 const routes: Routes = [
   {
     path: $localize`dashboard`,
-    loadChildren: () => import('../modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+    loadChildren: () => import('../features/dashboard/dashboard.module').then(m => m.DashboardModule),
     canActivate: [AuthGuardService]
   },
   {
     path: $localize`administration`,
-    loadChildren: () => import('../modules/user-administration/user-administration.module').then(m => m.UserAdministrationModule),
+    loadChildren: () => import('../features/user-administration/user-administration.module')
+      .then(m => m.UserAdministrationModule),
     canActivate: [AuthGuardService]
   },
   {
+    path: $localize`user-account`,
+    loadChildren: () => import('../features/user-account/user-account.module').then(m => m.UserAccountModule)
+  },
+  {
     path: 'lexica',
-    loadChildren: () => import('../modules/lexica/lexica.module').then(m => m.LexicaModule),
+    loadChildren: () => import('../features/lexica/lexica.module').then(m => m.LexicaModule),
     canActivate: [AuthGuardService]
   },
   {
     path: $localize`api-mock`,
-    loadChildren: () => import('../modules/api-mock/api-mock.module').then(m => m.ApiMockModule),
+    loadChildren: () => import('../features/api-mock/api-mock.module').then(m => m.ApiMockModule),
     data: {
       breadcrumb: $localize`API Mock`
+    }
+  },
+  {
+    path: 'tests',
+    loadChildren: () => import('../features/tests/tests.module').then(m => m.TestsModule),
+    data: {
+      breadcrumb: $localize`Tests`
     }
   },
   {
