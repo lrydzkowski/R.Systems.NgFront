@@ -1,0 +1,10 @@
+{
+  "/api/auth/*": {
+    "target": "https://localhost:44300",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api/auth": ""
+    }
+  }
+}
