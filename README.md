@@ -1,8 +1,8 @@
 # R.Systems.WebFrontend
 
-Angular web application that will play the role of a web front end for my different ideas connected with creating
+Angular web application will play the role of a web front end for my different ideas connected with creating
 software.
-The whole system is called R.Systems and according to my current plans the first version will have the following
+The whole system is called R.Systems. According to my current plans the first version will have the following
 modules:
 
 - UsersManagement - Everything connected with user authentication, authorization and management.
