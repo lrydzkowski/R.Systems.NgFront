@@ -1,7 +1,7 @@
-import { HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoadingService } from '@shared/loading/services/loading.service';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, filter, finalize, switchMap, take } from 'rxjs/operators';
 import { JwtTokenService } from './jwt-token.service';
 import { UserService } from './user.service';
@@ -49,21 +49,30 @@ export class AuthService {
       return next.handle(request);
     }
     const accessToken = this.jwtToken.getAccessToken() as string;
-    if (this.tokenNeedsRefresh(accessToken)) {
-      return this.refreshToken(request, next);
-    }
-    if (this.hasToWaitForRefresh(accessToken)) {
-      return this.waitForRefresh(request, next);
-    }
-    return this.handleRequestWithAuthHeader(request, next, accessToken);
+    return this.handleRequestWithAuthHeader(request, next, accessToken)
+      .pipe(
+        catchError((error) => {
+          if (error instanceof HttpErrorResponse && error.status === 401) {
+            return this.handle401Error(request, next);
+          }
+          return throwError(error);
+        })
+      );
   }
 
   private accessTokenExists(): boolean {
     return this.jwtToken.accessTokenExists();
   }
 
-  private tokenNeedsRefresh(accessToken: string): boolean {
-    return this.jwtToken.isTokenExpired(accessToken) && !this.tokenRefreshInProgress;
+  private handle401Error(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if (this.tokenNeedsRefresh()) {
+      return this.refreshToken(request, next);
+    }
+    return this.waitForRefresh(request, next);
+  }
+
+  private tokenNeedsRefresh(): boolean {
+    return !this.tokenRefreshInProgress;
   }
 
   private refreshToken(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -83,10 +92,6 @@ export class AuthService {
           return this.handleRequestWithAuthHeader(request, next, refreshedAccessToken);
         })
       );
-  }
-
-  private hasToWaitForRefresh(accessToken: string): boolean {
-    return this.jwtToken.isTokenExpired(accessToken) && this.tokenRefreshInProgress;
   }
 
   private waitForRefresh(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
