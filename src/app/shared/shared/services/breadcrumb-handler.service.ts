@@ -54,7 +54,7 @@ export class BreadcrumbHandlerService {
     breadcrumbInfo: BreadcrumbInfo,
     url: string
   ): void {
-    const label = activatedRouteSnapshot.data.breadcrumb;
+    const label = activatedRouteSnapshot.data['breadcrumb'];
     if (typeof label === 'string') {
       breadcrumbInfo.items.push({label, routerLink: [url]});
     }
@@ -64,7 +64,7 @@ export class BreadcrumbHandlerService {
     activatedRouteSnapshot: ActivatedRouteSnapshot,
     breadcrumbInfo: BreadcrumbInfo
   ): void {
-    let hasBreadcrumb = activatedRouteSnapshot.data.hasBreadcrumb;
+    let hasBreadcrumb = activatedRouteSnapshot.data['hasBreadcrumb'];
     if (typeof hasBreadcrumb !== 'boolean') {
       hasBreadcrumb = false;
     }

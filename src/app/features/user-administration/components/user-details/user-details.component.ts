@@ -53,7 +53,7 @@ export class UserDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private handleUserSelection(): void {
-    this.subscriptionHandler.data.userSelection = this.usersService.onUserSelection()
+    this.subscriptionHandler.data['userSelection'] = this.usersService.onUserSelection()
       .subscribe({
         next: (users: User[]) => {
           this.users = users;

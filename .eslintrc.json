@@ -6,14 +6,6 @@
   "overrides": [
     {
       "files": [
-        "scripts/*.js"
-      ],
-      "parserOptions": {
-        "ecmaVersion": 2018
-      }
-    },
-    {
-      "files": [
         "*.ts"
       ],
       "parserOptions": {
@@ -60,15 +52,6 @@
           "error",
           {
             "code": 120
-          }
-        ],
-        "@typescript-eslint/ban-types": [
-          "error",
-          {
-            "types": {
-              "object": false
-            },
-            "extendDefaults": true
           }
         ]
       }

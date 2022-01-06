@@ -98,7 +98,7 @@ export class RightSidePanelStateService {
       };
     }
     const child: ActivatedRoute = children[0];
-    hasRightSidePanel = child.snapshot.data.hasRightSidePanel;
+    hasRightSidePanel = child.snapshot.data['hasRightSidePanel'];
     if (typeof hasRightSidePanel !== 'boolean') {
       hasRightSidePanel = false;
     }

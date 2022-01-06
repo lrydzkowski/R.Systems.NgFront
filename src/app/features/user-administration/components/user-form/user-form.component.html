@@ -17,7 +17,7 @@
             <small  *ngIf="formHandler.fieldHasValidationError(form, 'login', 'maxlength')"
                     class="p-error"
                     i18n>
-              Login cannot be longer than {{lengths.login.max}} characters.
+              Login cannot be longer than {{lengths['login'].max}} characters.
             </small>
           </ng-container>
         </div>
@@ -36,7 +36,7 @@
             <small  *ngIf="formHandler.fieldHasValidationError(form, 'email', 'maxlength')"
                     class="p-error"
                     i18n>
-              Email cannot be longer than {{lengths.email.max}} characters.
+              Email cannot be longer than {{lengths['email'].max}} characters.
             </small>
           </ng-container>
         </div>
@@ -55,7 +55,7 @@
             <small  *ngIf="formHandler.fieldHasValidationError(form, 'firstName', 'maxlength')"
                     class="p-error"
                     i18n>
-              First name cannot be longer than {{lengths.firstName.max}} characters.
+              First name cannot be longer than {{lengths['firstName'].max}} characters.
             </small>
           </ng-container>
         </div>
@@ -74,7 +74,7 @@
             <small  *ngIf="formHandler.fieldHasValidationError(form, 'lastName', 'maxlength')"
                     class="p-error"
                     i18n>
-              Last name cannot be longer than {{lengths.lastName.max}} characters.
+              Last name cannot be longer than {{lengths['lastName'].max}} characters.
             </small>
           </ng-container>
         </div>
