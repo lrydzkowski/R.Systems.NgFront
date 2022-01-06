@@ -7,7 +7,7 @@ import { FormHandlerService } from '@shared/shared/services/form-handler.service
 import { ToastMessageService } from '@shared/shared/services/toast-message.service';
 
 @Component({
-  selector: 'user-administration-user-form',
+  selector: 'user-admin-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })

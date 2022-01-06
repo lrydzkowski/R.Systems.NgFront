@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppMenuService } from '@app/core/app-menu.service';
+import { LoginUrls } from '../models/login-urls';
 import { TokenInfo } from '../models/token-info';
 import { JwtTokenService } from './jwt-token.service';
 
@@ -8,10 +9,6 @@ import { JwtTokenService } from './jwt-token.service';
   providedIn: 'root'
 })
 export class UserService {
-
-  private urlAfterLogin: string = $localize`/dashboard`;
-
-  private urlAfterLoginOut: string = $localize`/login`;
 
   constructor(
     private jwtTokenService: JwtTokenService,
@@ -25,7 +22,7 @@ export class UserService {
   }
 
   redirectAfterLogin(): void {
-    this.router.navigate([this.urlAfterLogin]);
+    this.router.navigate([LoginUrls.urlAfterLogin]);
   }
 
   logout(): void {
@@ -35,7 +32,7 @@ export class UserService {
   }
 
   redirectAfterLogout(): void {
-    this.router.navigate([this.urlAfterLoginOut]);
+    this.router.navigate([LoginUrls.urlAfterLogout]);
   }
 
   clearTokens(): void {

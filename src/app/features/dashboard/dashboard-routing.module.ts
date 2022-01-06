@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardService } from '../user-auth/services/auth-guard.service';
+import { AuthenticatedGuard } from '@features/user-auth/routes-guards/authenticated.guard';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainPageComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthenticatedGuard],
     data: {
       hasBreadcrumb: true,
       breadcrumb: $localize`Dashboard`

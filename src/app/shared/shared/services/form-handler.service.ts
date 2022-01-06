@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +66,19 @@ export class FormHandlerService {
       }
     });
     return values as T;
+  }
+
+  triggerErrorOnField(formGroup: FormGroup, fieldName: string, errorCode: string, markAsDirty: boolean = false): void {
+    const field: AbstractControl | null = formGroup.get(fieldName);
+    if (field === null) {
+      return;
+    }
+    const errors: ValidationErrors = {};
+    errors[errorCode] = true;
+    field.setErrors(errors);
+    if (markAsDirty) {
+      field.markAsDirty();
+    }
   }
 
   private validateAllFields(formGroup: FormGroup): void {

@@ -12,18 +12,16 @@ import { FocusTrapModule } from 'primeng/focustrap';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { DialogModule } from 'primeng/dialog';
 
-import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { UserAuthRoutingModule } from './user-auth-routing.module';
 import { SharedModule } from '@shared/shared/shared.module';
-import { JwtTokenService } from './services/jwt-token.service';
-import { jwtOptionsFactory } from './jwt-options-factory';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 
 @NgModule({
   declarations: [
-    LoginPageComponent
+    LoginPageComponent,
+    LoginFormComponent
   ],
   imports: [
     CommonModule,
@@ -40,15 +38,7 @@ import { jwtOptionsFactory } from './jwt-options-factory';
     DialogModule,
 
     SharedModule,
-    UserAuthRoutingModule,
-
-    JwtModule.forRoot({
-      jwtOptionsProvider: {
-        provide: JWT_OPTIONS,
-        useFactory: jwtOptionsFactory,
-        deps: [JwtTokenService]
-      }
-    })
+    UserAuthRoutingModule
   ],
   exports: []
 })

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardService } from '@features/user-auth/services/auth-guard.service';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 
@@ -8,14 +7,12 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 const routes: Routes = [
   {
     path: $localize`dashboard`,
-    loadChildren: () => import('../features/dashboard/dashboard.module').then(m => m.DashboardModule),
-    canActivate: [AuthGuardService]
+    loadChildren: () => import('../features/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
     path: $localize`administration`,
     loadChildren: () => import('../features/user-administration/user-administration.module')
-      .then(m => m.UserAdministrationModule),
-    canActivate: [AuthGuardService]
+      .then(m => m.UserAdministrationModule)
   },
   {
     path: $localize`user-account`,
@@ -23,8 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'lexica',
-    loadChildren: () => import('../features/lexica/lexica.module').then(m => m.LexicaModule),
-    canActivate: [AuthGuardService]
+    loadChildren: () => import('../features/lexica/lexica.module').then(m => m.LexicaModule)
   },
   {
     path: $localize`api-mock`,

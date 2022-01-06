@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TokenInfo } from '../../models/token-info';
-import { LoginRequest } from '../models/login-request';
+import { AuthenticateRequest } from '../models/authenticate-request';
+import { AuthenticateResponse } from '../models/authenticate-response';
+import { GenerateNewTokensRequest } from '../models/generate-new-tokens-request';
+import { GenerateNewTokensResponse } from '../models/generate-new-tokens-response';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,11 @@ export class UserAuthApiService {
   constructor(
     private http: HttpClient) { }
 
-  login(request: LoginRequest): Observable<TokenInfo> {
-    return this.http.post<TokenInfo>('/login', request);
+  authenticate(request: AuthenticateRequest): Observable<AuthenticateResponse> {
+    return this.http.post<AuthenticateResponse>('/api/auth/users/authenticate', request);
+  }
+
+  generateNewTokens(request: GenerateNewTokensRequest): Observable<GenerateNewTokensResponse> {
+    return this.http.post<GenerateNewTokensResponse>('/api/auth/users/generate-new-tokens', request);
   }
 }

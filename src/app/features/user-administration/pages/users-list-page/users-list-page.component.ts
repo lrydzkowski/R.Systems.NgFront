@@ -3,7 +3,7 @@ import { UserDetailsComponent } from '@features/user-administration/components/u
 import { RightSidePanelInjectorService } from '@shared/side-panel/service/right-side-panel-injector.service';
 
 @Component({
-  selector: 'user-administration-users-list-page',
+  selector: 'user-admin-users-list-page',
   templateUrl: './users-list-page.component.html',
   styleUrls: ['./users-list-page.component.css']
 })
