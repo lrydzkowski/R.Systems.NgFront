@@ -7,7 +7,7 @@ var commitMsgFilePath = scriptArgs[0];
 var fs = require('fs');
 var commitMsg = fs.readFileSync(commitMsgFilePath, 'utf-8');
 
-var regex = /^(?<type>build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(?<scope>\(\w+\))?(?<breaking>!)?(?<subject>:\s.+)?|^(?<merge>Merge \w+)/
+var regex = /^(?<type>build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test|version)(?<scope>\(\w+\))?(?<breaking>!)?(?<subject>:\s.+)?|^(?<merge>Merge \w+)/
 if (!regex.test(commitMsg)) {
   console.log('');
   console.log('Your commit message is incorrectly formatted!');
