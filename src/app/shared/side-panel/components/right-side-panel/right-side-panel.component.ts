@@ -55,31 +55,31 @@ export class RightSidePanelComponent implements OnInit, OnDestroy {
   }
 
   private handleRightPanelEvents(): void {
-    this.subscriptionHandler.data.activateRightSidePanel = this.rightSidePanelState.onActivate()
+    this.subscriptionHandler.data['activateRightSidePanel'] = this.rightSidePanelState.onActivate()
       .subscribe({
         next: () => {
           this.panelExists = true;
         }
       });
-    this.subscriptionHandler.data.deactivateRightSidePanel = this.rightSidePanelState.onDeactivate()
+    this.subscriptionHandler.data['deactivateRightSidePanel'] = this.rightSidePanelState.onDeactivate()
       .subscribe({
         next: () => {
           this.panelExists = false;
         }
       });
-    this.subscriptionHandler.data.openRightSidePanel = this.rightSidePanelState.onOpen()
+    this.subscriptionHandler.data['openRightSidePanel'] = this.rightSidePanelState.onOpen()
       .subscribe({
         next: () => {
           this.panelIsOpen = true;
         }
       });
-    this.subscriptionHandler.data.closeRightSidePanel = this.rightSidePanelState.onClose()
+    this.subscriptionHandler.data['closeRightSidePanel'] = this.rightSidePanelState.onClose()
       .subscribe({
         next: () => {
           this.panelIsOpen = false;
         }
       });
-    this.subscriptionHandler.data.settingTabs = this.rightSidePanelInjector.onSettingTabs()
+    this.subscriptionHandler.data['settingTabs'] = this.rightSidePanelInjector.onSettingTabs()
       .subscribe({
         next: (tabs: TabInfo[]) => {
           this.tabs = tabs;

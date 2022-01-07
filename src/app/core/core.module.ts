@@ -13,9 +13,10 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 
 import { SidePanelModule } from '@shared/side-panel/side-panel.module';
 import { SharedModule } from '@shared/shared/shared.module';
+import { LoadingModule } from '@shared/loading/loading.module';
 
-import { FakeBackendInterceptor } from '@features/api-mock/interceptors/fake-backend.interceptor';
 import { UserAuthModule } from '@features/user-auth/user-auth.module';
+import { AuthInterceptor } from '@features/user-auth/interceptors/auth.interceptor';
 
 import { HeaderComponent } from './components/header/header.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
@@ -56,6 +57,7 @@ import { LogoutButtonComponent } from './components/logout-button/logout-button.
 
     SidePanelModule,
     SharedModule,
+    LoadingModule,
 
     UserAuthModule,
     CoreRoutingModule
@@ -68,7 +70,7 @@ import { LogoutButtonComponent } from './components/logout-button/logout-button.
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: FakeBackendInterceptor,
+      useClass: AuthInterceptor,
       multi: true
     }
   ],

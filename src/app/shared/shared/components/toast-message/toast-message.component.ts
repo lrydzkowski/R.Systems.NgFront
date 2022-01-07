@@ -26,7 +26,7 @@ export class ToastMessageComponent implements OnInit, OnDestroy {
   }
 
   private handleShowToastMessageEvent(): void {
-    this.subscriptionHandler.data.showToastMessage = this.toastMessageService.onShowToastMessage().subscribe({
+    this.subscriptionHandler.data['showToastMessage'] = this.toastMessageService.onShowToastMessage().subscribe({
       next: (msg: Message | null) => {
         if (msg === null) {
           return;
@@ -37,7 +37,7 @@ export class ToastMessageComponent implements OnInit, OnDestroy {
   }
 
   private handleClearToastMessageEvent(): void {
-    this.subscriptionHandler.data.clearToastMessage = this.toastMessageService.onClearToastMessage().subscribe({
+    this.subscriptionHandler.data['clearToastMessage'] = this.toastMessageService.onClearToastMessage().subscribe({
       next: () => {
         this.messageService.clear();
       }

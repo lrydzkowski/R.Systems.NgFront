@@ -7,7 +7,7 @@ import { FormHandlerService } from '@shared/shared/services/form-handler.service
 import { ToastMessageService } from '@shared/shared/services/toast-message.service';
 
 @Component({
-  selector: 'user-administration-user-form',
+  selector: 'user-admin-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
@@ -29,19 +29,19 @@ export class UserFormComponent implements OnInit {
   form: FormGroup = this.formBuilder.group({
     login: ['', [
       Validators.required,
-      (control: AbstractControl) => Validators.maxLength(this.lengths.login.max)(control)]
+      (control: AbstractControl) => Validators.maxLength(this.lengths['login'].max)(control)]
     ],
     email: ['', [
       Validators.required,
-      (control: AbstractControl) => Validators.maxLength(this.lengths.email.max)(control)]
+      (control: AbstractControl) => Validators.maxLength(this.lengths['email'].max)(control)]
     ],
     firstName: ['', [
       Validators.required,
-      (control: AbstractControl) => Validators.maxLength(this.lengths.firstName.max)(control)
+      (control: AbstractControl) => Validators.maxLength(this.lengths['firstName'].max)(control)
     ]],
     lastName: ['', [
       Validators.required,
-      (control: AbstractControl) => Validators.maxLength(this.lengths.lastName.max)(control)
+      (control: AbstractControl) => Validators.maxLength(this.lengths['lastName'].max)(control)
     ]]
   });
 

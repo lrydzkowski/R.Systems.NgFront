@@ -1,10 +1,18 @@
 {
   "/api/auth/*": {
-    "target": "https://localhost:44300",
+    "target": "https://localhost:5101",
     "secure": false,
     "logLevel": "debug",
     "pathRewrite": {
       "^/api/auth": ""
+    }
+  },
+  "/api/lexica/*": {
+    "target": "https://localhost:5102",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api/lexica": ""
     }
   }
 }

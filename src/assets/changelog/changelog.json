@@ -1,9 +1,9 @@
 [
   {
-    "version": "0.1.0",
-    "date": "2021-08-08",
+    "version": "1.0.0-preview.1",
+    "date": "2022-01-30",
     "changes": [
-      "Alpha version"
+      "The first version."
     ]
   }
 ]

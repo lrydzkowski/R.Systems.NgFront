@@ -6,16 +6,17 @@ import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 import { UserAccountRoutingModule } from './user-account-routing.module';
-import { PasswordChangeFormPageComponent } from './pages/password-change-form-page/password-change-form-page.component';
+import { PasswordChangePageComponent } from './pages/password-change-page/password-change-page.component';
 import { PasswordChangeFormComponent } from './components/password-change-form/password-change-form.component';
 
 
 @NgModule({
   declarations: [
     PasswordChangeFormComponent,
-    PasswordChangeFormPageComponent
+    PasswordChangePageComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +26,7 @@ import { PasswordChangeFormComponent } from './components/password-change-form/p
     ButtonModule,
     InputTextModule,
     PasswordModule,
+    ProgressSpinnerModule,
 
     UserAccountRoutingModule
   ]

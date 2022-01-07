@@ -33,25 +33,25 @@ export class RightSidePanelButtonComponent implements OnInit, OnDestroy {
   }
 
   private handleRightPanelEvents(): void {
-    this.subscriptionHandler.data.activateRightSidePanel = this.rightSidePanelState.onActivate()
+    this.subscriptionHandler.data['activateRightSidePanel'] = this.rightSidePanelState.onActivate()
       .subscribe({
         next: () => {
           this.buttonExists = true;
         }
       });
-    this.subscriptionHandler.data.deactivateRightSidePanel = this.rightSidePanelState.onDeactivate()
+    this.subscriptionHandler.data['deactivateRightSidePanel'] = this.rightSidePanelState.onDeactivate()
       .subscribe({
         next: () => {
           this.buttonExists = false;
         }
       });
-    this.subscriptionHandler.data.openRightSidePanel = this.rightSidePanelState.onOpen()
+    this.subscriptionHandler.data['openRightSidePanel'] = this.rightSidePanelState.onOpen()
       .subscribe({
         next: () => {
           this.buttonIsVisible = false;
         }
       });
-    this.subscriptionHandler.data.closeRightSidePanel = this.rightSidePanelState.onClose()
+    this.subscriptionHandler.data['closeRightSidePanel'] = this.rightSidePanelState.onClose()
       .subscribe({
         next: () => {
           this.buttonIsVisible = true;

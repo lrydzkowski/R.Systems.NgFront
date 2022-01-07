@@ -15,7 +15,7 @@ import { UserApiService } from '../../api/services/user-api.service';
 import { User } from '../../models/user';
 
 @Component({
-  selector: 'user-administration-users-list',
+  selector: 'user-admin-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css'],
   providers: [

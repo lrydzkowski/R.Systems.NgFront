@@ -32,9 +32,9 @@ export class RandomDataGeneratorService {
     };
     const usersListObservable: Observable<User[]> = forkJoin(observables).pipe(
       map((data: { [key: string]: string[] }) => {
-        const words: string[] = data.words;
-        const firstNames: string[] = data.firstNames;
-        const lastNames: string[] = data.lastNames;
+        const words: string[] = data['words'];
+        const firstNames: string[] = data['firstNames'];
+        const lastNames: string[] = data['lastNames'];
         const users: User[] = [];
         for (let i = 1; i <= numOfUsers; i++) {
           users.push(this.generateUser(words, firstNames, lastNames, i, numOfUsers));
