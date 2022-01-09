@@ -22,9 +22,7 @@ export class LoginFormComponent implements OnInit {
     email: ['', [
       Validators.required
     ]],
-    password: ['', [
-      Validators.required
-    ]]
+    password: ['', []]
   });
 
   isProcessing = false;

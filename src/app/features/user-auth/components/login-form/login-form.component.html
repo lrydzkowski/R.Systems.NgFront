@@ -21,13 +21,6 @@
         <div class="field col-12">
           <label for="password" i18n>Password</label>
           <input id="password" type="password" pPassword formControlName="password" class="w-full" [feedback]="false">
-          <ng-container *ngIf="formHandler.isFieldInvalid(form, 'password')">
-            <small  *ngIf="formHandler.fieldHasValidationError(form, 'password', 'required')"
-                    class="p-error"
-                    i18n>
-              Enter your password.
-            </small>
-          </ng-container>
         </div>
       </div>
       <div class="mt-3">
