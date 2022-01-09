@@ -1,31 +1,31 @@
 import { Injectable } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppMenuService {
 
-  updateState: Subject<boolean> = new Subject<boolean>();
-
   constructor() { }
 
-  getMenu(authenticated: boolean): MenuItem[] {
+  getMenu(authenticated: boolean, currentUrl: string = ''): MenuItem[] {
     return [
       {
         label: $localize`Login`,
         routerLink: [$localize`/login`],
-        visible: !authenticated
+        visible: !authenticated,
+        styleClass: this.getMenuElementStyleClass($localize`/login`, currentUrl)
       },
       {
         label: $localize`Dashboard`,
         routerLink: [$localize`/dashboard`],
-        visible: authenticated
+        visible: authenticated,
+        styleClass: this.getMenuElementStyleClass($localize`/dashboard`, currentUrl)
       },
       {
         label: $localize`Administration`,
         visible: authenticated,
+        styleClass: this.getMenuElementStyleClass($localize`/administration`, currentUrl),
         items: [
           {
             label: $localize`Users`,
@@ -37,11 +37,13 @@ export class AppMenuService {
       {
         label: 'Lexica',
         routerLink: [$localize`/lexica/main`],
-        visible: authenticated
+        visible: authenticated,
+        styleClass: this.getMenuElementStyleClass($localize`/lexica/main`, currentUrl)
       },
       {
         label: 'Mock',
         visible: authenticated,
+        styleClass: this.getMenuElementStyleClass($localize`/api-mock`, currentUrl),
         items: [
           {
             label: $localize`Random Data Generator`,
@@ -52,6 +54,7 @@ export class AppMenuService {
       {
         label: $localize`Tests`,
         visible: authenticated,
+        styleClass: this.getMenuElementStyleClass($localize`/tests`, currentUrl),
         items: [
           {
             label: $localize`Reactive Form With Calendar`,
@@ -60,5 +63,12 @@ export class AppMenuService {
         ]
       }
     ];
+  }
+
+  private getMenuElementStyleClass(elementUrl: string, currentUrl: string): string | undefined {
+    if (currentUrl?.startsWith(elementUrl)) {
+      return 'current-page';
+    }
+    return;
   }
 }
