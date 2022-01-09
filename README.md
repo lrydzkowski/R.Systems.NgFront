@@ -1,13 +1,15 @@
 # R.Systems.WebFrontend
 
-Angular web application will play the role of a web front end for my different ideas connected with creating
-software.
-The whole system is called R.Systems. According to my current plans the first version will have the following
-modules:
+Angular app that plays the role of a web front end for my different ideas connected with creating software.
+
+The whole system is called R.Systems. It contains the following modules:
 
 - UsersManagement - Everything connected with user authentication, authorization and management.
-- [Lexica](https://github.com/lrydzkowski/Lexica) - Web version of my different project which is English learning
-software focused on learning new vocabulary.
+- [Lexica](https://github.com/lrydzkowski/Lexica) - Web version of my different project that is English learning software focused on learning new vocabulary.
+
+Documentation:
+
+- [https://github.com/lrydzkowski/R.Systems.Doc/wiki](https://github.com/lrydzkowski/R.Systems.Doc/wiki)
 
 **Project is under construction!**
 
