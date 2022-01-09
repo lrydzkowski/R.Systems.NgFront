@@ -12,6 +12,10 @@ h1 {
   margin-top: 5px;
   margin-bottom: 2px;
 }
+h1 .preview-info {
+  color: red;
+  font-size: 1rem;
+}
 nav {
   flex-grow: 1;
 }
