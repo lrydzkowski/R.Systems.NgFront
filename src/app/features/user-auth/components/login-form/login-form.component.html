@@ -16,6 +16,11 @@
                     i18n>
               Wrong login data.
             </small>
+            <small *ngIf="formHandler.fieldHasValidationError(form, 'email', 'blocked')"
+                    class="p-error"
+                    i18n>
+              The ability to login has been blocked because of exceeding the maximum number of incorrect login attempts in a row. After some time login ability will be restored.
+            </small>
           </ng-container>
         </div>
         <div class="field col-12">

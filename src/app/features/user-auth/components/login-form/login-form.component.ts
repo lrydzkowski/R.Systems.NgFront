@@ -8,6 +8,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
 import { AuthenticateResponse } from '@features/user-auth/api/models/authenticate-response';
 import { ToastMessageService } from '@shared/shared/services/toast-message.service';
+import { ErrorInfo } from '@shared/shared/validation/error-info';
+import { StringUtilsService } from '@shared/shared/services/string-utils.service';
 
 @Component({
   selector: 'user-auth-login-form',
@@ -32,7 +34,8 @@ export class LoginFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userAuthApi: UserAuthApiService,
     private userService: UserService,
-    private toastMessageService: ToastMessageService) { }
+    private toastMessageService: ToastMessageService,
+    private stringUtils: StringUtilsService) { }
 
   ngOnInit(): void { }
 
@@ -66,6 +69,25 @@ export class LoginFormComponent implements OnInit {
       this.formHandler.triggerErrorOnField(this.form, 'email', 'wrongData', true);
       this.setFocusOnEmailField();
       return;
+    }
+    if (error.status === 400) {
+      const validationErrors = error.error as ErrorInfo[];
+      let found = false;
+      for (const validationError of validationErrors) {
+        if (validationError.elementKey !== 'User') {
+          continue;
+        }
+        found = true;
+        this.formHandler.triggerErrorOnField(
+          this.form,
+          'email',
+          this.stringUtils.makeFirstLetterSmall(validationError.errorKey),
+          true
+        );
+      }
+      if (found) {
+        return;
+      }
     }
     this.toastMessageService.showUnexpectedErrorMessage();
   }
