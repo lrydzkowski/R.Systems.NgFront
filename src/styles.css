@@ -48,6 +48,15 @@ small {
 .header-menubar .p-menubar-button .pi-bars {
   font-size: 1.5rem;
 }
+.header-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:focus {
+  box-shadow: none;
+}
+@media all and (min-width: 961px) {
+  .header-menubar .p-menubar-root-list > .p-menuitem.current-page > .p-menuitem-link {
+    outline: 1px solid #ced4da;
+    outline-offset: -1px;
+  }
+}
 /* PrimeNG SlideMenu */
 .header-slidemenu.p-slidemenu {
   border: 0;

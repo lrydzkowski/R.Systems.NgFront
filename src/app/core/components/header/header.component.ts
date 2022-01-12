@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { UserService } from '@features/user-auth/services/user.service';
 import { AppMenuService } from '../../app-menu.service';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'core-header',
@@ -12,31 +14,30 @@ export class HeaderComponent implements OnInit {
 
   menuItems: MenuItem[] = [];
 
-  mobileMenuVisible = false;
-
   userIsLogged = false;
 
   constructor(
     private appMenuService: AppMenuService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.handleMenuUpdate();
-    this.initMenu();
+    this.handleNavigationEndEvent();
   }
 
-  handleMenuUpdate(): void {
-    this.appMenuService.updateState.subscribe((authenticated: boolean) => {
-      this.initMenu(authenticated);
-    });
+  private handleNavigationEndEvent(): void {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        const navigationEndEvent = event as NavigationEnd;
+        this.initMenu(navigationEndEvent.url);
+      });
   }
 
-  initMenu(authenticated: boolean | null = null): void {
-    if (authenticated === null) {
-      authenticated = this.userService.tokensExist();
-    }
-    this.menuItems = this.appMenuService.getMenu(authenticated);
-    this.userIsLogged = authenticated;
+  private initMenu(currentUrl: string): void {
+    const isAuthenticated = this.userService.tokensExist();
+    this.menuItems = this.appMenuService.getMenu(isAuthenticated, currentUrl);
+    this.userIsLogged = isAuthenticated;
   }
 
 }
