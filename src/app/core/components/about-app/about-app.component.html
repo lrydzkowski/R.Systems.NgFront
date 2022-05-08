@@ -1,6 +1,11 @@
 <p-dialog header="R.Systems" i18n-header [modal]="true" [draggable]="false" [(visible)]="visible">
   <div class="content">
-    <p>Version: <span class="font-medium">{{version}}</span></p>
+    <p>Versions:</p>
+    <ul>
+      <li><p>Frontend: <span class="font-medium">{{version}}</span></p></li>
+      <li><p>R.Systems.Auth: <span class="font-medium">{{backendVersion.auth}}</span></p></li>
+      <li><p>R.Systems.Lexica: <span class="font-medium">{{backendVersion.lexica}}</span></p></li>
+    </ul>
     <p>Build: <span class="font-medium">{{build}}</span></p>
     <p>Copyright © {{getYearsRange()}} Łukasz Rydzkowski</p>
     <p><a href="https://lukaszrydzkowski.pl" target="_blank">https://lukaszrydzkowski.pl</a></p>
