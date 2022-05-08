@@ -7,7 +7,7 @@ on:
       
 env:
   REGISTRY: ghcr.io
-  APP_IMAGE_NAME: lrydzkowski/r-systems-web-frontend
+  APP_IMAGE_NAME: lrydzkowski/r-systems-ng-front
   
 jobs:
   build:

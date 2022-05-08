@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "r-systems-web-frontend": {
+    "r-systems-ng-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/r-systems-web-frontend",
+            "outputPath": "dist/r-systems-ng-front",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,10 +71,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "r-systems-web-frontend:build:production"
+              "browserTarget": "r-systems-ng-front:build:production"
             },
             "development": {
-              "browserTarget": "r-systems-web-frontend:build:development"
+              "browserTarget": "r-systems-ng-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "r-systems-web-frontend:build"
+            "browserTarget": "r-systems-ng-front:build"
           }
         },
         "test": {
@@ -114,7 +114,7 @@
       }
     }
   },
-  "defaultProject": "r-systems-web-frontend",
+  "defaultProject": "r-systems-ng-front",
   "cli": {
     "defaultCollection": "@angular-eslint/schematics"
   }
