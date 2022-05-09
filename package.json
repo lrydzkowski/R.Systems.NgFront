@@ -1,6 +1,6 @@
 {
   "name": "r-systems-ng-front",
-  "version": "1.0.0-preview.3",
+  "version": "1.0.0-preview.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
