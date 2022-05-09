@@ -2,6 +2,3 @@
 . "$(dirname "$0")/_/husky.sh"
 
 ng lint
-node ./scripts/update.build.js
-git add src/environments/environment.prod.ts
-git add src/environments/environment.ts
