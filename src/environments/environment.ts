@@ -6,8 +6,7 @@ import npm from '../../package.json';
 
 export const environment = {
   production: false,
-  version: npm.version,
-  build: '2022-05-09T16:15:57'
+  version: npm.version
 };
 
 /*

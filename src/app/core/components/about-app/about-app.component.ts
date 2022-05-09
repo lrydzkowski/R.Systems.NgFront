@@ -27,8 +27,6 @@ export class AboutAppComponent implements OnInit, OnDestroy {
     lexica: '-'
   };
 
-  build: string = environment.build;
-
   private openWindowSubscription: Subscription | null = null;
 
   constructor(
