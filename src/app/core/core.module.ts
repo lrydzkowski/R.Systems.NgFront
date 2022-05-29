@@ -1,7 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
@@ -15,9 +15,6 @@ import { SidePanelModule } from '@shared/side-panel/side-panel.module';
 import { SharedModule } from '@shared/shared/shared.module';
 import { LoadingModule } from '@shared/loading/loading.module';
 
-import { UserAuthModule } from '@features/user-auth/user-auth.module';
-import { AuthInterceptor } from '@features/user-auth/interceptors/auth.interceptor';
-
 import { HeaderComponent } from './components/header/header.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MainTemplateComponent } from './templates/main-template/main-template.component';
@@ -27,7 +24,6 @@ import { AboutAppComponent } from './components/about-app/about-app.component';
 import { AppMenuComponent } from './components/app-menu/app-menu.component';
 import { ChangelogComponent } from './components/changelog/changelog.component';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
-import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 
 
 @NgModule({
@@ -40,12 +36,12 @@ import { LogoutButtonComponent } from './components/logout-button/logout-button.
     AboutAppComponent,
     AppMenuComponent,
     ChangelogComponent,
-    UserMenuComponent,
-    LogoutButtonComponent
+    UserMenuComponent
   ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
+    HttpClientModule,
 
     MenubarModule,
     ButtonModule,
@@ -59,18 +55,12 @@ import { LogoutButtonComponent } from './components/logout-button/logout-button.
     SharedModule,
     LoadingModule,
 
-    UserAuthModule,
     CoreRoutingModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TimezoneOffsetInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
       multi: true
     }
   ],

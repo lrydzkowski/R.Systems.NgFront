@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { UserService } from '@features/user-auth/services/user.service';
 import { AppMenuService } from '../../app-menu.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
@@ -14,11 +13,8 @@ export class HeaderComponent implements OnInit {
 
   menuItems: MenuItem[] = [];
 
-  userIsLogged = false;
-
   constructor(
     private appMenuService: AppMenuService,
-    private userService: UserService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -35,9 +31,7 @@ export class HeaderComponent implements OnInit {
   }
 
   private initMenu(currentUrl: string): void {
-    const isAuthenticated = this.userService.tokensExist();
-    this.menuItems = this.appMenuService.getMenu(isAuthenticated, currentUrl);
-    this.userIsLogged = isAuthenticated;
+    this.menuItems = this.appMenuService.getMenu(currentUrl);
   }
 
 }

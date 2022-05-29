@@ -10,13 +10,9 @@ const routes: Routes = [
     loadChildren: () => import('../features/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
-    path: $localize`administration`,
-    loadChildren: () => import('../features/user-administration/user-administration.module')
-      .then(m => m.UserAdministrationModule)
-  },
-  {
-    path: $localize`user-account`,
-    loadChildren: () => import('../features/user-account/user-account.module').then(m => m.UserAccountModule)
+    path: '',
+    redirectTo: $localize`dashboard`,
+    pathMatch: 'full'
   },
   {
     path: 'lexica',

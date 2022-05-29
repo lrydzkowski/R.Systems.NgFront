@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { VersionService as LexicaVersionService } from '@features/lexica/api/services/version.service';
-import { VersionService as AuthVersionService } from '@features/user-auth/api/services/version.service';
 import { ModalWindowOperationEnum } from '@shared/shared/models/modal-window-operation-enum';
 import { ModalWindowHandlerService } from '@shared/shared/services/modal-window-handler.service';
 import { Subscription } from 'rxjs';
@@ -32,12 +31,10 @@ export class AboutAppComponent implements OnInit, OnDestroy {
   constructor(
     private modalWindowHandler: ModalWindowHandlerService,
     private subscriptionHandler: SubscriptionHandlerService,
-    private lexicaVersionService: LexicaVersionService,
-    private authVersionService: AuthVersionService) { }
+    private lexicaVersionService: LexicaVersionService) { }
 
   ngOnInit(): void {
     this.subscribeOpenWindowEvent();
-    this.getAuthVersion();
     this.getLexicaVersion();
   }
 
@@ -63,15 +60,6 @@ export class AboutAppComponent implements OnInit, OnDestroy {
         this.visible = true;
       }
     });
-  }
-
-  private getAuthVersion(): void {
-    this.subscriptionHandler.data['getAuthVersion'] = this.authVersionService.getVersion()
-      .subscribe({
-        next: (app: App): void => {
-          this.backendVersion.auth = app.version;
-        }
-      });
   }
 
   private getLexicaVersion(): void {

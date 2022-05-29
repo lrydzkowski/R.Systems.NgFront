@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Role } from '@features/user-administration/models/role';
-import { User } from '@features/user-administration/models/user';
 import { MockDataApiService } from '../api/services/mock-data-api.service';
+import { Role } from '../models/role';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
