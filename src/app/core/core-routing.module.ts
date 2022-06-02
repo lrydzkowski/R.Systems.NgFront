@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MsalGuard } from '@azure/msal-angular';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 
@@ -8,11 +9,6 @@ const routes: Routes = [
   {
     path: $localize`dashboard`,
     loadChildren: () => import('../features/dashboard/dashboard.module').then(m => m.DashboardModule)
-  },
-  {
-    path: '',
-    redirectTo: $localize`dashboard`,
-    pathMatch: 'full'
   },
   {
     path: 'lexica',
@@ -31,6 +27,11 @@ const routes: Routes = [
     data: {
       breadcrumb: $localize`Tests`
     }
+  },
+  {
+    path: '',
+    redirectTo: $localize`/login`,
+    pathMatch: 'full'
   },
   {
     path: '**',

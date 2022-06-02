@@ -1,0 +1,7 @@
+<p-dialog header="User Profile" i18n-header [modal]="true" [draggable]="false" [(visible)]="visible">
+  <div class="content">
+    <p><span class="label">Username: </span><span class="font-medium">{{profile?.username ?? '-'}}</span></p>
+    <p><span class="label">Name: </span><span class="font-medium">{{profile?.name ?? '-'}}</span></p>
+  </div>
+  <loading-animation [loadingAnimationKey]="loadingAnimationKey"></loading-animation>
+</p-dialog>

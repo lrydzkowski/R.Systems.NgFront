@@ -6,7 +6,13 @@ import npm from '../../package.json';
 
 export const environment = {
   production: false,
-  version: npm.version
+  version: npm.version,
+  azure: {
+    clientId: '6fc01629-cb77-4320-90a8-2ca2a62d4f58',
+    authority: 'https://login.microsoftonline.com/22b7f27f-c2ab-445e-89e7-66ea06fe91be',
+    redirectUri: 'http://localhost:4200',
+    postLogoutRedirectUrl: 'http://localhost:4200'
+  }
 };
 
 /*

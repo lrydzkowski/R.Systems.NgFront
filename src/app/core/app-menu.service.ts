@@ -1,28 +1,38 @@
 import { Injectable } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AppMenuState } from './models/app-menu-state';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppMenuService {
 
+  private isLogged = false;
+
+  private currentUrl = '';
+
   constructor() { }
 
-  getMenu(currentUrl: string = ''): MenuItem[] {
+  getMenu(appMenuState: AppMenuState): MenuItem[] {
+    this.isLogged = this.getIsLoggedStatus(appMenuState);
+    this.currentUrl = this.getCurrentUrl(appMenuState);
     return [
       {
         label: $localize`Dashboard`,
         routerLink: [$localize`/dashboard`],
-        styleClass: this.getMenuElementStyleClass($localize`/dashboard`, currentUrl)
+        visible: this.isLogged,
+        styleClass: this.getMenuElementStyleClass($localize`/dashboard`, this.currentUrl)
       },
       {
         label: 'Lexica',
         routerLink: [$localize`/lexica/main`],
-        styleClass: this.getMenuElementStyleClass($localize`/lexica/main`, currentUrl)
+        visible: this.isLogged,
+        styleClass: this.getMenuElementStyleClass($localize`/lexica/main`, this.currentUrl)
       },
       {
         label: 'Mock',
-        styleClass: this.getMenuElementStyleClass($localize`/api-mock`, currentUrl),
+        visible: this.isLogged,
+        styleClass: this.getMenuElementStyleClass($localize`/api-mock`, this.currentUrl),
         items: [
           {
             label: $localize`Random Data Generator`,
@@ -32,7 +42,8 @@ export class AppMenuService {
       },
       {
         label: $localize`Tests`,
-        styleClass: this.getMenuElementStyleClass($localize`/tests`, currentUrl),
+        visible: this.isLogged,
+        styleClass: this.getMenuElementStyleClass($localize`/tests`, this.currentUrl),
         items: [
           {
             label: $localize`Reactive Form With Calendar`,
@@ -41,6 +52,20 @@ export class AppMenuService {
         ]
       }
     ];
+  }
+
+  private getIsLoggedStatus(appMenuState: AppMenuState): boolean {
+    if (appMenuState.isLogged === null) {
+      return this.isLogged;
+    }
+    return appMenuState.isLogged;
+  }
+
+  private getCurrentUrl(appMenuState: AppMenuState): string {
+    if (appMenuState.currentUrl === null) {
+      return this.currentUrl;
+    }
+    return appMenuState.currentUrl;
   }
 
   private getMenuElementStyleClass(elementUrl: string, currentUrl: string): string | undefined {
